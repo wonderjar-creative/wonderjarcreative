@@ -114,7 +114,7 @@ export function getBlockClasses(attributes: BlockAttributes, baseClass: string =
 
   // Handle classes from style object
   if (style) {
-    if (style.color.background || style.color.gradient) {
+    if (style?.color?.background || style?.color?.gradient) {
       classes.push('has-background');
     }
   }
