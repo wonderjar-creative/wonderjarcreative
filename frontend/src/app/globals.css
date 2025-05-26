@@ -59,9 +59,11 @@
     .alignleft {
       @apply float-left mr-4
     }
+
     .alignright {
       @apply float-right ml-4;
     }
+    
     .aligncenter {
       @apply mx-auto;
     }
@@ -70,5 +72,35 @@
 
 /* Utilities Layer: Custom utility classes */
 @layer utilities {
-  
+  .has-teal-background-color { background-color: var(--color-teal); }
+  .has-teal-color { color: var(--color-teal); }
+  .has-teal-border-color { border-color: var(--color-teal); }
+
+  .has-warm-coral-background-color { background-color: var(--color-warm-coral); }
+  .has-warm-coral-color { color: var(--color-warm-coral); }
+  .has-warm-coral-border-color { border-color: var(--color-warm-coral); }
+
+  .has-muted-brick-red-background-color { background-color: var(--color-muted-brick-red); }
+  .has-muted-brick-red-color { color: var(--color-muted-brick-red); }
+  .has-muted-brick-red-border-color { border-color: var(--color-muted-brick-red); }
+
+  .has-deep-black-background-color { background-color: var(--color-deep-black); }
+  .has-deep-black-color { color: var(--color-deep-black); }
+  .has-deep-black-border-color { border-color: var(--color-deep-black); }
+
+  .has-retro-teal-background-color { background-color: var(--color-retro-teal); }
+  .has-retro-teal-color { color: var(--color-retro-teal); }
+  .has-retro-teal-border-color { border-color: var(--color-retro-teal); }
+
+  .has-soft-cream-background-color { background-color: var(--color-soft-cream); }
+  .has-soft-cream-color { color: var(--color-soft-cream); }
+  .has-soft-cream-border-color { border-color: var(--color-soft-cream); }
+
+  .has-charcoal-gray-background-color { background-color: var(--color-charcoal-gray); }
+  .has-charcoal-gray-color { color: var(--color-charcoal-gray); }
+  .has-charcoal-gray-border-color { border-color: var(--color-charcoal-gray); }
+
+  .has-marigold-yellow-background-color { background-color: var(--color-marigold-yellow); }
+  .has-marigold-yellow-color { color: var(--color-marigold-yellow); }
+  .has-marigold-yellow-border-color { border-color: var(--color-marigold-yellow); }
 }
