@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    domains: ['wonderjarcreative.local', 'wonderjarcreative.com']
+  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
