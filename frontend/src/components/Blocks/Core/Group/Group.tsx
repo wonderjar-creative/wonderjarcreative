@@ -1,5 +1,5 @@
 import { Maybe, CoreGroupBlockAttributes } from '@/gql/graphql';
-import { getBlockClasses, getBlockStyle } from '@/utils/getBlockComponents';
+import { getBlockClasses, getBlockStyleAttr } from '@/utils/getBlockComponents';
 
 type GroupProps = {
   attributes: CoreGroupBlockAttributes;
@@ -12,8 +12,8 @@ type GroupProps = {
 
 export default function Group({ attributes, innerBlocks, originalContent, saveContent, dynamicContent }: GroupProps) {
   const { anchor, style, tagName } = attributes;
-  const blockClasses = getBlockClasses(attributes, 'wp-block-paragraph');
-  const blockStyle = getBlockStyle(style);
+  const blockClasses = getBlockClasses(attributes, 'wp-block-group');
+  const blockStyleAttr = getBlockStyleAttr(style);
   const Tag = tagName || 'div';
   const TagComponent = Tag as keyof JSX.IntrinsicElements;
 
@@ -21,7 +21,7 @@ export default function Group({ attributes, innerBlocks, originalContent, saveCo
     <TagComponent
       {...(anchor && { id: anchor })}
       className={blockClasses}
-      {...(style && { style: blockStyle })}
+      {...(style && { style: blockStyleAttr })}
     >
       {innerBlocks}
     </TagComponent>
