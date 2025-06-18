@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
-import styles from "./Menu.module.css";;
-
+import styles from "./Menu.module.css";
+import { RootQueryToMenuItemConnection, MenuItem } from "@/gql/graphql";
 
 export default function Menu({ menuItems }: { menuItems: RootQueryToMenuItemConnection }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -60,7 +60,7 @@ export default function Menu({ menuItems }: { menuItems: RootQueryToMenuItemConn
             <ul className="flex flex-col p-4">
               {menuItems.nodes.map((item: MenuItem) => (
                 <li key={item.uri} className="py-2">
-                  <Link href={item.uri} target={item.target}>
+                  <Link href={item.uri || ''} target={item.target || ''}>
                       {item.label}
                   </Link>
                 </li>
@@ -74,7 +74,7 @@ export default function Menu({ menuItems }: { menuItems: RootQueryToMenuItemConn
       <ul className="hidden md:flex space-x-4">
         {menuItems.nodes.map((item: MenuItem) => (
           <li key={item.uri} className="fw-b py-2">
-            <Link href={item.uri} target={item.target}>
+            <Link href={item.uri || ''} target={item.target || ''}>
               {item.label}
             </Link>
           </li>
