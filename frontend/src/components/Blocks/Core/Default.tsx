@@ -5,12 +5,17 @@ type DefaultProps = {
   attributes: Record<string, any>;
   dynamicContent?: Maybe<string> | undefined;
   innerBlocks?: React.ReactNode[];
-  key: number;
   originalContent?: Maybe<string> | undefined;
   saveContent?: Maybe<string> | undefined;
 };
 
-export default function Default({attributes, dynamicContent, innerBlocks, key, originalContent, saveContent}: DefaultProps) {
+export default function Default({
+  attributes,
+  dynamicContent,
+  innerBlocks,
+  originalContent,
+  saveContent
+}: DefaultProps) {
   const { anchor, style, tagName } = attributes as any;
   const blockClasses = getBlockClasses(attributes, 'wp-block-default');
   const blockStyleAttr = getBlockStyleAttr(style);
@@ -19,7 +24,6 @@ export default function Default({attributes, dynamicContent, innerBlocks, key, o
 
   return (
     <TagComponent
-      key={key}
       {...(anchor && { id: anchor })}
       className={blockClasses}
       {...(style && { style: blockStyleAttr })}
