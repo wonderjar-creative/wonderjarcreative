@@ -5,6 +5,17 @@ export const PageQuery = gql`
     page(id: $id, idType: DATABASE_ID, asPreview: $preview) {
       title
       blocksJSON
+      featuredImage {
+        node {
+          sourceUrl
+          altText
+          title
+          mediaDetails {
+            width
+            height
+          }
+        }
+      }
     }
   }
 `;
