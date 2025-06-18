@@ -1,5 +1,5 @@
 import { Maybe } from '@/gql/graphql';
-import { getBlockClasses, getBlockStyle } from '@/utils/getBlockComponents';
+import { getBlockClasses, getBlockStyleAttr } from '@/utils/getBlockComponents';
 
 type DefaultProps = {
   attributes: Record<string, any>;
@@ -12,8 +12,8 @@ type DefaultProps = {
 
 export default function Default({attributes, dynamicContent, innerBlocks, key, originalContent, saveContent}: DefaultProps) {
   const { anchor, style, tagName } = attributes as any;
-  const blockClasses = getBlockClasses(attributes, 'wp-block-paragraph');
-  const blockStyle = getBlockStyle(style);
+  const blockClasses = getBlockClasses(attributes, 'wp-block-default');
+  const blockStyleAttr = getBlockStyleAttr(style);
   const Tag = tagName || 'div';
   const TagComponent = Tag as keyof JSX.IntrinsicElements;
 
@@ -22,7 +22,7 @@ export default function Default({attributes, dynamicContent, innerBlocks, key, o
       key={key}
       {...(anchor && { id: anchor })}
       className={blockClasses}
-      {...(style && { style: blockStyle })}
+      {...(style && { style: blockStyleAttr })}
       {...(!innerBlocks || innerBlocks.length <= 0 ? { dangerouslySetInnerHTML: { __html: dynamicContent || saveContent || originalContent }} : {} )}
     >
       {innerBlocks && innerBlocks.length > 0 ? innerBlocks : null}
