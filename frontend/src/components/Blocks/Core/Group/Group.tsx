@@ -5,12 +5,17 @@ type GroupProps = {
   attributes: CoreGroupBlockAttributes;
   dynamicContent?: Maybe<string> | undefined;
   innerBlocks?: React.ReactNode[];
-  key: number;
   originalContent?: Maybe<string> | undefined;
   saveContent?: Maybe<string> | undefined;
 }
 
-export default function Group({ attributes, innerBlocks, originalContent, saveContent, dynamicContent }: GroupProps) {
+export default function Group({
+  attributes,
+  innerBlocks,
+  originalContent,
+  saveContent,
+  dynamicContent
+}: GroupProps) {
   const { anchor, style, tagName } = attributes;
   const blockClasses = getBlockClasses(attributes, 'wp-block-group');
   const blockStyleAttr = getBlockStyleAttr(style);
