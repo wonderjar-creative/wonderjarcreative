@@ -11,6 +11,8 @@ import {
   CoreCoverBlockAttributes,
   CoreGroupBlock,
   CoreGroupBlockAttributes,
+  CoreHeadingBlock,
+  CoreHeadingBlockAttributes,
   CoreParagraphBlock,
   CoreParagraphBlockAttributes,
   NodeWithFeaturedImageToMediaItemConnectionEdge
@@ -131,6 +133,18 @@ export async function getBlockComponents(
             {...block}
             attributes={safeAttributes}
             innerBlocks={innerBlocks}
+          />
+        );
+      }
+      case 'core/heading': {
+        const Heading = dynamic(() => import('@/components/Blocks/Core/Heading/Heading'));
+        const { attributes } = block as CoreHeadingBlock;
+        const safeAttributes = (attributes ?? {}) as CoreHeadingBlockAttributes;
+
+        return (
+          <Heading
+            {...block}
+            attributes={safeAttributes}
           />
         );
       }
