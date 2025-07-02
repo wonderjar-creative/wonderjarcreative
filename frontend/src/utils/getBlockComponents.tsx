@@ -15,10 +15,10 @@ import {
   CoreHeadingBlockAttributes,
   CoreParagraphBlock,
   CoreParagraphBlockAttributes,
+  CorePostTitleBlock,
+  CorePostTitleBlockAttributes,
   NodeWithFeaturedImageToMediaItemConnectionEdge
 } from '@/gql/graphql';
-import { randomInt } from 'crypto';
-import { console } from 'inspector';
 
 const getParsedBlocks = (blocksJSON: string) => {
   try {
@@ -41,6 +41,10 @@ const convertPreset = (value: string) => {
   return value;
 }
 
+export const stripOuterTag = (html: Maybe<string> | undefined) => {
+  return html?.replace(/^<[^>]+>([\s\S]*)<\/[^>]+>$/, '$1');
+}
+
 /**
  * Asynchronously retrieves and renders block components based on the provided blocks JSON.
  * @param blocksJSON JSON string representing the blocks to render
@@ -56,7 +60,7 @@ export async function getBlockComponents(
   const parsedBlocks = getParsedBlocks(blocksJSON);
 
   return Promise.all(parsedBlocks.map(async (block: Block, index: number) => {
-    // console.log('block', block);
+    console.log('block', block);
     
     // Recursively process innerBlocks if present
     let innerBlocks: Maybe<React.ReactNode[]> = [];
@@ -71,11 +75,10 @@ export async function getBlockComponents(
 
     // Collect styles if provided
     const blockAttributes = (block as any).attributes;
-    // console.log('blockAttributes', blockAttributes);
-    const blockId = stylesCollector && blockAttributes?.style?.elements
+    const blockId = stylesCollector && ( blockAttributes?.style?.elements || blockAttributes?.style?.layout )
       ? (() => {
-        const id = generateRandomId();
-        stylesCollector.push(styleElementsToCSS(blockAttributes.style.elements, id));
+        const id = generateRandomId();  
+        stylesCollector.push(styleElementsToCSS(blockAttributes.style, id));
         blockAttributes.className = blockAttributes.className ? `${blockAttributes.className} wp-block-${id}` : `wp-block-${id}`;
         return id;
       })()
@@ -83,6 +86,34 @@ export async function getBlockComponents(
 
     // Dynamically import the block component based on its name
     switch (block.name) {
+      case 'core/columns': {
+        const Columns = dynamic(() => import('@/components/Blocks/Core/Columns/Columns'));
+        const { attributes } = block as CoreColumnsBlock;
+        const safeAttributes = (attributes ?? {}) as CoreColumnsBlockAttributes;
+
+        return (
+          <Columns
+            {...block}
+            key={index}
+            attributes={safeAttributes}
+            innerBlocks={innerBlocks}
+          />
+        );
+      }
+      case 'core/column': {
+        const Column = dynamic(() => import('@/components/Blocks/Core/Column/Column'));
+        const { attributes } = block as CoreColumnBlock;
+        const safeAttributes = (attributes ?? {}) as CoreColumnBlockAttributes;
+
+        return (
+          <Column
+            {...block}
+            key={index}
+            attributes={safeAttributes}
+            innerBlocks={innerBlocks}
+          />
+        );
+      }
       case 'core/cover': {
         const Cover = dynamic(() => import('@/components/Blocks/Core/Cover/Cover'));
         const { attributes } = block as CoreCoverBlock;
@@ -91,6 +122,7 @@ export async function getBlockComponents(
         return (
           <Cover
             {...block}
+            key={index}
             attributes={safeAttributes}
             innerBlocks={innerBlocks}
             featuredImage={featuredImage}
@@ -105,32 +137,7 @@ export async function getBlockComponents(
         return (
           <Group
             {...block}
-            attributes={safeAttributes}
-            innerBlocks={innerBlocks}
-          />
-        );
-      }
-      case 'core/columns': {
-        const Columns = dynamic(() => import('@/components/Blocks/Core/Columns/Columns'));
-        const { attributes } = block as CoreColumnsBlock;
-        const safeAttributes = (attributes ?? {}) as CoreColumnsBlockAttributes;
-
-        return (
-          <Columns
-            {...block}
-            attributes={safeAttributes}
-            innerBlocks={innerBlocks}
-          />
-        );
-      }
-      case 'core/column': {
-        const Column = dynamic(() => import('@/components/Blocks/Core/Column/Column'));
-        const { attributes } = block as CoreColumnBlock;
-        const safeAttributes = (attributes ?? {}) as CoreColumnBlockAttributes;
-
-        return (
-          <Column
-            {...block}
+            key={index}
             attributes={safeAttributes}
             innerBlocks={innerBlocks}
           />
@@ -144,6 +151,7 @@ export async function getBlockComponents(
         return (
           <Heading
             {...block}
+            key={index}
             attributes={safeAttributes}
           />
         );
@@ -156,6 +164,20 @@ export async function getBlockComponents(
         return (
           <Paragraph
             {...block}
+            key={index}
+            attributes={safeAttributes}
+          />
+        );
+      }
+      case 'core/post-title': {
+        const PostTitle = dynamic(() => import('@/components/Blocks/Core/PostTitle/PostTitle'));
+        const { attributes } = block as CorePostTitleBlock;
+        const safeAttributes = (attributes ?? {}) as CorePostTitleBlockAttributes;
+
+        return (
+          <PostTitle
+            {...block}
+            key={index}
             attributes={safeAttributes}
           />
         );
@@ -167,6 +189,7 @@ export async function getBlockComponents(
         return (
           <Default
             {...block}
+            key={index}
             attributes={attributes}
             innerBlocks={innerBlocks}
           />
@@ -316,6 +339,13 @@ export function getBlockStyleAttr(styleObj: any): React.CSSProperties {
     result.minHeight = `${value}${unit}`;
   }
 
+  // Handle width
+  if (styleObj.width) {
+    const value = styleObj.width;
+    const unit = styleObj.widthUnit || 'px'; // Default to 'px' if no unit is provided
+    result.width = `${value}${unit}`;
+  }
+
   // You can add more mappings as needed for your use case
 
   return result;
@@ -327,57 +357,77 @@ export function getBlockStyleAttr(styleObj: any): React.CSSProperties {
  * @param blockId The unique identifier for the block, used to scope the CSS
  * @returns CSS string for the <style> tag
  */
-export const styleElementsToCSS = (elements: any, blockId: string): string => {
-  if (!elements || typeof elements !== 'object') return '';
+type Style = {
+  elements?: Record<string, Record<string, string>>;
+  layout?: {
+    contentSize?: string;
+    [key: string]: any;
+  };
+  [key: string]: any;
+};
 
-  const css = Object.entries(elements).reduce((acc, [selector, properties]) => {
-    // Build CSS property string
-    const cssProps = Object.entries(properties as Record<string, any>)
-      .map(([prop, value]) => {
+export const styleElementsToCSS = (
+  style: Style,
+  blockId: string
+): string => {
+  if (!style.elements && !style.layout) return '';
+
+  let css = '';
+  if (style.elements) {
+    Object.entries(style.elements).forEach(([selector, styles]) => {
+      let cssSelector = '';
+      switch (selector) {
+        case 'link':
+          cssSelector = 'a';
+          break;
+        case 'heading':
+          cssSelector = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].map(tag => {
+            if (tag === 'h1') return 'h1';
+            return `.wp-block-${blockId} ${tag}`;
+          }).join(', ');
+          break;
+        default:
+          cssSelector = selector;
+          break;
+      }
+      css += `.wp-block-${blockId} ${cssSelector} {\n`;
+      Object.entries(styles).forEach(([property, value]) => {
         if (typeof value === 'object' && value !== null) {
           // Handle nested objects (e.g., color: { text: ... })
-          return Object.entries(value as Record<string, any>)
+          css += Object.entries(value as Record<string, any>)
             .map(([subProp, subValue]) => {
               const cssPropName =
-                prop === 'color' && subProp === 'text'
+                property === 'color' && subProp === 'text'
                   ? 'color'
-                  : `${prop}-${subProp}`.replace(/[A-Z]/g, m => '-' + m.toLowerCase());
+                  : `${property}-${subProp}`.replace(/[A-Z]/g, m => '-' + m.toLowerCase());
               
                 console.log('propname', cssPropName);
                 const cssValue =
                 typeof subValue === 'string' && subValue.startsWith('var:')
                   ? convertPreset(subValue)
                   : subValue;
-              return `${cssPropName}: ${cssValue};`;
+              return `  ${cssPropName}: ${cssValue};`;
             })
             .join(' ');
         } else {
-          const cssPropName = prop.replace(/[A-Z]/g, m => '-' + m.toLowerCase());
-          console.log('else propname:', cssPropName);
-          const cssValue =
-            typeof value === 'string' && value.startsWith('var:')
-              ? convertPreset(value)
-              : value;
-          return `${cssPropName}: ${cssValue};`;
+          // const cssPropName = property.replace(/[A-Z]/g, m => '-' + m.toLowerCase());
+          // console.log('else propname:', cssPropName);
+          // const cssValue =
+          //   typeof value === 'string' && value.startsWith('var:')
+          //     ? convertPreset(value)
+          //     : value;
+          // css += `${cssPropName}: ${cssValue};`;
         }
-      })
-      .join(' ');
-
-    // Special case: "link" selector should be "a"
-    let cssSelector = '';
-    switch (selector) {
-      case 'link':
-        cssSelector = 'a';
-        break;
-      case 'heading':
-        cssSelector = '.wp-block-heading';
-        break;
-      default:
-        cssSelector = selector;
-        break;
-    }
-    return acc + `.wp-block-${blockId} ${cssSelector} { ${cssProps} }\n`;
-  }, '');
+      });
+      css += '\n}\n';
+    });
+  }
+  console.log('style.layout', style.layout);
+  if (style.layout && style.layout.contentSize) {
+    css += `.wp-block-${blockId} {\n`;
+    css += `  max-width: 50%;\n`;
+    css += '\n}\n';
+  }
 
   return css ? `/* Styles for ${blockId} */\n${css}` : '';
 };
