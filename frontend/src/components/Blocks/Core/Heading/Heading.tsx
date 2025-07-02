@@ -20,6 +20,7 @@ export default function Heading({
   const blockStyleAttr = getBlockStyleAttr(style);
   const Tag = `h${level}` as keyof JSX.IntrinsicElements;
   const content = stripOuterTag(dynamicContent || saveContent || originalContent);
+  const html = parse(content ?? '');
 
   return (
     <Tag
@@ -27,7 +28,7 @@ export default function Heading({
       className={blockClasses}
       {...(style && { style: blockStyleAttr })}
     >
-      {parse(content ?? '')}
+      {html}
     </Tag>
   );
 }
