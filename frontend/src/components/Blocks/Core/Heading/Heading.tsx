@@ -1,5 +1,5 @@
 import { Maybe, CoreHeadingBlockAttributes } from '@/gql/graphql';
-import { getBlockClasses, getBlockStyleAttr, stripOuterTag } from '@/utils/getBlockComponents';
+import { getBlockClasses, getBlockStyleAttr, stripOuterTags } from '@/utils/getBlockComponents';
 import parse from 'html-react-parser';
 
 type HeadingProps = {
@@ -19,7 +19,7 @@ export default function Heading({
   const blockClasses = getBlockClasses(attributes, 'wp-block-heading');
   const blockStyleAttr = getBlockStyleAttr(style);
   const Tag = `h${level}` as keyof JSX.IntrinsicElements;
-  const content = stripOuterTag(dynamicContent || saveContent || originalContent);
+  const content = stripOuterTags(dynamicContent || saveContent || originalContent);
   const html = parse(content ?? '');
 
   return (

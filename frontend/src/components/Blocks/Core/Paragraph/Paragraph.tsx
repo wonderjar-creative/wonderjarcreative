@@ -1,5 +1,5 @@
 import { Maybe, CoreParagraphBlockAttributes } from '@/gql/graphql';
-import { getBlockClasses, getBlockStyleAttr, stripOuterTag } from '@/utils/getBlockComponents';
+import { getBlockClasses, getBlockStyleAttr, stripOuterTags } from '@/utils/getBlockComponents';
 
 type ParagraphProps = {
   attributes: CoreParagraphBlockAttributes;

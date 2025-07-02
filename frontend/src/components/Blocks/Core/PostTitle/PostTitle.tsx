@@ -1,5 +1,5 @@
 import { Maybe, CorePostTitleBlockAttributes } from '@/gql/graphql';
-import { getBlockClasses, getBlockStyleAttr, stripOuterTag } from '@/utils/getBlockComponents';
+import { getBlockClasses, getBlockStyleAttr, stripOuterTags } from '@/utils/getBlockComponents';
 
 type PostTitleProps = {
   attributes: CorePostTitleBlockAttributes;
@@ -17,11 +17,12 @@ const PostTitle: React.FC<PostTitleProps> = ({
   const { level, style } = attributes;
   const blockClasses = getBlockClasses(attributes, 'wp-block-post-title');
   const blockStyleAttr = getBlockStyleAttr(attributes);
-  const Tag = `h${level}` as keyof JSX.IntrinsicElements;
-  const html = stripOuterTag(dynamicContent || saveContent || originalContent);
+  const Tag = `h${level}` || 'h2';
+  const TagComponent = Tag as keyof JSX.IntrinsicElements;
+  const html = stripOuterTags(dynamicContent || saveContent || originalContent);
   
   return (
-    <Tag
+    <TagComponent
       className={blockClasses}
       style={blockStyleAttr}
       dangerouslySetInnerHTML={{
