@@ -20,12 +20,11 @@ const PostTitle: React.FC<PostTitleProps> = ({
   const blockStyleAttr = getBlockStyleAttr(attributes);
   const Tag = `h${level}` as keyof JSX.IntrinsicElements;
   const content = stripOuterTag(dynamicContent || saveContent || originalContent);
-
+  const html = parse(content ?? '');
+  
   return (
     <Tag className={blockClasses} style={blockStyleAttr}>
-      {parse(content ?? '') || (
-        <span className="text-gray-500">No title available</span>
-      ) }
+      {html || <span className="text-gray-500">No title available</span>}
     </Tag>
   );
 };
