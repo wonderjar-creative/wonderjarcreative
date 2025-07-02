@@ -3,6 +3,10 @@ import dynamic from 'next/dynamic';
 import {
   Maybe,
   Block,
+  CoreButtonBlock,
+  CoreButtonBlockAttributes,
+  CoreButtonsBlock,
+  CoreButtonsBlockAttributes,
   CoreColumnsBlock,
   CoreColumnsBlockAttributes,
   CoreColumnBlock,
@@ -19,6 +23,8 @@ import {
   CorePostTitleBlockAttributes,
   NodeWithFeaturedImageToMediaItemConnectionEdge
 } from '@/gql/graphql';
+import parse, { domToReact } from 'html-react-parser';
+import Link from 'next/link';
 
 const getParsedBlocks = (blocksJSON: string) => {
   try {
@@ -41,8 +47,31 @@ const convertPreset = (value: string) => {
   return value;
 }
 
-export const stripOuterTag = (html: Maybe<string> | undefined) => {
+export const stripOuterTags = (html: Maybe<string> | undefined) => {
   return html?.replace(/^<[^>]+>([\s\S]*)<\/[^>]+>$/, '$1');
+}
+
+const transformHTMLToNext = (node: any) => {
+  if (node.type === 'tag' && node.name === 'a') {
+    const { href, target, rel } = node.attribs;
+    // Check if it's an internal link
+    if (href && href.startsWith('/')) {
+      return (
+        <Link href={href}>
+          {domToReact(node.children)}
+        </Link>
+      );
+    }
+  }
+};
+
+export const getTransformedHTML = (
+  html: Maybe<string> | undefined,
+  strip: Boolean = false
+) => {
+  if (!html) return;
+  if (strip) stripOuterTags(html);
+  return <>{parse(html, { replace: transformHTMLToNext })}</>
 }
 
 /**
@@ -86,6 +115,33 @@ export async function getBlockComponents(
 
     // Dynamically import the block component based on its name
     switch (block.name) {
+      case 'core/button': {
+        const Button = dynamic(() => import('@/components/Blocks/Core/Button/Button'));
+        const { attributes } = block as CoreButtonBlock;
+        const safeAttributes = (attributes ?? {}) as CoreButtonBlockAttributes;
+
+        return (
+          <Button
+            {...block}
+            key={index}
+            attributes={safeAttributes}
+          />
+        );
+      }
+      case 'core/buttons': {
+        const Buttons = dynamic(() => import('@/components/Blocks/Core/Buttons/Buttons'));
+        const { attributes } = block as CoreButtonsBlock;
+        const safeAttributes = (attributes ?? {}) as CoreButtonsBlockAttributes;
+
+        return (
+          <Buttons
+            {...block}
+            key={index}
+            attributes={safeAttributes}
+            innerBlocks={innerBlocks}
+          />
+        );
+      }
       case 'core/columns': {
         const Columns = dynamic(() => import('@/components/Blocks/Core/Columns/Columns'));
         const { attributes } = block as CoreColumnsBlock;
