@@ -82,16 +82,24 @@
     @apply !mx-auto px-4 max-w-[var(--narrow)];
   }
 
-  .wp-block-cover__image-background {
-    @apply object-cover;
+  .wp-block-column[style*=flex-basis] {
+    @apply flex-grow-0;
   }
 
-  .wp-block-columns {
-    @apply flex flex-wrap;
+  .flex {
+    @apply gap-5;
   }
 
-  .wp-block-column {
-    @apply flex-1;
+  .flow > * {
+    @apply my-5;
+  }
+
+  .flow > *:first-child {
+    @apply mt-0;
+  }
+
+  .flow > *:last-child {
+    @apply mb-0;
   }
 }
 
