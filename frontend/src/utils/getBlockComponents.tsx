@@ -23,7 +23,7 @@ import {
   CorePostTitleBlockAttributes,
   NodeWithFeaturedImageToMediaItemConnectionEdge
 } from '@/gql/graphql';
-import parse, { domToReact } from 'html-react-parser';
+import parse, { domToReact, DOMNode } from 'html-react-parser';
 import Link from 'next/link';
 
 const getParsedBlocks = (blocksJSON: string) => {
@@ -42,22 +42,23 @@ const generateRandomId = (length = 8) => {
 const convertPreset = (value: string) => {
   // Converts "var:preset|spacing|40" to "var(--spacing--40)"
   if (typeof value === 'string' && value.startsWith('var:preset|')) {
-    return 'var(--' + value.replace(/var:preset\|/g, '').replace(/\|/g, '-') + ')';
+    value = 'var(--' + value.replace(/var:preset\|/g, '').replace(/\|/g, '-') + ')';
   }
+
   return value;
 }
 
-export const stripOuterTags = (html: Maybe<string> | undefined) => {
-  return html?.replace(/^<[^>]+>([\s\S]*)<\/[^>]+>$/, '$1');
+export const stripOuterTag = (html: string, tagToStrip: string = 'div'): string => {
+  return html.replace(new RegExp(`<${tagToStrip}[^>]*>(.*)<\\/${tagToStrip}>`, 's'), '$1');
 }
 
 const transformHTMLToNext = (node: any) => {
   if (node.type === 'tag' && node.name === 'a') {
-    const { href, target, rel } = node.attribs;
+    const { class: className, href, target, rel } = node.attribs;
     // Check if it's an internal link
     if (href && href.startsWith('/')) {
       return (
-        <Link href={href}>
+        <Link className={`${className} is-next-link _transformed`} href={href} target={target} rel={rel}>
           {domToReact(node.children)}
         </Link>
       );
@@ -66,12 +67,10 @@ const transformHTMLToNext = (node: any) => {
 };
 
 export const getTransformedHTML = (
-  html: Maybe<string> | undefined,
-  strip: Boolean = false
-) => {
+   html: string | Element | Element[] | Maybe<string> | undefined
+): React.ReactNode => {
   if (!html) return;
-  if (strip) stripOuterTags(html);
-  return <>{parse(html, { replace: transformHTMLToNext })}</>
+  return <>{parse(html.toString(), { replace: transformHTMLToNext })}</>;
 }
 
 /**
@@ -89,7 +88,7 @@ export async function getBlockComponents(
   const parsedBlocks = getParsedBlocks(blocksJSON);
 
   return Promise.all(parsedBlocks.map(async (block: Block, index: number) => {
-    console.log('block', block);
+    // console.log('block', block);
     
     // Recursively process innerBlocks if present
     let innerBlocks: Maybe<React.ReactNode[]> = [];
@@ -304,18 +303,18 @@ export function getBlockClasses(attributes: BlockAttributes, baseClass: string =
   const classes = [
     baseClass,
     align ? `align${align}` : '',
-    backgroundColor ? `has-background has-${backgroundColor}-background-color` : '',
-    borderColor ? `has-border-color has-${borderColor}-border-color` : '',
+    backgroundColor ? `bg-${backgroundColor}` : '',
+    borderColor ? `border-${borderColor}` : '',
     className || '',
     dimRatio ? `opacity-${dimRatio || '50'}` : '',
-    direction ? `has-text-direction-${direction}` : '',
+    direction ? `text-direction-${direction}` : '',
     dropCap ? 'has-drop-cap' : '',
-    fontFamily ? `has-${fontFamily}` : '',
-    fontSize ? `has-${fontSize}-font-size` : '',
+    fontFamily ? `font-${fontFamily}` : '',
+    fontSize ? `text-${fontSize}` : '',
     gradient ? `has-${gradient}` : '',
     id ? `wp-image-${id}` : '',
     sizeSlug ? `size-${sizeSlug}` : '',
-    textColor ? `has-text-color has-text-color-${textColor}` : '',
+    textColor ? `text-${textColor}` : '',
     verticalAlignClass,
   ];
 
@@ -339,20 +338,35 @@ export function getBlockStyleAttr(styleObj: any): React.CSSProperties {
 
   if (!styleObj || typeof styleObj !== 'object') return result;
 
+  // console.log('styleObj', styleObj);
+
   // Handle spacing (padding, margin)
   if (styleObj.spacing) {
-    const { padding, margin } = styleObj.spacing;
+    const { margin, padding, blockGap } = styleObj.spacing;
+    if (margin) {
+      if (margin.top) result.marginTop = convertPreset(margin.top);
+      if (margin.right) result.marginRight = convertPreset(margin.right);
+      if (margin.bottom) result.marginBottom = convertPreset(margin.bottom);
+      if (margin.left) result.marginLeft = convertPreset(margin.left);
+    }
     if (padding) {
       if (padding.top) result.paddingTop = convertPreset(padding.top);
       if (padding.right) result.paddingRight = convertPreset(padding.right);
       if (padding.bottom) result.paddingBottom = convertPreset(padding.bottom);
       if (padding.left) result.paddingLeft = convertPreset(padding.left);
     }
-    if (margin) {
-      if (margin.top) result.marginTop = convertPreset(margin.top);
-      if (margin.right) result.marginRight = convertPreset(margin.right);
-      if (margin.bottom) result.marginBottom = convertPreset(margin.bottom);
-      if (margin.left) result.marginLeft = convertPreset(margin.left);
+    if (blockGap) {
+      if (typeof blockGap === 'string') {
+        result.gap = convertPreset(blockGap);
+      } else if (typeof blockGap === 'object') {
+        Array.from(Object.entries(blockGap)).forEach(([key, value]: [string, any]) => {
+          if ('top' === key) {
+            result.rowGap = convertPreset(value);
+          } else if ('left' === key) {
+            result.columnGap = convertPreset(value);
+          }
+        });
+      }
     }
   }
 
@@ -478,7 +492,6 @@ export const styleElementsToCSS = (
       css += '\n}\n';
     });
   }
-  console.log('style.layout', style.layout);
   if (style.layout && style.layout.contentSize) {
     css += `.wp-block-${blockId} {\n`;
     css += `  max-width: 50%;\n`;
