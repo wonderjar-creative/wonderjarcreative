@@ -105,39 +105,6 @@
 
 /* Utilities Layer: Custom utility classes */
 @layer utilities {
-  /* Colors */
-  .has-teal-background-color { @apply bg-teal; }
-  .has-text-color-teal { @apply text-teal; }
-  .has-teal-border-color { @apply border-teal; }
-
-  .has-warm-coral-background-color { @apply bg-warm-coral; }
-  .has-text-color-warm-coral { @apply text-warm-coral; }
-  .has-warm-coral-border-color { @apply border-warm-coral; }
-
-  .has-muted-brick-red-background-color { @apply bg-muted-brick-red; }
-  .has-text-color-muted-brick-red { @apply text-muted-brick-red; }
-  .has-muted-brick-red-border-color { @apply border-muted-brick-red; }
-
-  .has-deep-black-background-color { @apply bg-deep-black; }
-  .has-text-color-deep-black { @apply text-deep-black; }
-  .has-deep-black-border-color { @apply border-deep-black; }
-
-  .has-retro-teal-background-color { @apply bg-retro-teal; }
-  .has-text-color-retro-teal { @apply text-retro-teal; }
-  .has-retro-teal-border-color { @apply border-retro-teal; }
-
-  .has-soft-cream-background-color { @apply bg-soft-cream; }
-  .has-text-color-soft-cream { @apply text-soft-cream; }
-  .has-soft-cream-border-color { @apply border-soft-cream; }
-
-  .has-charcoal-gray-background-color { @apply bg-charcoal-gray; }
-  .has-text-color-charcoal-gray { @apply text-charcoal-gray; }
-  .has-charcoal-gray-border-color { @apply border-charcoal-gray; }
-
-  .has-marigold-yellow-background-color { @apply bg-marigold-yellow; }
-  .has-text-color-marigold-yellow { @apply text-marigold-yellow; }
-  .has-marigold-yellow-border-color { @apply border-marigold-yellow; }
-
   .is-dark {
     @apply text-soft-cream;
   }
@@ -154,21 +121,6 @@
   .spacing-60 { padding: var(--spacing-60); }
   .spacing-70 { padding: var(--spacing-70); }
   .spacing-80 { padding: var(--spacing-80); }
-
-  /* Font-size */
-  .has-xs-font-size { @apply text-xs; }
-  .has-sm-font-size { @apply text-sm; }
-  .has-md-font-size { @apply text-base; }
-  .has-lg-font-size { @apply text-lg; }
-  .has-xl-font-size { @apply text-xl; }
-  .has-2xl-font-size { @apply text-2xl; }
-  .has-3xl-font-size { @apply text-3xl; }
-  .has-4xl-font-size { @apply text-4xl; }
-  .has-5xl-font-size { @apply text-5xl; }
-  .has-6xl-font-size { @apply text-6xl; }
-  .has-7xl-font-size { @apply text-7xl; }
-  .has-8xl-font-size { @apply text-8xl; }
-  .has-9xl-font-size { @apply text-9xl; }
 
   /* Alignment */
   .alignfull {
