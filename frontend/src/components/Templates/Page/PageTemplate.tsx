@@ -13,13 +13,8 @@ export default async function PageTemplate({ node }: TemplateProps) {
     id: node.databaseId,
   });
   const { blocksJSON, featuredImage, title } = page;
-
-  console.log('LOADED getBlockComponents');
-
   const stylesCollector: string[] = [];
   const blockComponents = blocksJSON ? await getBlockComponents(blocksJSON, featuredImage, stylesCollector) : [];
-
-  // console.log('BLOCKS COMPONENTS', blockComponents);
 
   return (
     <main className="py-8 md:py-12">
