@@ -18,5 +18,10 @@ export default {
       }
     }
   },
+  safelist: [
+    // Vertical alignment classes for columns/column blocks
+    'items-start', 'items-center', 'items-end', 'items-stretch',
+    'self-start', 'self-center', 'self-end', 'self-stretch',
+  ],
   plugins: [],
 } satisfies Config;
