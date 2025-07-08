@@ -1,5 +1,5 @@
 import { Maybe, CoreParagraphBlockAttributes } from '@/gql/graphql';
-import { getBlockClasses, getBlockStyleAttr, stripOuterTags } from '@/utils/getBlockComponents';
+import { getBlockClasses, getBlockStyleAttr, stripOuterTag } from '@/utils/getBlockComponents';
 
 type ParagraphProps = {
   attributes: CoreParagraphBlockAttributes;
@@ -17,7 +17,10 @@ export default function Paragraph({
   const { anchor, style } = attributes;
   const blockClasses = getBlockClasses(attributes, 'wp-block-paragraph');
   const blockStyleAttr = getBlockStyleAttr(style);
-  const html = dynamicContent || saveContent || originalContent;
+  const html = stripOuterTag(
+    dynamicContent || saveContent || originalContent || '',
+    'p'
+  );
 
   return (
     <p
