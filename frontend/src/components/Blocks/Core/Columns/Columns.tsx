@@ -27,13 +27,8 @@ export default function Columns({
 
   return (
     <div
-      className={getBlockClasses(attributes, 'wp-block-columns')}
-      style={{
-        ...getBlockStyleAttr(style),
-        backgroundColor: backgroundColor || undefined,
-        color: textColor || undefined,
-        verticalAlign: verticalAlignment || undefined,
-      }}
+      className={getBlockClasses(attributes, 'wp-block-columns flex flex-wrap flex-col md:flex-row md:items-center')}
+      style={getBlockStyleAttr(style)}
     >
       {innerBlocks}
     </div>
