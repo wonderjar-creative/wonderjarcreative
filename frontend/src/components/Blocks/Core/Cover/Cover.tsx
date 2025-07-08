@@ -87,7 +87,7 @@ export default function Cover({
 
   const imageClasses = getBlockClasses(
     { id, sizeSlug },
-    'wp-block-cover__image-background absolute top-0 left-0 w-full h-auto object-center'
+    'wp-block-cover__image-background absolute top-0 left-0 w-full h-auto object-center object-cover'
   );
 
   const innerContainerClasses = getBlockClasses(
