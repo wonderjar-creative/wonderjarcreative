@@ -28,13 +28,10 @@ export default function Column({
 
   return (
     <div
-      className={getBlockClasses(attributes, 'wp-block-column')}
+      className={getBlockClasses(attributes, 'wp-block-column flow flex-grow break-words md:flex-1')}
       style={{
         ...getBlockStyleAttr(style),
-        backgroundColor: backgroundColor || undefined,
-        color: textColor || undefined,
-        verticalAlign: verticalAlignment || undefined,
-        width: width || undefined,
+        flexBasis: width || undefined,
       }}
     >
       {innerBlocks}
