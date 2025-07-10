@@ -8,7 +8,7 @@ type PostTitleProps = {
   saveContent?: Maybe<string> | undefined;
 };
 
-const PostTitle: React.FC<PostTitleProps> = ({
+const PostTitle = ({
   attributes,
   dynamicContent,
   originalContent,
