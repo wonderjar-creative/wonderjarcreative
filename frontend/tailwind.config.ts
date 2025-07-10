@@ -1,9 +1,23 @@
 import type { Config } from "tailwindcss";
 
 export default {
-  content: [
-    "./src/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: {
+    files: [
+      "./src/**/*.{js,ts,jsx,tsx,mdx}",
+    ],
+    // Vertical alignment classes for columns/column blocks and color classes
+    safelist: [
+      'size-full',
+      'items-start', 'items-center', 'items-end', 'items-stretch',
+      'self-start', 'self-center', 'self-end', 'self-stretch',
+      'text-teal', 'text-warm-coral', 'text-muted-brick-red', 'text-deep-black',
+      'text-retro-teal', 'text-soft-cream', 'text-charcoal-gray', 'text-marigold-yellow',
+      'bg-teal', 'bg-warm-coral', 'bg-muted-brick-red', 'bg-deep-black',
+      'bg-retro-teal', 'bg-soft-cream', 'bg-charcoal-gray', 'bg-marigold-yellow',
+      'border-teal', 'border-warm-coral', 'border-muted-brick-red', 'border-deep-black',
+      'border-retro-teal', 'border-soft-cream', 'border-charcoal-gray', 'border-marigold-yellow',
+    ],
+  },
   theme: {
     extend: {
       colors: {
@@ -18,10 +32,5 @@ export default {
       }
     }
   },
-  safelist: [
-    // Vertical alignment classes for columns/column blocks
-    'items-start', 'items-center', 'items-end', 'items-stretch',
-    'self-start', 'self-center', 'self-end', 'self-stretch',
-  ],
   plugins: [],
 } satisfies Config;
