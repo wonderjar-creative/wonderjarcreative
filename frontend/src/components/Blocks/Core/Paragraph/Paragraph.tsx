@@ -3,22 +3,18 @@ import { getBlockClasses, getBlockStyleAttr, stripOuterTag } from '@/utils/getBl
 
 type ParagraphProps = {
   attributes: CoreParagraphBlockAttributes;
-  dynamicContent?: Maybe<string> | undefined;
-  originalContent?: Maybe<string> | undefined;
   saveContent?: Maybe<string> | undefined;
 };
 
 export default function Paragraph({
   attributes,
-  dynamicContent,
-  originalContent,
   saveContent
 }: ParagraphProps) {
   const { anchor, style } = attributes;
   const blockClasses = getBlockClasses(attributes, 'wp-block-paragraph');
   const blockStyleAttr = getBlockStyleAttr(style);
   const html = stripOuterTag(
-    dynamicContent || saveContent || originalContent || '',
+    saveContent || '',
     'p'
   );
 
