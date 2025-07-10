@@ -17,6 +17,8 @@ import {
   CoreGroupBlockAttributes,
   CoreHeadingBlock,
   CoreHeadingBlockAttributes,
+  CoreImageBlock,
+  CoreImageBlockAttributes,
   CoreParagraphBlock,
   CoreParagraphBlockAttributes,
   CorePostTitleBlock,
@@ -74,27 +76,29 @@ export const getTransformedHTML = (
 }
 
 /**
- * Asynchronously retrieves and renders block components based on the provided blocks JSON.
- * @param blocksJSON JSON string representing the blocks to render
+ * Asynchronously retrieves and renders block components based on the provided blocks array.
+ * @param blocks Array of Block objects from GraphQL
  * @param featuredImage Optional featured image data for blocks that require it
  * @param stylesCollector Optional array to collect styles for the blocks
  * @returns Promise resolving to an array of React nodes representing the rendered blocks
  */
 export async function getBlockComponents(
-  blocksJSON: string,
+  blocks: Block[],
   featuredImage?: NodeWithFeaturedImageToMediaItemConnectionEdge | null,
   stylesCollector?: string[]
 ): Promise<React.ReactNode[]> {
-  const parsedBlocks = getParsedBlocks(blocksJSON);
+  if (!blocks || blocks.length === 0) {
+    return [];
+  }
 
-  return Promise.all(parsedBlocks.map(async (block: Block, index: number) => {
-    // console.log('block', block);
+  return Promise.all(blocks.map(async (block: Block, index: number) => {
+    console.log('block', block);
     
     // Recursively process innerBlocks if present
     let innerBlocks: Maybe<React.ReactNode[]> = [];
     if (block.innerBlocks && block.innerBlocks.length > 0) {
       // Recursively render innerBlocks as React nodes
-      innerBlocks = (await getBlockComponents(JSON.stringify(block.innerBlocks), featuredImage, stylesCollector)).map((innerBlock, innerIndex) => (
+      innerBlocks = (await getBlockComponents(block.innerBlocks, featuredImage, stylesCollector)).map((innerBlock, innerIndex) => (
         <React.Fragment key={innerIndex}>
           {React.isValidElement(innerBlock) ? innerBlock : null}
         </React.Fragment>
@@ -103,7 +107,7 @@ export async function getBlockComponents(
 
     // Collect styles if provided
     const blockAttributes = (block as any).attributes;
-    const blockId = stylesCollector && ( blockAttributes?.style?.elements || blockAttributes?.style?.layout )
+    const blockId = stylesCollector && (blockAttributes?.style?.elements || blockAttributes?.style?.layout)
       ? (() => {
         const id = generateRandomId();  
         stylesCollector.push(styleElementsToCSS(blockAttributes.style, id));
@@ -114,90 +118,90 @@ export async function getBlockComponents(
 
     // Dynamically import the block component based on its name
     switch (block.name) {
-      case 'core/button': {
-        const Button = dynamic(() => import('@/components/Blocks/Core/Button/Button'));
-        const { attributes } = block as CoreButtonBlock;
-        const safeAttributes = (attributes ?? {}) as CoreButtonBlockAttributes;
+      // case 'core/button': {
+      //   const Button = dynamic(() => import('@/components/Blocks/Core/Button/Button'));
+      //   const { attributes } = block as CoreButtonBlock;
+      //   const safeAttributes = (attributes ?? {}) as CoreButtonBlockAttributes;
 
-        return (
-          <Button
-            {...block}
-            key={index}
-            attributes={safeAttributes}
-          />
-        );
-      }
-      case 'core/buttons': {
-        const Buttons = dynamic(() => import('@/components/Blocks/Core/Buttons/Buttons'));
-        const { attributes } = block as CoreButtonsBlock;
-        const safeAttributes = (attributes ?? {}) as CoreButtonsBlockAttributes;
+      //   return (
+      //     <Button
+      //       {...block}
+      //       key={index}
+      //       attributes={safeAttributes}
+      //     />
+      //   );
+      // }
+      // case 'core/buttons': {
+      //   const Buttons = dynamic(() => import('@/components/Blocks/Core/Buttons/Buttons'));
+      //   const { attributes } = block as CoreButtonsBlock;
+      //   const safeAttributes = (attributes ?? {}) as CoreButtonsBlockAttributes;
 
-        return (
-          <Buttons
-            {...block}
-            key={index}
-            attributes={safeAttributes}
-            innerBlocks={innerBlocks}
-          />
-        );
-      }
-      case 'core/columns': {
-        const Columns = dynamic(() => import('@/components/Blocks/Core/Columns/Columns'));
-        const { attributes } = block as CoreColumnsBlock;
-        const safeAttributes = (attributes ?? {}) as CoreColumnsBlockAttributes;
+      //   return (
+      //     <Buttons
+      //       {...block}
+      //       key={index}
+      //       attributes={safeAttributes}
+      //       innerBlocks={innerBlocks}
+      //     />
+      //   );
+      // }
+      // case 'core/columns': {
+      //   const Columns = dynamic(() => import('@/components/Blocks/Core/Columns/Columns'));
+      //   const { attributes } = block as CoreColumnsBlock;
+      //   const safeAttributes = (attributes ?? {}) as CoreColumnsBlockAttributes;
 
-        return (
-          <Columns
-            {...block}
-            key={index}
-            attributes={safeAttributes}
-            innerBlocks={innerBlocks}
-          />
-        );
-      }
-      case 'core/column': {
-        const Column = dynamic(() => import('@/components/Blocks/Core/Column/Column'));
-        const { attributes } = block as CoreColumnBlock;
-        const safeAttributes = (attributes ?? {}) as CoreColumnBlockAttributes;
+      //   return (
+      //     <Columns
+      //       {...block}
+      //       key={index}
+      //       attributes={safeAttributes}
+      //       innerBlocks={innerBlocks}
+      //     />
+      //   );
+      // }
+      // case 'core/column': {
+      //   const Column = dynamic(() => import('@/components/Blocks/Core/Column/Column'));
+      //   const { attributes } = block as CoreColumnBlock;
+      //   const safeAttributes = (attributes ?? {}) as CoreColumnBlockAttributes;
 
-        return (
-          <Column
-            {...block}
-            key={index}
-            attributes={safeAttributes}
-            innerBlocks={innerBlocks}
-          />
-        );
-      }
-      case 'core/cover': {
-        const Cover = dynamic(() => import('@/components/Blocks/Core/Cover/Cover'));
-        const { attributes } = block as CoreCoverBlock;
-        const safeAttributes = (attributes ?? {}) as CoreCoverBlockAttributes
-      
-        return (
-          <Cover
-            {...block}
-            key={index}
-            attributes={safeAttributes}
-            innerBlocks={innerBlocks}
-            featuredImage={featuredImage}
-          />
-        )
-      }
-      case 'core/group': {
-        const Group = dynamic(() => import('@/components/Blocks/Core/Group/Group'));
-        const { attributes } = block as CoreGroupBlock;
-        const safeAttributes = (attributes ?? {}) as CoreGroupBlockAttributes;
+      //   return (
+      //     <Column
+      //       {...block}
+      //       key={index}
+      //       attributes={safeAttributes}
+      //       innerBlocks={innerBlocks}
+      //     />
+      //   );
+      // }
+      // case 'core/cover': {
+      //   const Cover = dynamic(() => import('@/components/Blocks/Core/Cover/Cover'));
+      //   const { attributes } = block as CoreCoverBlock;
+      //   const safeAttributes = (attributes ?? {}) as CoreCoverBlockAttributes
 
-        return (
-          <Group
-            {...block}
-            key={index}
-            attributes={safeAttributes}
-            innerBlocks={innerBlocks}
-          />
-        );
-      }
+      //   return (
+      //     <Cover
+      //       {...block}
+      //       key={index}
+      //       attributes={safeAttributes}
+      //       innerBlocks={innerBlocks}
+      //       featuredImage={featuredImage}
+      //     />
+      //   )
+      // }
+      // case 'core/group': {
+      //   const Group = dynamic(() => import('@/components/Blocks/Core/Group/Group'));
+      //   const { attributes } = block as CoreGroupBlock;
+      //   const safeAttributes = (attributes ?? {}) as CoreGroupBlockAttributes;
+
+      //   return (
+      //     <Group
+      //       {...block}
+      //       key={index}
+      //       attributes={safeAttributes}
+      //       innerBlocks={innerBlocks}
+      //     />
+      //   );
+      // }
       case 'core/heading': {
         const Heading = dynamic(() => import('@/components/Blocks/Core/Heading/Heading'));
         const { attributes } = block as CoreHeadingBlock;
@@ -211,6 +215,20 @@ export async function getBlockComponents(
           />
         );
       }
+      // case 'core/image': {
+      //   const Image = dynamic(() => import('@/components/Blocks/Core/Image/Image'));
+      //   const { attributes, mediaItem } = block as CoreImageBlock;
+      //   const safeAttributes = (attributes ?? {}) as CoreImageBlockAttributes;
+
+      //   return (
+      //     <Image
+      //       {...block}
+      //       key={index}
+      //       attributes={safeAttributes}
+      //       mediaItem={mediaItem}
+      //     />
+      //   );
+      // }
       case 'core/paragraph': {
         const Paragraph = dynamic(() => import('@/components/Blocks/Core/Paragraph/Paragraph'));
         const { attributes } = block as CoreParagraphBlock;
@@ -224,32 +242,32 @@ export async function getBlockComponents(
           />
         );
       }
-      case 'core/post-title': {
-        const PostTitle = dynamic(() => import('@/components/Blocks/Core/PostTitle/PostTitle'));
-        const { attributes } = block as CorePostTitleBlock;
-        const safeAttributes = (attributes ?? {}) as CorePostTitleBlockAttributes;
+      // case 'core/post-title': {
+      //   const PostTitle = dynamic(() => import('@/components/Blocks/Core/PostTitle/PostTitle'));
+      //   const { attributes } = block as CorePostTitleBlock;
+      //   const safeAttributes = (attributes ?? {}) as CorePostTitleBlockAttributes;
 
-        return (
-          <PostTitle
-            {...block}
-            key={index}
-            attributes={safeAttributes}
-          />
-        );
-      }
-      default: {
-        const Default = dynamic(() => import('@/components/Blocks/Core/Default'));
-        const { attributes } = block as any;
+      //   return (
+      //     <PostTitle
+      //       {...block}
+      //       key={index}
+      //       attributes={safeAttributes}
+      //     />
+      //   );
+      // }
+      // default: {
+      //   const Default = dynamic(() => import('@/components/Blocks/Core/Default'));
+      //   const { attributes } = block as any;
 
-        return (
-          <Default
-            {...block}
-            key={index}
-            attributes={attributes}
-            innerBlocks={innerBlocks}
-          />
-        );
-      }
+      //   return (
+      //     <Default
+      //       {...block}
+      //       key={index}
+      //       attributes={attributes}
+      //       innerBlocks={innerBlocks}
+      //     />
+      //   );
+      // }
     }
   }));
 }
