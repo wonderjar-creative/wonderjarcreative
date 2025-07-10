@@ -12,9 +12,9 @@ export default async function PageTemplate({ node }: TemplateProps) {
   const { page } = await fetchGraphQL<{ page: Page }>(print(PageQuery), {
     id: node.databaseId,
   });
-  const { blocksJSON, featuredImage, title } = page;
+  const { blocks, featuredImage, title } = page;
   const stylesCollector: string[] = [];
-  const blockComponents = blocksJSON ? await getBlockComponents(blocksJSON, featuredImage, stylesCollector) : [];
+  const blockComponents = blocks ? await getBlockComponents(blocks, featuredImage, stylesCollector) : [];
 
   return (
     <main className="py-8 md:py-12">
