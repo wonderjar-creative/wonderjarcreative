@@ -1,24 +1,25 @@
 import Image from 'next/image';
 import { Maybe, CoreCoverBlockAttributes, NodeWithFeaturedImageToMediaItemConnectionEdge } from '@/gql/graphql';
-import { getBlockClasses, getBlockStyleAttr } from '@/utils/getBlockComponents';
+import { getBlockClasses, getBlockStyleAttr } from '@/utils/blockStyles';
 
-type CoverProps = {
+interface CoverProps {
+  name: string;
   attributes: CoreCoverBlockAttributes;
-  dynamicContent?: Maybe<string> | undefined;
   featuredImage?: Maybe<NodeWithFeaturedImageToMediaItemConnectionEdge> | '';
+  mediaItem?: {
+    node?: {
+      sourceUrl?: string;
+      altText?: string;
+      mediaDetails?: {
+        width?: number;
+        height?: number;
+      }
+    }
+  };
   innerBlocks?: React.ReactNode[];
-  originalContent?: Maybe<string> | undefined;
-  saveContent?: Maybe<string> | undefined;
 }
 
-export default function Cover({
-  attributes,
-  dynamicContent,
-  featuredImage,
-  innerBlocks,
-  originalContent,
-  saveContent
-}: CoverProps) {
+const Cover: React.FC<CoverProps> = ({ name, attributes, featuredImage, mediaItem, innerBlocks }) => {
   const {
     anchor,
     alt,
@@ -42,7 +43,18 @@ export default function Cover({
 
   const Tag = tagName || 'div';
   const TagComponent = Tag as keyof JSX.IntrinsicElements;
-  
+
+  // Exclude background-related attributes from blockClasses
+  const blockClasses = getBlockClasses(
+    wrapperAttributes,
+    `wp-block-cover relative overflow-hidden ${!minHeight ? 'min-h-[430px]' : ''}${isDark ? ' is-dark' : ' is-light'}`
+  );
+  const blockStyleAttr = getBlockStyleAttr({
+    ...style,
+    minHeight: minHeight || null,
+    minHeightUnit: minHeightUnit || 'px',
+  });
+
   const align = contentPosition ? [contentPosition.split(' ')[0]].map((verticalAlign) => {
     switch (verticalAlign) {
       case 'top':
@@ -67,17 +79,6 @@ export default function Cover({
         return 'justify-center';
     }
   }).join(' ') : 'justify-center';
-
-  // Exclude background-related attributes from blockClasses
-  const blockClasses = getBlockClasses(
-    wrapperAttributes,
-    `wp-block-cover relative overflow-hidden ${!minHeight ? 'min-h-[430px]' : ''}${isDark ? ' is-dark' : ' is-light'}`
-  );
-  const blockStyleAttr = getBlockStyleAttr({
-    ...style,
-    minHeight: minHeight || null,
-    minHeightUnit: minHeightUnit || 'px',
-  });
 
   const backgroundColor = overlayColor;
   const overlayClasses = getBlockClasses(
@@ -105,6 +106,17 @@ export default function Cover({
       }}
       width={featuredImage?.node?.mediaDetails?.width || 1600}
       height={featuredImage?.node?.mediaDetails?.height || 900}
+    />
+  ) : mediaItem?.node ? (
+    <Image
+      alt={mediaItem.node.altText || alt || 'Cover Image'}
+      className={imageClasses}
+      src={mediaItem.node.sourceUrl || url || ''}
+      style={{
+        objectFit: 'cover'
+      }}
+      width={mediaItem.node.mediaDetails?.width || 1600}
+      height={mediaItem.node.mediaDetails?.height || 900}
     />
   ) : (
     <Image
@@ -140,3 +152,5 @@ export default function Cover({
     </TagComponent>
   );
 }
+
+export default Cover;
