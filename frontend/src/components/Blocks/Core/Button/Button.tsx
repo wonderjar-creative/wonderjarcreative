@@ -16,7 +16,7 @@ interface ButtonProps {
 };
 
 const Button: React.FC<ButtonProps> = ({ attributes, dynamicContent, originalContent, saveContent }) => {
-  const { anchor, style, url, target, rel } = attributes;
+  const { anchor, linkTarget, rel, style, url } = attributes;
   const blockClasses = getBlockClasses(attributes, 'wp-block-button');
   const blockStyleAttr = getBlockStyleAttr(style);
   const linkClasses = 'wp-block-button__link inline-block px-6 py-4 rounded-lg bg-deep-black font-semibold text-center text-soft-cream transition-colors hover:bg-charcoal-gray';
@@ -31,7 +31,12 @@ const Button: React.FC<ButtonProps> = ({ attributes, dynamicContent, originalCon
       {...(style && { style: blockStyleAttr })}
     >
       {url && (url.startsWith('/') || url.startsWith('http://localhost:3000')) ? (
-        <Link className={`${linkClasses} is-next-link _direct`} href={url} target={target} rel={rel}>
+        <Link
+          className={`${linkClasses} is-next-link _direct`}
+          href={url}
+          {...(linkTarget && { target: linkTarget })}
+          {...(rel && { rel })}
+        >
           {getTransformedHtml(strippedA || '')}
         </Link>
       ) : (
