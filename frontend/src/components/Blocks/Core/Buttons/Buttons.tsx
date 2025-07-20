@@ -1,21 +1,12 @@
 import { Maybe, CoreButtonsBlockAttributes } from '@/gql/graphql';
-import { getBlockClasses, getBlockStyleAttr } from '@/utils/getBlockComponents';
+import { getBlockClasses, getBlockStyleAttr } from '@/utils/blockStyles';
 
-type ButtonsProps = {
+interface ButtonsProps {
   attributes: CoreButtonsBlockAttributes;
-  dynamicContent?: Maybe<string> | undefined;
   innerBlocks?: React.ReactNode[];
-  originalContent?: Maybe<string> | undefined;
-  saveContent?: Maybe<string> | undefined;
 };
 
-export default function Buttons({
-  attributes,
-  innerBlocks,
-  originalContent,
-  saveContent,
-  dynamicContent
-}: ButtonsProps) {
+const Buttons: React.FC<ButtonsProps> = ({ attributes, innerBlocks }) => {
   const { anchor, style } = attributes;
   const blockClasses = getBlockClasses(attributes, 'wp-block-buttons');
   const blockStyleAttr = getBlockStyleAttr(style);
@@ -30,3 +21,5 @@ export default function Buttons({
     </div>
   );
 }
+
+export default Buttons;
