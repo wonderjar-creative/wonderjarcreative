@@ -9,7 +9,6 @@ export const PageQuery = gql`
         node {
           sourceUrl
           altText
-          title
           mediaDetails {
             width
             height
