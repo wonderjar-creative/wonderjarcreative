@@ -6,7 +6,7 @@ interface ColumnProps {
   innerBlocks?: React.ReactNode[];
 }
 
-const Column = ({ attributes, innerBlocks }: ColumnProps) => {
+const Column: React.FC<ColumnProps> = ({ attributes, innerBlocks }) => {
   const {
     className,
     style,
