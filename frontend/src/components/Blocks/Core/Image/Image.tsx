@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { Maybe, CoreImageBlockAttributes, CoreImageBlockToMediaItemConnectionEdge } from '@/gql/graphql';
+import { CoreImageBlockAttributes } from '@/gql/graphql';
 import { getBlockClasses, getBlockStyleAttr } from '@/utils/blockStyles';
 import { getMediaSize, getSizesAttribute } from '@/utils/blockMedia';
 import { stripOuterTag } from '@/utils/htmlTransformations';
@@ -14,13 +14,17 @@ interface ImageProps {
       mediaDetails?: {
         width?: number;
         height?: number;
-        sizes?: Record<string, { sourceUrl: string; width: number; height: number }>;
+        sizes?: Record<string, { 
+          sourceUrl: string;
+          width: number;
+          height: number;
+        }>;
       }
     }
   };
 };
 
-const ImageComponent = ({ attributes, name, mediaItem }: ImageProps) => {
+const ImageComponent: React.FC<ImageProps> = ({ attributes, name, mediaItem }) => {
   const { url, alt, anchor, aspectRatio, style, width, height, id, scale, sizeSlug } = attributes;
   const { sizes } = mediaItem?.node?.mediaDetails || {};
 
