@@ -15,7 +15,7 @@ interface ButtonProps {
   saveContent?: Maybe<string> | undefined;
 };
 
-const Button = ({ attributes, dynamicContent, originalContent, saveContent }: ButtonProps) => {
+const Button: React.FC<ButtonProps> = ({ attributes, dynamicContent, originalContent, saveContent }) => {
   const { anchor, style, url, target, rel } = attributes;
   const blockClasses = getBlockClasses(attributes, 'wp-block-button');
   const blockStyleAttr = getBlockStyleAttr(style);
