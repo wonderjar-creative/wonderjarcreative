@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import { Maybe, CoreButtonBlockAttributes } from '@/gql/graphql';
-import { getBlockClasses, getBlockStyleAttr, stripOuterTag, getTransformedHTML } from '@/utils/getBlockComponents';
+import { getBlockClasses, getBlockStyleAttr } from '@/utils/blockStyles';
+import { stripOuterTag, getTransformedHtml } from '@/utils/htmlTransformations';
 
-type ButtonProps = {
+interface ButtonProps {
   attributes: CoreButtonBlockAttributes;
     anchor?: Maybe<string> | undefined;
     style?: Maybe<Record<string, string>> | undefined;
@@ -14,12 +15,7 @@ type ButtonProps = {
   saveContent?: Maybe<string> | undefined;
 };
 
-export default function Button({
-  attributes,
-  dynamicContent,
-  originalContent,
-  saveContent
-}: ButtonProps) {
+const Button = ({ attributes, dynamicContent, originalContent, saveContent }: ButtonProps) => {
   const { anchor, style, url, target, rel } = attributes;
   const blockClasses = getBlockClasses(attributes, 'wp-block-button');
   const blockStyleAttr = getBlockStyleAttr(style);
@@ -27,6 +23,7 @@ export default function Button({
   const content = dynamicContent || saveContent || originalContent || '';
   const strippedDiv = stripOuterTag(content, 'div');
   const strippedA = stripOuterTag(strippedDiv, 'a');
+  
   return (
     <div
       {...(anchor && { id: anchor })}
@@ -35,11 +32,13 @@ export default function Button({
     >
       {url && (url.startsWith('/') || url.startsWith('http://localhost:3000')) ? (
         <Link className={`${linkClasses} is-next-link _direct`} href={url} target={target} rel={rel}>
-          {getTransformedHTML(strippedA || '')}
+          {getTransformedHtml(strippedA || '')}
         </Link>
       ) : (
-        getTransformedHTML(strippedDiv || '')
+        getTransformedHtml(strippedDiv || '')
       )}
     </div>
   );
-}
+};
+
+export default Button;
