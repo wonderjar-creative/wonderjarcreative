@@ -5,11 +5,11 @@ import { Maybe } from '@/gql/graphql';
 export const stripOuterTag = (
   html: string,
   tagToStrip: string = 'div'
-) => {
+): string => {
   return html.replace(new RegExp(`<${tagToStrip}[^>]*>(.*)<\\/${tagToStrip}>`, 's'), '$1');
 }
 
-const transformHTMLToNext = (node: DOMNode) => {
+const transformHTMLToNext = (node: DOMNode): string | boolean | void | object | Element | null => {
   if (node.type === 'tag' && node.name === 'a') {
     const { class: className, href, target, rel } = node.attribs;
     // Check if it's an internal link
@@ -21,6 +21,7 @@ const transformHTMLToNext = (node: DOMNode) => {
       );
     }
   }
+  return null;
 };
 
 export const getTransformedHTML = (
@@ -28,4 +29,4 @@ export const getTransformedHTML = (
 ): React.ReactNode => {
   if (!html) return;
   return <>{parse(html.toString(), { replace: transformHTMLToNext })}</>;
-}
+};
