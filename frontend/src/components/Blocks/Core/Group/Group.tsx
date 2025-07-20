@@ -6,7 +6,7 @@ interface GroupProps {
   innerBlocks?: React.ReactNode[];
 }
 
-const Group = ({ attributes, innerBlocks }: GroupProps) => {
+const Group: React.FC<GroupProps> = ({ attributes, innerBlocks }) => {
   const { anchor, style, tagName } = attributes;
   const blockClasses = getBlockClasses(attributes, 'wp-block-group');
   const blockStyleAttr = getBlockStyleAttr(style);
