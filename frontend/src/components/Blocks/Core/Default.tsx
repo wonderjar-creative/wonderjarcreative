@@ -1,7 +1,7 @@
 import { Maybe } from '@/gql/graphql';
-import { getBlockClasses, getBlockStyleAttr } from '@/utils/getBlockComponents';
+import { getBlockClasses, getBlockStyleAttr } from '@/utils/blockStyles';
 
-type DefaultProps = {
+interface DefaultProps {
   attributes: Record<string, any>;
   dynamicContent?: Maybe<string> | undefined;
   innerBlocks?: React.ReactNode[];
@@ -9,13 +9,7 @@ type DefaultProps = {
   saveContent?: Maybe<string> | undefined;
 };
 
-export default function Default({
-  attributes,
-  dynamicContent,
-  innerBlocks,
-  originalContent,
-  saveContent
-}: DefaultProps) {
+const Default: React.FC<DefaultProps> = ({ attributes, dynamicContent, innerBlocks, originalContent, saveContent }) => {
   const { anchor, style, tagName } = attributes as any;
   const blockClasses = getBlockClasses(attributes, 'wp-block-default');
   const blockStyleAttr = getBlockStyleAttr(style);
@@ -44,3 +38,5 @@ export default function Default({
 
   return null;
 }
+
+export default Default;
