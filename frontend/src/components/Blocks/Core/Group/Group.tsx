@@ -1,21 +1,12 @@
 import { Maybe, CoreGroupBlockAttributes } from '@/gql/graphql';
-import { getBlockClasses, getBlockStyleAttr } from '@/utils/getBlockComponents';
+import { getBlockClasses, getBlockStyleAttr } from '@/utils/blockStyles';
 
-type GroupProps = {
+interface GroupProps {
   attributes: CoreGroupBlockAttributes;
-  dynamicContent?: Maybe<string> | undefined;
   innerBlocks?: React.ReactNode[];
-  originalContent?: Maybe<string> | undefined;
-  saveContent?: Maybe<string> | undefined;
 }
 
-export default function Group({
-  attributes,
-  innerBlocks,
-  originalContent,
-  saveContent,
-  dynamicContent
-}: GroupProps) {
+const Group = ({ attributes, innerBlocks }: GroupProps) => {
   const { anchor, style, tagName } = attributes;
   const blockClasses = getBlockClasses(attributes, 'wp-block-group');
   const blockStyleAttr = getBlockStyleAttr(style);
@@ -32,3 +23,5 @@ export default function Group({
     </TagComponent>
   );
 }
+
+export default Group;
