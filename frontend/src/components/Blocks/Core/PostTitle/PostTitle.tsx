@@ -1,19 +1,16 @@
 import { Maybe, CorePostTitleBlockAttributes } from '@/gql/graphql';
-import { getBlockClasses, getBlockStyleAttr, stripOuterTag } from '@/utils/getBlockComponents';
+import { getBlockClasses, getBlockStyleAttr } from '@/utils/blockStyles';
+import { stripOuterTag } from '@/utils/htmlTransformations';
+import React from 'react';
 
-type PostTitleProps = {
+interface PostTitleProps {
   attributes: CorePostTitleBlockAttributes;
   dynamicContent?: Maybe<string> | undefined;
   originalContent?: Maybe<string> | undefined;
   saveContent?: Maybe<string> | undefined;
 };
 
-const PostTitle = ({
-  attributes,
-  dynamicContent,
-  originalContent,
-  saveContent
-}: PostTitleProps) => {
+const PostTitle: React.FC<PostTitleProps> = ({ attributes, dynamicContent, originalContent, saveContent }) => {
   const { level, style } = attributes;
   const blockClasses = getBlockClasses(attributes, 'wp-block-post-title');
   const blockStyleAttr = getBlockStyleAttr(attributes);
