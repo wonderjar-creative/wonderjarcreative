@@ -1,29 +1,13 @@
 import { Maybe, CoreColumnsBlockAttributes } from '@/gql/graphql';
-import { getBlockClasses, getBlockStyleAttr } from '@/utils/getBlockComponents';
+import { getBlockClasses, getBlockStyleAttr } from '@/utils/blockStyles';
 
-type ColumnsProps = {
+interface ColumnsProps {
   attributes: CoreColumnsBlockAttributes;
-  dynamicContent?: Maybe<string> | undefined;
   innerBlocks?: React.ReactNode[];
-  originalContent?: Maybe<string> | undefined;
-  saveContent?: Maybe<string> | undefined;
 }
 
-export default function Columns({
-  attributes,
-  dynamicContent,
-  innerBlocks,
-  originalContent,
-  saveContent,
-}: ColumnsProps) {
-  const {
-    className,
-    style,
-    backgroundColor,
-    layout,
-    textColor,
-    verticalAlignment,
-  } = attributes;
+const Columns: React.FC<ColumnsProps> = ({ attributes, innerBlocks }) => {
+  const { style } = attributes;
 
   return (
     <div
@@ -34,3 +18,5 @@ export default function Columns({
     </div>
   );
 }
+
+export default Columns;
