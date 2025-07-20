@@ -1,41 +1,58 @@
 import Image from 'next/image';
 import { Maybe, CoreImageBlockAttributes, CoreImageBlockToMediaItemConnectionEdge } from '@/gql/graphql';
-import { getBlockClasses, getBlockStyleAttr, stripOuterTag } from '@/utils/getBlockComponents';
+import { getBlockClasses, getBlockStyleAttr } from '@/utils/blockStyles';
+import { getMediaSize, getSizesAttribute } from '@/utils/blockMedia';
+import { stripOuterTag } from '@/utils/htmlTransformations';
 
-type ImageProps = {
+interface ImageProps {
   attributes: CoreImageBlockAttributes;
-  mediaItem?: Maybe<CoreImageBlockToMediaItemConnectionEdge> | undefined;
+  name: string;
+  mediaItem?: {
+    node?: {
+      sourceUrl?: string;
+      altText?: string;
+      mediaDetails?: {
+        width?: number;
+        height?: number;
+        sizes?: Record<string, { sourceUrl: string; width: number; height: number }>;
+      }
+    }
+  };
 };
 
-const ImageComponent = ({
-  attributes,
-  mediaItem
-}: ImageProps) => {
-  const { url, alt, anchor, style, width, height, id, sizeSlug } = attributes;
+const ImageComponent = ({ attributes, name, mediaItem }: ImageProps) => {
+  const { url, alt, anchor, aspectRatio, style, width, height, id, scale, sizeSlug } = attributes;
+  const { sizes } = mediaItem?.node?.mediaDetails || {};
+
   const blockClasses = getBlockClasses(attributes, 'wp-block-image');
   const blockStyleAttr = getBlockStyleAttr(style);
-  
-  // WordPress often provides width/height in attributes
-  console.log('Image attributes:', { width, height, id, sizeSlug });
-  console.log('Media item:', mediaItem);
-  
-  // Use provided dimensions or fallback to intrinsic sizing
-  const imageWidth = width ? (typeof width === 'string' ? parseInt(width, 10) : width) : undefined;
-  const imageHeight = height ? (typeof height === 'string' ? parseInt(height, 10) : height) : undefined;
-  
+  const imageClasses = `wp-block-image__img${id ? ` wp-image-${id}` : ''}`;
+
+  const sizeObj = getMediaSize(sizeSlug, sizes);
+  const imageSrc = sizeObj?.sourceUrl || url || mediaItem?.node?.sourceUrl || '';
+  const imageWidth = sizeObj?.width || mediaItem?.node?.mediaDetails?.width || 0;
+  const imageHeight = sizeObj?.height || mediaItem?.node?.mediaDetails?.height || 0;
+
   return (
     <figure
       {...(anchor && { id: anchor })}
       className={blockClasses}
-      {...(style && { style: blockStyleAttr })}
+      {...(blockStyleAttr && { style: blockStyleAttr })}
     >
       <Image
-        src={url || ''}
+        src={imageSrc}
         alt={alt || ''}
-        width={imageWidth || 0} // fallback width
-        height={imageHeight || 0} // fallback height
-        className="wp-image"
-        {...(!imageWidth && !imageHeight && { fill: true })} // Use fill if no dimensions
+        width={imageWidth}
+        height={imageHeight}
+        className={imageClasses}
+        // sizes={getSizesAttribute()} // Dynamic sizes
+        {...(!imageWidth && !imageHeight && { fill: true })}
+        style={{
+          ...aspectRatio && { aspectRatio: `${aspectRatio}` },
+          objectFit: scale === 'contain' ? 'contain' : 'cover',
+          ...width && { width: `${width}` },
+          ...height && { height: `${height}` }
+        }}
       />
     </figure>
   );
