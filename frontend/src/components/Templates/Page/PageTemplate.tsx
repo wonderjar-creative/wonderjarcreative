@@ -1,8 +1,9 @@
-import { print } from "graphql/language/printer";
-import { ContentNode, Page } from "@/gql/graphql";
-import { fetchGraphQL } from "@/utils/fetchGraphQL";
-import { PageQuery } from "./PageQuery";
-import { getBlockComponents } from "@/utils/getBlockComponents";
+import { print } from 'graphql/language/printer';
+import { ContentNode, Page, Block } from '@/gql/graphql';
+import { fetchGraphQL } from '@/utils/fetchGraphQL';
+import { PageQuery } from './PageQuery';
+import { enrichBlocksWithMedia } from '@/utils/blockMedia';
+import { getBlockComponents } from '@/utils/blockComponents';
 
 interface TemplateProps {
   node: ContentNode;
@@ -12,9 +13,17 @@ export default async function PageTemplate({ node }: TemplateProps) {
   const { page } = await fetchGraphQL<{ page: Page }>(print(PageQuery), {
     id: node.databaseId,
   });
-  const { blocks, featuredImage, title } = page;
+  const { blocksJSON, featuredImage, title } = page;
+
+  const parsedBlocks = JSON.parse(blocksJSON || '[]');
+  const enrichedBlocks: Block[] = await enrichBlocksWithMedia(parsedBlocks);
   const stylesCollector: string[] = [];
-  const blockComponents = blocks ? await getBlockComponents(blocks, featuredImage, stylesCollector) : [];
+  
+  const blockComponents = await getBlockComponents(
+    enrichedBlocks,
+    featuredImage,
+    stylesCollector
+  );
 
   return (
     <main className="py-8 md:py-12">
