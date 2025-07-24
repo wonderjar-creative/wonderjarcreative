@@ -1,4 +1,4 @@
-import { Maybe, Block, CoreButtonBlockAttributes, CoreButtonsBlockAttributes, CoreColumnBlockAttributes, CoreColumnsBlockAttributes, CoreCoverBlockAttributes, CoreGroupBlockAttributes, CoreImageBlockAttributes, CoreParagraphBlockAttributes, CorePostTitleBlockAttributes, NodeWithFeaturedImageToMediaItemConnectionEdge } from '@/gql/graphql';
+import { Maybe, Block, CoreButtonBlockAttributes, CoreButtonsBlockAttributes, CoreColumnBlockAttributes, CoreColumnsBlockAttributes, CoreCoverBlockAttributes, CoreGroupBlockAttributes, CoreHeadingBlockAttributes, CoreImageBlockAttributes, CoreParagraphBlockAttributes, CorePostTitleBlockAttributes, NodeWithFeaturedImageToMediaItemConnectionEdge } from '@/gql/graphql';
 import React from 'react';
 
 export interface MediaItem {
@@ -56,6 +56,10 @@ export interface CoreCoverBlock extends FrontendBlock {
 
 export interface CoreGroupBlock extends FrontendBlock {
   attributes?: CoreGroupBlockAttributes;
+}
+
+export interface CoreHeadingBlock extends FrontendBlock {
+  attributes?: CoreHeadingBlockAttributes;
 }
 
 export interface CoreImageBlock extends FrontendBlock {
