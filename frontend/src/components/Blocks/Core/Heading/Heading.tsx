@@ -1,20 +1,13 @@
-import { Maybe, CoreHeadingBlockAttributes } from '@/gql/graphql';
-import { getBlockClasses, getBlockStyleAttr } from '@/utils/blockStyles';
+import { CoreHeadingBlock } from '@/utils/blockTypes';
+import { getBlockBaseClass, getBlockClasses, getBlockStyleAttr } from '@/utils/blockStyles';
 import { stripOuterTag, getTransformedHtml } from '@/utils/htmlTransformations';
 
-interface HeadingProps {
-  attributes: CoreHeadingBlockAttributes;
-  dynamicContent?: Maybe<string> | undefined;
-  originalContent?: Maybe<string> | undefined;
-  saveContent?: Maybe<string> | undefined;
-}
-
-const Heading: React.FC<HeadingProps> = ({ attributes, dynamicContent, originalContent, saveContent }) => {
-  const { level, anchor, style, textAlign } = attributes;
-  const blockClasses = getBlockClasses(attributes, 'wp-block-heading');
+const Heading: React.FC<CoreHeadingBlock> = ({ name, attributes, saveContent }) => {
+  const { anchor, level, style } = attributes || {};
+  const blockClasses = getBlockClasses(attributes || {}, getBlockBaseClass(name));
   const blockStyleAttr = getBlockStyleAttr(style);
-  const Tag = `h${level}` as keyof JSX.IntrinsicElements;
-  const content = stripOuterTag(dynamicContent || saveContent || originalContent || '', Tag as string);
+  const Tag = `h${level}` || 'h2';
+  const content = stripOuterTag(saveContent || '', Tag);
   const html = getTransformedHtml(content || '');
 
   return (
