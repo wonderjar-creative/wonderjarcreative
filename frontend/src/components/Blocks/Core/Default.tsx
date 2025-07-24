@@ -1,22 +1,14 @@
-import { Maybe } from '@/gql/graphql';
+import { FrontendBlock } from '@/utils/blockTypes';
 import { getBlockClasses, getBlockStyleAttr } from '@/utils/blockStyles';
 
-interface DefaultProps {
-  attributes: Record<string, any>;
-  dynamicContent?: Maybe<string> | undefined;
-  innerBlocks?: React.ReactNode[];
-  originalContent?: Maybe<string> | undefined;
-  saveContent?: Maybe<string> | undefined;
-};
-
-const Default: React.FC<DefaultProps> = ({ attributes, dynamicContent, innerBlocks, originalContent, saveContent }) => {
-  const { anchor, style, tagName } = attributes as any;
-  const blockClasses = getBlockClasses(attributes, 'wp-block-default');
+const Default: React.FC<FrontendBlock> = ({ attributes, dynamicContent, saveContent, innerBlocks }) => {
+  const { anchor, style, tagName } = attributes || {};
+  const blockClasses = getBlockClasses(attributes || {}, 'wp-block-default');
   const blockStyleAttr = getBlockStyleAttr(style);
   const Tag = tagName || 'div';
   const TagComponent = Tag as keyof JSX.IntrinsicElements;
   const hasInnerBlocks = Array.isArray(innerBlocks) && innerBlocks.length > 0;
-  const html = dynamicContent || saveContent || originalContent;
+  const html = dynamicContent || saveContent || '';
 
   if (hasInnerBlocks) {
     // If you want to wrap innerBlocks in the tag:
