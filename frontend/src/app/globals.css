@@ -35,6 +35,9 @@
   /* Typography */
   --font-sans: var(--roboto), sans-serif;
   --font-cursive: var(--caveat), cursive;
+
+  /* Padding */
+  --global-padding: var(--spacing-30);
 }
 
 /* Base Layer: Foundational styles */
@@ -74,12 +77,12 @@
 
 /* Components Layer: Reusable UI components */
 @layer components {
-  .entry-content > .alignfull {
-    @apply !mx-0 w-full;
+  .has-global-padding > .alignfull {
+    @apply !-mx-[var(--global-padding)] !w-[100vw] !max-w-[100vw];
   }
   
-  .entry-content > *:not(.alignfull) {
-    @apply !mx-auto px-4 max-w-[var(--narrow)];
+  .has-global-padding > *:not(.alignfull):not(.alignwide) {
+    @apply !mx-auto max-w-[var(--narrow)];
   }
 
   .wp-block-column[style*=flex-basis] {
@@ -128,7 +131,7 @@
   }
 
   .alignwide {
-    @apply mx-auto px-4 w-full max-w-[var(--wide)];
+    @apply mx-auto w-full max-w-[var(--wide)];
   }
 
   .alignleft {
@@ -141,5 +144,10 @@
   
   .aligncenter {
     @apply mx-auto;
+  }
+
+  /* Padding */
+  .has-global-padding {
+    @apply px-[var(--global-padding)];
   }
 }
