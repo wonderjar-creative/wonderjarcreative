@@ -1,25 +1,12 @@
-import { Maybe, CoreColumnBlockAttributes } from '@/gql/graphql';
-import { getBlockClasses, getBlockStyleAttr } from '@/utils/blockStyles';
+import { CoreColumnBlock } from '@/utils/blockTypes';
+import { getBlockBaseClass, getBlockClasses, getBlockStyleAttr } from '@/utils/blockStyles';
 
-interface ColumnProps {
-  attributes: CoreColumnBlockAttributes;
-  innerBlocks?: React.ReactNode[];
-}
-
-const Column: React.FC<ColumnProps> = ({ attributes, innerBlocks }) => {
-  const {
-    className,
-    style,
-    backgroundColor,
-    layout,
-    textColor,
-    verticalAlignment,
-    width,
-  } = attributes;
+const Column: React.FC<CoreColumnBlock> = ({ name, attributes, innerBlocks }) => {
+  const { style, width } = attributes || {};
 
   return (
     <div
-      className={getBlockClasses(attributes, 'wp-block-column flow flex-grow break-words md:flex-1')}
+      className={getBlockClasses(attributes || {}, `${getBlockBaseClass(name)} flow flex-grow break-words md:flex-1`)}
       style={{
         ...getBlockStyleAttr(style),
         flexBasis: width || undefined,
