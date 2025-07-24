@@ -1,25 +1,8 @@
 import Image from 'next/image';
-import { Maybe, CoreCoverBlockAttributes, NodeWithFeaturedImageToMediaItemConnectionEdge } from '@/gql/graphql';
-import { getBlockClasses, getBlockStyleAttr } from '@/utils/blockStyles';
+import { CoreCoverBlock } from '@/utils/blockTypes';
+import { getBlockBaseClass, getBlockClasses, getBlockStyleAttr } from '@/utils/blockStyles';
 
-interface CoverProps {
-  name: string;
-  attributes: CoreCoverBlockAttributes;
-  featuredImage?: Maybe<NodeWithFeaturedImageToMediaItemConnectionEdge> | '';
-  mediaItem?: {
-    node?: {
-      sourceUrl?: string;
-      altText?: string;
-      mediaDetails?: {
-        width?: number;
-        height?: number;
-      }
-    }
-  };
-  innerBlocks?: React.ReactNode[];
-}
-
-const Cover: React.FC<CoverProps> = ({ name, attributes, featuredImage, mediaItem, innerBlocks }) => {
+const Cover: React.FC<CoreCoverBlock> = ({ name, attributes, featuredImage, mediaItem, innerBlocks }) => {
   const {
     anchor,
     alt,
@@ -39,7 +22,7 @@ const Cover: React.FC<CoverProps> = ({ name, attributes, featuredImage, mediaIte
     url,
     useFeaturedImage,
     ...wrapperAttributes
-  } = attributes;
+  } = attributes || {};
 
   const Tag = tagName || 'div';
   const TagComponent = Tag as keyof JSX.IntrinsicElements;
@@ -47,7 +30,7 @@ const Cover: React.FC<CoverProps> = ({ name, attributes, featuredImage, mediaIte
   // Exclude background-related attributes from blockClasses
   const blockClasses = getBlockClasses(
     wrapperAttributes,
-    `wp-block-cover relative overflow-hidden ${!minHeight ? 'min-h-[430px]' : ''}${isDark ? ' is-dark' : ' is-light'}`
+    `${getBlockBaseClass(name)} relative overflow-hidden ${!minHeight ? 'min-h-[430px]' : ''}${isDark ? ' is-dark' : ' is-light'}`
   );
   const blockStyleAttr = getBlockStyleAttr({
     ...style,
@@ -83,17 +66,17 @@ const Cover: React.FC<CoverProps> = ({ name, attributes, featuredImage, mediaIte
   const backgroundColor = overlayColor;
   const overlayClasses = getBlockClasses(
     { backgroundColor, dimRatio, gradient, style },
-    `wp-block-cover__background absolute top-0 left-0 w-full h-full${!backgroundColor && !customOverlayColor ? ' has-background has-deep-black-background-color ' : ' '}${!dimRatio ? ' opacity-50 ' : ''}`
+    `wp-block-cover__background absolute top-0 left-0 w-full max-w-full h-full${!backgroundColor && !customOverlayColor ? ' has-background has-deep-black-background-color ' : ' '}${!dimRatio ? ' opacity-50 ' : ''}`
   );
 
   const imageClasses = getBlockClasses(
     { id, sizeSlug },
-    'wp-block-cover__image-background absolute top-0 left-0 w-full h-auto object-center object-cover'
+    'wp-block-cover__image-background absolute top-0 left-0 w-full max-w-full h-auto object-center object-cover'
   );
 
   const innerContainerClasses = getBlockClasses(
     {},
-    `wp-block-cover__inner-container relative z-10 w-full flex ${align} ${justify}${!style?.spacing?.padding ? ' p-8' : ''}`
+    `wp-block-cover__inner-container relative z-10 w-full max-w-full flex ${align} ${justify}${!style?.spacing?.padding ? ' p-8' : ''}`
   );
 
   const image = useFeaturedImage && featuredImage ? (
