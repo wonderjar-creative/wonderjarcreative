@@ -1,9 +1,9 @@
 import { CoreGroupBlock } from '@/utils/blockTypes';
-import { getBlockClasses, getBlockStyleAttr } from '@/utils/blockStyles';
+import { getBlockBaseClass, getBlockClasses, getBlockStyleAttr } from '@/utils/blockStyles';
 
-const Group: React.FC<CoreGroupBlock> = ({ attributes, innerBlocks }) => {
+const Group: React.FC<CoreGroupBlock> = ({ name, attributes, innerBlocks }) => {
   const { anchor, style, tagName } = attributes || {};
-  const blockClasses = getBlockClasses(attributes || {}, 'wp-block-group');
+  const blockClasses = getBlockClasses(attributes || {}, getBlockBaseClass(name));
   const blockStyleAttr = getBlockStyleAttr(style);
   const Tag = tagName || 'div';
   const TagComponent = Tag as keyof JSX.IntrinsicElements;
