@@ -60,7 +60,7 @@ export const getBlockClasses = (
     id ? `wp-image-${id}` : '',
     layout?.type ? `is-layout-${layout.type}` : '',
     sizeSlug ? `size-${sizeSlug}` : '',
-    textAlign ? `text-align-${textAlign}` : '',
+    textAlign ? `text-${textAlign}` : '',
     textColor ? `text-${textColor}` : '',
     verticalAlignClass,
     layout?.type === 'constrained' ? 'has-global-padding' : '',
