@@ -18,6 +18,8 @@
   --color-charcoal-gray: oklch(0.4514 0.0251 261.67);
   --color-marigold-yellow: #EAA221;
   --color-marigold-yellow: oklch(0.7636 0.1533 75.16);
+  --color-white: #FFFFFF;
+  --color-white: oklch(1 0 0);
 
   /* Spacing */
   --spacing-20: 10px;
