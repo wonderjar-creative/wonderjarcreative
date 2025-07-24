@@ -1,15 +1,10 @@
-import { Maybe, CoreParagraphBlockAttributes } from '@/gql/graphql';
-import { getBlockClasses, getBlockStyleAttr } from '@/utils/blockStyles';
+import { CoreParagraphBlock } from '@/utils/blockTypes';
+import { getBlockBaseClass, getBlockClasses, getBlockStyleAttr } from '@/utils/blockStyles';
 import { stripOuterTag } from '@/utils/htmlTransformations';
 
-interface ParagraphProps {
-  attributes: CoreParagraphBlockAttributes;
-  saveContent?: Maybe<string> | undefined;
-};
-
-const Paragraph: React.FC<ParagraphProps> = ({ attributes, saveContent }) => {
-  const { anchor, style } = attributes;
-  const blockClasses = getBlockClasses(attributes, 'wp-block-paragraph');
+const Paragraph: React.FC<CoreParagraphBlock> = ({ name, attributes, saveContent }) => {
+  const { align, anchor, style, ...otherAttributes } = attributes || {};
+  const blockClasses = getBlockClasses({ ...otherAttributes, textAlign: align }, getBlockBaseClass(name));
   const blockStyleAttr = getBlockStyleAttr(style);
   const html = stripOuterTag(
     saveContent || '',
