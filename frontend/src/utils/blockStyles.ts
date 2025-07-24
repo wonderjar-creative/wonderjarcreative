@@ -1,3 +1,8 @@
+export const getBlockBaseClass = (blockName: string): string => {
+  // Convert block name to base class, e.g., 'core/paragraph' to 'wp-block-paragraph'
+  return `wp-block-${blockName.replace('core/', '').replace(/\//g, '-')}`;
+}
+
 export const getBlockClasses = (
   attributes: Record<string, any>,
   baseClass: string = ''
@@ -14,6 +19,7 @@ export const getBlockClasses = (
     fontSize,
     gradient,
     id,
+    layout,
     level,
     tagName,
     textAlign,
@@ -52,30 +58,13 @@ export const getBlockClasses = (
     fontSize ? `text-${fontSize}` : '',
     gradient ? `has-${gradient}` : '',
     id ? `wp-image-${id}` : '',
+    layout?.type ? `is-layout-${layout.type}` : '',
     sizeSlug ? `size-${sizeSlug}` : '',
+    textAlign ? `text-align-${textAlign}` : '',
     textColor ? `text-${textColor}` : '',
     verticalAlignClass,
+    layout?.type === 'constrained' ? 'has-global-padding' : '',
   ];
-
-  // Alignment tailwind classes
-  if (align) {
-    switch (align) {
-      case 'center':
-        classes.push('mx-auto', 'text-center');
-      case 'left':
-        classes.push('ml-auto', 'text-left');
-      case 'right':
-        classes.push('mr-auto', 'text-right');
-      case 'wide':
-        classes.push('mx-auto');
-      case 'full':
-        classes.push('w-full', 'mx-auto');
-        break;
-      default:
-        classes.push(`align${align}`);
-        break;
-    }
-  }
 
   // Handle classes from style object
   if (style) {
@@ -208,10 +197,11 @@ export const getBlockStyleAttr = (styleObj: StyleProps): React.CSSProperties => 
 }
 
 export const styleElementsToCSS = (
+  blockId: string,
   style: StyleProps,
-  blockId: string
+  layout?: { contentSize?: string }
 ): string => {
-  if (!style.elements && !style.layout) return '';
+  if (!style.elements && !layout) return '';
 
   let css = '';
   if (style.elements) {
@@ -263,9 +253,9 @@ export const styleElementsToCSS = (
       css += '\n}\n';
     });
   }
-  if (style.layout && style.layout.contentSize) {
-    css += `.wp-block-${blockId} {\n`;
-    css += `  max-width: 50%;\n`;
+  if (layout && layout.contentSize) {
+    css += `.wp-block-${blockId} > * {\n`;
+    css += `  max-width: ${layout.contentSize};\n`;
     css += '\n}\n';
   }
 
