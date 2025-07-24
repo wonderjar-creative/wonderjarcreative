@@ -10,6 +10,8 @@ export default {
       'size-full',
       'items-start', 'items-center', 'items-end', 'items-stretch',
       'self-start', 'self-center', 'self-end', 'self-stretch',
+      'text-1xs', 'text-xs', 'text-sm', 'text-base', 'text-lg', 'text-xl', 'text-2xl',
+      'text-3xl', 'text-4xl', 'text-5xl', 'text-6xl', 'text-7xl', 'text-8xl', 'text-9xl',
       'text-teal', 'text-warm-coral', 'text-muted-brick-red', 'text-deep-black',
       'text-retro-teal', 'text-soft-cream', 'text-charcoal-gray', 'text-marigold-yellow',
       'bg-teal', 'bg-warm-coral', 'bg-muted-brick-red', 'bg-deep-black',
