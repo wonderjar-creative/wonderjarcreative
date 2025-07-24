@@ -47,6 +47,11 @@
           "slug": "marigold-yellow",
           "name": "Marigold Yellow",
           "color": "#EAA221"
+        },
+        {
+          "slug": "white",
+          "name": "White",
+          "color": "#FFFFFF"
         }
       ]
     },
