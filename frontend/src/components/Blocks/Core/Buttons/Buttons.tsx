@@ -1,14 +1,9 @@
-import { Maybe, CoreButtonsBlockAttributes } from '@/gql/graphql';
-import { getBlockClasses, getBlockStyleAttr } from '@/utils/blockStyles';
+import { CoreButtonsBlock } from '@/utils/blockTypes';
+import { getBlockBaseClass, getBlockClasses, getBlockStyleAttr } from '@/utils/blockStyles';
 
-interface ButtonsProps {
-  attributes: CoreButtonsBlockAttributes;
-  innerBlocks?: React.ReactNode[];
-};
-
-const Buttons: React.FC<ButtonsProps> = ({ attributes, innerBlocks }) => {
-  const { anchor, style } = attributes;
-  const blockClasses = getBlockClasses(attributes, 'wp-block-buttons');
+const Buttons: React.FC<CoreButtonsBlock> = ({ name, attributes, innerBlocks }) => {
+  const { anchor, style } = attributes || {};
+  const blockClasses = getBlockClasses(attributes || {}, getBlockBaseClass(name));
   const blockStyleAttr = getBlockStyleAttr(style);
 
   return (
