@@ -1,24 +1,7 @@
-import { Maybe, Block } from "@/gql/graphql";
+import { Maybe } from "@/gql/graphql";
+import { EnrichedBlock } from "@/utils/blockTypes";
 
-interface ExtendedBlock extends Block {
-  attributes?: {
-    id?: number;
-  };
-  innerBlocks?: ExtendedBlock[];
-  mediaItem?: {
-    node?: {
-      sourceUrl?: string;
-      altText?: string;
-      mediaDetails?: {
-        width?: number;
-        height?: number;
-        sizes?: Record<string, { sourceUrl: string; width: number; height: number }>;
-      }
-    }
-  };
-}
-
-const collectMediaIds = (blocks: ExtendedBlock[]): number[] => {
+const collectMediaIds = (blocks: EnrichedBlock[]): number[] => {
   const ids = new Set<number>();
   function walk(blocks: any[]) {
     for (const block of blocks) {
@@ -42,7 +25,7 @@ const fetchMediaDetailsByIds = async (mediaIds: number[]): Promise<Record<number
   return Object.fromEntries(results.filter(([, data]) => data));
 }
 
-const enrichBlocks = (blocks: ExtendedBlock[], mediaMap: Record<number, any>): any[] => {
+const enrichBlocks = (blocks: EnrichedBlock[], mediaMap: Record<number, any>): EnrichedBlock[] => {
   return blocks.map(block => {
     let enriched = { ...block };
     const id = block?.attributes?.id;
@@ -61,23 +44,24 @@ const enrichBlocks = (blocks: ExtendedBlock[], mediaMap: Record<number, any>): a
         },
       };
     }
-    if (block.innerBlocks && block.innerBlocks.length > 0) {
-      enriched.innerBlocks = enrichBlocks(block.innerBlocks, mediaMap);
+    const innerBlocks = block.innerBlocks;
+    if (innerBlocks && innerBlocks.length > 0) {
+      enriched.innerBlocks = enrichBlocks(innerBlocks, mediaMap);
     }
     return enriched;
   });
 }
 
 export const enrichBlocksWithMedia = async (
-  blocks: ExtendedBlock[]
-): Promise<Block[]> => {
+  blocks: EnrichedBlock[]
+): Promise<EnrichedBlock[]> => {
   const mediaIds = collectMediaIds(blocks);
   if (mediaIds.length === 0) return blocks;
   const mediaMap = await fetchMediaDetailsByIds(mediaIds);
   return enrichBlocks(blocks, mediaMap);
 }
 
-type MediaSizesProps = {
+interface MediaSizesProps {
   [key: string]: {
     sourceUrl: string;
     width: number;
