@@ -1,4 +1,11 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+@source inline('size-full');
+@source inline('{items-,self-}{start,center,end,stretch}');
+@source inline('text-{1xs,xs,sm,base,lg,xl,2xl,3xl,4xl,5xl,6xl,7xl,8xl,9xl}');
+@source inline('text-{teal,warm-coral,muted-brick-red,deep-black,retro-teal,soft-cream,charcoal-gray,marigold-yellow,white}');
+@source inline('bg-{teal,warm-coral,muted-brick-red,deep-black,retro-teal,soft-cream,charcoal-gray,marigold-yellow,white}');
+@source inline('border-{teal,warm-coral,muted-brick-red,deep-black,retro-teal,soft-cream,charcoal-gray,marigold-yellow,white}');
+
 
 @theme {
   /* Colors */
@@ -45,7 +52,7 @@
 /* Base Layer: Foundational styles */
 @layer base {
   body {
-    @apply bg-soft-cream text-charcoal-gray font-sans text-base;
+    @apply bg-soft-cream text-charcoal-gray font-sans text-[1.125rem] leading-normal tracking-normal;
   }
 
   h1, h2, h3, h4, h5, h6 {
