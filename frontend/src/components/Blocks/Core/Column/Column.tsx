@@ -4,9 +4,11 @@ import { getBlockBaseClass, getBlockClasses, getBlockStyleAttr } from '@/utils/b
 const Column: React.FC<CoreColumnBlock> = ({ name, attributes, innerBlocks }) => {
   const { style, width } = attributes || {};
 
+  console.log('Column attributes:', attributes);
+
   return (
     <div
-      className={getBlockClasses(attributes || {}, `${getBlockBaseClass(name)} flow flex-grow break-words md:flex-1`)}
+      className={getBlockClasses(attributes || {}, `${getBlockBaseClass(name)} flow flex-grow flex-basis-0 break-words md:flex-1`)}
       style={{
         ...getBlockStyleAttr(style),
         flexBasis: width || undefined,
