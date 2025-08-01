@@ -6,7 +6,7 @@ const Columns: React.FC<CoreColumnsBlock> = ({ name, attributes, innerBlocks }) 
 
   return (
     <div
-      className={getBlockClasses(attributes || {}, `${getBlockBaseClass(name)} flex flex-wrap flex-col md:flex-row md:items-center`)}
+      className={getBlockClasses(attributes || {}, `${getBlockBaseClass(name)} flex flex-wrap md:flex-nowrap flex-col md:flex-row md:items-center gap-5`)}
       style={getBlockStyleAttr(style)}
     >
       {innerBlocks}
