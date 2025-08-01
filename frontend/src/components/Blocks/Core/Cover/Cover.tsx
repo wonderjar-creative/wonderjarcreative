@@ -27,17 +27,6 @@ const Cover: React.FC<CoreCoverBlock> = ({ name, attributes, featuredImage, medi
   const Tag = tagName || 'div';
   const TagComponent = Tag as keyof JSX.IntrinsicElements;
 
-  // Exclude background-related attributes from blockClasses
-  const blockClasses = getBlockClasses(
-    wrapperAttributes,
-    `${getBlockBaseClass(name)} relative overflow-hidden ${!minHeight ? 'min-h-[430px]' : ''}${isDark ? ' is-dark' : ' is-light'}`
-  );
-  const blockStyleAttr = getBlockStyleAttr({
-    ...style,
-    minHeight: minHeight || null,
-    minHeightUnit: minHeightUnit || 'px',
-  });
-
   const align = contentPosition ? [contentPosition.split(' ')[0]].map((verticalAlign) => {
     switch (verticalAlign) {
       case 'top':
@@ -63,6 +52,16 @@ const Cover: React.FC<CoreCoverBlock> = ({ name, attributes, featuredImage, medi
     }
   }).join(' ') : 'justify-center';
 
+  const blockClasses = getBlockClasses(
+    wrapperAttributes,
+    `${getBlockBaseClass(name)} relative overflow-hidden ${!minHeight ? 'min-h-[430px]' : ''}${isDark ? ' is-dark' : ' is-light'} flex ${align} ${justify}${!style?.spacing?.padding ? ' p-8' : ''}`
+  );
+  const blockStyleAttr = getBlockStyleAttr({
+    ...style,
+    minHeight: minHeight || null,
+    minHeightUnit: minHeightUnit || 'px',
+  });
+
   const backgroundColor = overlayColor;
   const overlayClasses = getBlockClasses(
     { backgroundColor, dimRatio, gradient, style },
@@ -76,7 +75,7 @@ const Cover: React.FC<CoreCoverBlock> = ({ name, attributes, featuredImage, medi
 
   const innerContainerClasses = getBlockClasses(
     {},
-    `wp-block-cover__inner-container relative z-10 w-full max-w-full flex ${align} ${justify}${!style?.spacing?.padding ? ' p-8' : ''}`
+    `wp-block-cover__inner-container relative z-10 w-full max-w-full`
   );
 
   const image = useFeaturedImage && featuredImage ? (
