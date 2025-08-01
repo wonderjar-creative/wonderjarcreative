@@ -30,7 +30,7 @@ const ImageComponent: React.FC<CoreImageBlock> = ({ name, attributes, mediaItem 
         width={imageWidth}
         height={imageHeight}
         className={imageClasses}
-        // sizes={getSizesAttribute()} // Dynamic sizes
+        // sizes={} // Dynamic sizes
         {...(!imageWidth && !imageHeight && { fill: true })}
         style={{
           ...aspectRatio && { aspectRatio: `${aspectRatio}` },
