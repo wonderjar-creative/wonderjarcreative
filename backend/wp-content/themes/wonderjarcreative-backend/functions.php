@@ -277,3 +277,18 @@ function wjc_register_sitemap_routes() {
     'callback' => 'wjc_generate_totalpages_api',
   ));
 }
+
+/**
+ * Allowed Mime Types.
+ * 
+ * Filters the allowed mime types for file uploads.
+ * 
+ * @param array $mimes The allowed mime types.
+ * @return array The filtered allowed mime types.
+ */
+function wjc_allowed_mime_types($mimes) {
+  // Add custom mime types here
+  $mimes['svg'] = 'image/svg+xml';
+  return $mimes;
+}
+add_filter('upload_mimes', 'wjc_allowed_mime_types');
