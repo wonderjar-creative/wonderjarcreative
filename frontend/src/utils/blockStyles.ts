@@ -19,6 +19,7 @@ export const getBlockClasses = (
     fontSize,
     gradient,
     id,
+    isStackedOnMobile,
     layout,
     level,
     tagName,
@@ -58,6 +59,7 @@ export const getBlockClasses = (
     fontSize ? `text-${fontSize}` : '',
     gradient ? `has-${gradient}` : '',
     id ? `wp-image-${id}` : '',
+    isStackedOnMobile ? 'is-stacked-on-mobile' : '',
     layout?.type ? `is-layout-${layout.type}` : '',
     sizeSlug ? `size-${sizeSlug}` : '',
     textAlign ? `text-${textAlign}` : '',
@@ -136,11 +138,15 @@ export const getBlockStyleAttr = (styleObj: StyleProps): React.CSSProperties => 
     if (styleObj.border.width) result.borderWidth = styleObj.border.width;
     if (styleObj.border.color) result.borderColor = styleObj.border.color;
     if (styleObj.border.radius) {
-      const r = styleObj.border.radius;
-      if (r.topLeft) result.borderTopLeftRadius = r.topLeft;
-      if (r.topRight) result.borderTopRightRadius = r.topRight;
-      if (r.bottomLeft) result.borderBottomLeftRadius = r.bottomLeft;
-      if (r.bottomRight) result.borderBottomRightRadius = r.bottomRight;
+      const r = styleObj.border?.radius;
+      if (typeof r === 'string') {
+        result.borderRadius = r;
+      } else if (typeof r === 'object') {
+        if (r.topLeft) result.borderTopLeftRadius = `${r.topLeft}`;
+        if (r.topRight) result.borderTopRightRadius = `${r.topRight}`;
+        if (r.bottomRight) result.borderBottomRightRadius = `${r.bottomRight}`;
+        if (r.bottomLeft) result.borderBottomLeftRadius = `${r.bottomLeft}`;
+      }
     }
   }
 
