@@ -1,0 +1,7 @@
+{
+  "intelephense.environment.includePaths": [
+    "${workspaceFolder}/vendor/php-stubs/wordpress-stubs",
+    "${workspaceFolder}/vendor/php-stubs/wordpress-globals",
+    "${workspaceFolder}/vendor/php-stubs/woocommerce-stubs"
+  ]
+}

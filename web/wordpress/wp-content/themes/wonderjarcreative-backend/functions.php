@@ -16,7 +16,7 @@
  * @since 1.0.0
  * @return void
  */
-function wjc_setup( ) {
+function wjc_setup() {
   add_theme_support( 'post-thumbnails' );
 }
 add_action( 'after_setup_theme', 'wjc_setup' );
@@ -30,7 +30,7 @@ add_action( 'after_setup_theme', 'wjc_setup' );
  * @return void
  * @link https://developer.wordpress.org/reference/functions/register_nav_menus/
  */
-function wjc_register_new_menu( ) {
+function wjc_register_new_menu() {
   register_nav_menus( 
     array( 
       'primary-menu' => __( 'Primary menu' )
@@ -49,7 +49,7 @@ add_action( 'init', 'wjc_register_new_menu' );
  * @return string The REST API root URL.
  */
 function wjc_home_url_as_api_url( $url ) {
-  $url = str_replace( home_url( ), site_url( ), $url );
+  $url = str_replace( home_url(), site_url(), $url );
   return $url;
 }
 add_filter( 'rest_url', 'wjc_home_url_as_api_url' );
@@ -97,11 +97,11 @@ function wjc_set_headless_rest_preview_link( WP_REST_Response $response, WP_Post
   if ( 'publish' === $post->post_status ) {
     $permalink = get_permalink( $post );
 
-    if ( false !== stristr( $permalink, get_site_url( ) ) ) {
+    if ( false !== stristr( $permalink, get_site_url() ) ) {
       $frontendUrl = HEADLESS_URL;
 
       $response->data['link'] = str_ireplace( 
-        get_site_url( ),
+        get_site_url(),
         $frontendUrl,
         $permalink
       );
@@ -150,7 +150,7 @@ function wjc_headless_revalidate( string $new_status, string $old_status, object
   ] );
 
   if ( is_wp_error( $response ) ) {
-    error_log( $response->get_error_message( ) );
+    error_log( $response->get_error_message() );
   }
 }
 add_action( 'transition_post_status', 'wjc_headless_revalidate', 10, 3 );
@@ -163,7 +163,7 @@ add_action( 'transition_post_status', 'wjc_headless_revalidate', 10, 3 );
  * @since 1.0.0
  * @return array An array containing the arguments for users, posts, and taxonomy.
  */
-function wjc_get_user_inputs( ) {
+function wjc_get_user_inputs() {
   $pageNo = sprintf( "%d", $_GET['pageNo'] );
   $perPage = sprintf( "%d", $_GET['perPage'] );
   $taxonomy = array_key_exists( 'taxonomyType', $_GET ) ? $_GET['taxonomyType'] : 'category';
@@ -192,13 +192,13 @@ function wjc_get_user_inputs( ) {
  * @since 1.0.0
  * @return array An array of author URLs.
  */
-function wjc_generate_author_api( ) {
-  [$args] = wjc_get_user_inputs( );
-  $author_urls = array( );
+function wjc_generate_author_api() {
+  [$args] = wjc_get_user_inputs();
+  $author_urls = array();
   $authors = get_users( $args );
   foreach ( $authors as $author ) {
     $fullUrl = esc_url( get_author_posts_url( $author->ID ) );
-    $url = str_replace( home_url( ), '', $fullUrl );
+    $url = str_replace( home_url(), '', $fullUrl );
     $tempArray = [
       'url' => $url,
     ];
@@ -215,13 +215,13 @@ function wjc_generate_author_api( ) {
  * @since 1.0.0
  * @return array An array of taxonomy URLs.
  */
-function wjc_generate_taxonomy_api( ) {
-  [$args,, $taxonomy] = wjc_get_user_inputs( );
-  $taxonomy_urls = array( );
+function wjc_generate_taxonomy_api() {
+  [$args,, $taxonomy] = wjc_get_user_inputs();
+  $taxonomy_urls = array();
   $taxonomys = $taxonomy == 'tag' ? get_tags( $args ) : get_categories( $args );
   foreach ( $taxonomys as $taxonomy ) {
     $fullUrl = esc_url( get_category_link( $taxonomy->term_id ) );
-    $url = str_replace( home_url( ), '', $fullUrl );
+    $url = str_replace( home_url(), '', $fullUrl );
     $tempArray = [
       'url' => $url,
     ];
@@ -238,21 +238,21 @@ function wjc_generate_taxonomy_api( ) {
  * @since 1.0.0
  * @return array An array of post URLs with their modified dates.
  */
-function wjc_generate_posts_api( ) {
-  [, $postArgs] = wjc_get_user_inputs( );
-  $postUrls = array( );
+function wjc_generate_posts_api() {
+  [, $postArgs] = wjc_get_user_inputs();
+  $postUrls = array();
   $query = new WP_Query( $postArgs );
 
-  while ( $query->have_posts( ) ) {
-    $query->the_post( );
-    $uri = str_replace( home_url( ), '', get_permalink( ) );
+  while ( $query->have_posts() ) {
+    $query->the_post();
+    $uri = str_replace( home_url(), '', get_permalink() );
     $tempArray = [
       'url' => $uri,
-      'post_modified_date' => get_the_modified_date( ),
+      'post_modified_date' => get_the_modified_date(),
     ];
     array_push( $postUrls, $tempArray );
   }
-  wp_reset_postdata( );
+  wp_reset_postdata();
   return array_merge( $postUrls );
 }
 
@@ -264,7 +264,7 @@ function wjc_generate_posts_api( ) {
  * @since 1.0.0
  * @return array An array containing the total counts of posts, categories, tags, and users.
  */
-function wjc_generate_totalpages_api( ) {
+function wjc_generate_totalpages_api() {
   $args = array( 
     'exclude_from_search' => false
   );
@@ -276,11 +276,11 @@ function wjc_generate_totalpages_api( ) {
   $post_types = array_merge( $post_types, $post_typesTwo );
   unset( $post_types['attachment'] );
   $defaultArray = [
-    'category' => count( get_categories( ) ),
-    'tag' => count( get_tags( ) ),
-    'user' => ( int )count_users( )['total_users'],
+    'category' => count( get_categories() ),
+    'tag' => count( get_tags() ),
+    'user' => ( int )count_users()['total_users'],
   ];
-  $tempValueHolder = array( );
+  $tempValueHolder = array();
   foreach ( $post_types as $postType ) {
     $tempValueHolder[$postType] = ( int )wp_count_posts( $postType )->publish;
   }
@@ -295,7 +295,8 @@ function wjc_generate_totalpages_api( ) {
  * @since 1.0.0
  * @return void
  */
-function wjc_register_sitemap_routes( ) {
+function wjc_register_sitemap_routes() {
+  // Sitemap routes
   register_rest_route( 'sitemap/v1', '/posts', array( 
     'methods' => 'GET',
     'callback' => 'wjc_generate_posts_api',
@@ -314,6 +315,288 @@ function wjc_register_sitemap_routes( ) {
   ) );
 }
 add_action( 'rest_api_init', 'wjc_register_sitemap_routes' );
+
+/**
+ * Register template structure routes.
+ *
+ * @since 1.0.0
+ * @return void
+ */
+function wjc_register_template_structure_routes() {
+  register_rest_route( 'template-structure/v1', '/full', [
+    'methods' => 'GET',
+    'callback' => 'wjc_get_full_template_structure',
+    'permission_callback' => '__return_true'
+  ]);
+  register_rest_route( 'template-structure/v1', '/templates/(?P<slug>[a-zA-Z0-9-_]+)', [
+    'methods' => 'GET',
+    'callback' => 'wjc_get_template_structure_template',
+    'permission_callback' => '__return_true'
+  ]);
+  register_rest_route( 'template-structure/v1', '/parts/(?P<slug>[a-zA-Z0-9-_]+)', [
+    'methods' => 'GET',
+    'callback' => 'wjc_get_template_structure_part',
+    'permission_callback' => '__return_true'
+  ]);
+  register_rest_route( 'template-structure/v1', '/patterns/(?P<slug>[a-zA-Z0-9-_]+)', [
+    'methods' => 'GET',
+    'callback' => 'wjc_get_template_structure_pattern',
+    'permission_callback' => '__return_true'
+  ]);
+}
+add_action( 'rest_api_init', 'wjc_register_template_structure_routes' );
+
+/**
+ * Get full template structure.
+ *
+ * Fetches template structure blocks from the specified directories.
+ * Used by the REST API endpoint to retrieve template blocks for
+ * the frontend at build time.
+ *
+ * @since 1.0.0
+ * @return array An array of template structure blocks with their slugs and content.
+ */
+function wjc_get_full_template_structure( $request ) {
+  $base = get_stylesheet_directory();
+  $dirs = [
+    'templates' => $base . '/templates',
+    'parts'     => $base . '/parts',
+    'patterns'  => $base . '/patterns',
+  ];
+  $result = [];
+
+  foreach ( $dirs as $type => $dir ) {
+    if ( is_dir( $dir ) ) {
+      $files = array_filter( scandir( $dir ), function( $f ) use ($type) {
+        // Patterns can be .php or .html, others .html only
+        if ( $type === 'patterns' ) {
+          return !in_array( $f, ['.', '..'] ) && in_array( pathinfo( $f, PATHINFO_EXTENSION ), ['php', 'html'] );
+        }
+        return !in_array( $f, ['.', '..'] ) && pathinfo( $f, PATHINFO_EXTENSION ) === 'html';
+      });
+
+      $result[$type] = [];
+
+      foreach ( $files as $file ) {
+        $slug = pathinfo( $file, PATHINFO_FILENAME );
+        $file_path = $dir . '/' . $file;
+        $content = file_get_contents( $file_path );
+        if ( $content === false ) continue;
+
+        // Remove PHP docblock if present
+        if ( preg_match( '/<\?php(.*?)\?>/s', $content, $matches ) ) {
+          $content = str_replace( $matches[0], '', $content );
+        }
+
+        // Normalize line breaks
+        $content = preg_replace('/\r\n|\r|\n/', '', $content);
+        $content = preg_replace('/\n{2,}/', "\n", $content);
+
+        // Parse blocks, normalize and render
+        $blocks = parse_blocks(trim($content));
+        $blocks = render_dynamic_blocks($blocks);
+        $blocks = normalize_block_keys( $blocks );
+        $blocks = array_values($blocks);
+
+        $result[$type][$slug] = [
+          'slug' => $slug,
+          'content' => $content,
+          'blocks' => $blocks,
+          'blocksJSON' => json_encode( $blocks ),
+        ];
+      }
+    }
+  }
+  return $result;
+}
+
+/**
+ * Get the template structure for a template.
+ *
+ * @since 1.0.0
+ * @param WP_REST_Request $request The REST API request.
+ * @return array|WP_Error The template structure or an error.
+ */
+function wjc_get_template_structure_template( $request ) {
+  $slug = $request['slug'];
+  $base = get_stylesheet_directory() . '/templates';
+  $file = $base . '/' . $slug . '.html';
+  $content = file_get_contents( $file );
+  if ( $content === false ) return;
+
+  // Remove PHP docblock if present
+  if ( preg_match( '/<\?php(.*?)\?>/s', $content, $matches ) ) {
+    $content = str_replace( $matches[0], '', $content );
+  }
+
+  // Normalize line breaks
+  $content = preg_replace('/\r\n|\r|\n/', '', $content);
+  $content = preg_replace('/\n{2,}/', "\n", $content);
+
+  // Parse blocks, normalize and render
+  $blocks = parse_blocks(trim($content));
+  $blocks = render_dynamic_blocks($blocks);
+  $blocks = normalize_block_keys( $blocks );
+  $blocks = array_values($blocks);
+
+  return [
+    'slug' => $slug,
+    'content' => $content,
+    'blocks' => $blocks,
+    'blocksJSON' => json_encode( $blocks ),
+  ];
+}
+
+/**
+ * Get the template structure for a part.
+ *
+ * @since 1.0.0
+ * @param WP_REST_Request $request The REST API request.
+ * @return array|WP_Error The template structure or an error.
+ */
+function wjc_get_template_structure_part( $request ) {
+  $slug = $request['slug'];
+  $base = get_stylesheet_directory() . '/parts';
+  $file = $base . '/' . $slug . '.html';
+  $content = file_get_contents( $file );
+  if ( $content === false ) return;
+
+  // Remove PHP docblock if present
+  if ( preg_match( '/<\?php(.*?)\?>/s', $content, $matches ) ) {
+    $content = str_replace( $matches[0], '', $content );
+  }
+
+  // Normalize line breaks
+  $content = preg_replace('/\r\n|\r|\n/', '', $content);
+  $content = preg_replace('/\n{2,}/', "\n", $content);
+
+  // Parse blocks, normalize and render
+  $blocks = parse_blocks(trim($content));
+  $blocks = render_dynamic_blocks($blocks);
+  $blocks = normalize_block_keys( $blocks );
+  $blocks = array_values($blocks);
+
+  return [
+    'slug' => $slug,
+    'content' => $content,
+    'blocks' => $blocks,
+    'blocksJSON' => json_encode( $blocks ),
+  ];
+}
+
+/**
+ * Get the template structure for a pattern.
+ *
+ * @since 1.0.0
+ * @param WP_REST_Request $request The REST API request.
+ * @return array|WP_Error The template structure or an error.
+ */
+function wjc_get_template_structure_pattern( $request ) {
+  $slug = $request['slug'];
+  $base = get_stylesheet_directory() . '/patterns';
+  $file_html = $base . '/' . $slug . '.html';
+  $file_php = $base . '/' . $slug . '.php';
+  if ( file_exists( $file_html ) ) {
+    $file = $file_html;
+  } elseif ( file_exists( $file_php ) ) {
+    $file = $file_php;
+  }
+  $content = file_get_contents( $file );
+  if ( $content === false ) return;
+
+  // Remove PHP docblock if present
+  if ( preg_match( '/<\?php(.*?)\?>/s', $content, $matches ) ) {
+    $content = str_replace( $matches[0], '', $content );
+  }
+
+  // Normalize line breaks
+  $content = preg_replace('/\r\n|\r|\n/', '', $content);
+  $content = preg_replace('/\n{2,}/', "\n", $content);
+
+  // Parse blocks, normalize and render
+  $blocks = parse_blocks(trim($content));
+  $blocks = render_dynamic_blocks($blocks);
+  $blocks = normalize_block_keys( $blocks );
+  $blocks = array_values($blocks);
+
+  return [
+    'slug' => $slug,
+    'content' => $content,
+    'blocks' => $blocks,
+    'blocksJSON' => json_encode( $blocks ),
+  ];
+}
+
+/**
+ * Check if a block is dynamic.
+ *
+ * @since 1.0.0
+ * @param string $block_name The block name.
+ * @return bool True if the block is dynamic, false otherwise.
+ */
+function is_dynamic_block($block_name) {
+  $block_type = WP_Block_Type_Registry::get_instance()->get_registered($block_name);
+  if ( 'core/template-part' === $block_name || 'core/pattern' === $block_name ) {
+    return false;
+  }
+  return $block_type && $block_type->is_dynamic();
+}
+
+/**
+ * Render dynamic blocks.
+ *
+ * @since 1.0.0
+ * @param array $blocks The blocks to render.
+ * @return array The rendered blocks.
+ */
+function render_dynamic_blocks( $blocks ) {
+  return array_map( function( $block ) {
+    if ( is_dynamic_block( $block['blockName'] ) ) {
+      $block['isDynamic'] = true;
+      $block['dynamicContent'] = render_block( $block );
+    }
+
+    if ( isset( $block['innerBlocks'] ) ) {
+      $block['innerBlocks'] = array_values( render_dynamic_blocks( $block['innerBlocks'] ) );
+    }
+    return $block;
+  }, $blocks );
+}
+
+/**
+ * Normalize block keys.
+ * 
+ * Normalizes block keys to ensure compatibility with the frontend.
+ * Converts 'blockName' to 'name' and 'attrs' to 'attributes'.
+ * 
+ * @since 1.0.0
+ * @param array $blocks The blocks to normalize.
+ * @return array The normalized blocks.
+ */
+function normalize_block_keys( $blocks ) {
+  return array_map( function( $block ) {
+    if ( isset( $block['blockName'] ) && ! isset( $block['name'] ) ) {
+      $block['name'] = $block['blockName'];
+      unset( $block['blockName'] );
+    }
+
+    if ( isset( $block['attrs'] ) && ! isset( $block['attributes'] ) ) {
+      $block['attributes'] = $block['attrs'];
+      unset( $block['attrs'] );
+    }
+
+    if ( isset( $block['innerHTML'] ) && ! isset( $block['saveContent'] ) ) {
+      $block['saveContent'] = $block['innerHTML'];
+      unset( $block['innerHTML'] );
+    }
+
+    if ( isset( $block['innerBlocks'] ) ) {
+      $block['innerBlocks'] = array_values( normalize_block_keys( $block['innerBlocks'] ) );
+    }
+
+    return $block;
+  }, $blocks );
+}
 
 /**
  * Allowed Mime Types.

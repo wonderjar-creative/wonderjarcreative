@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'type' => 'library',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'reference' => '1e393fddaa4007474d37853d912f51001bea32ed',
+        'name' => '__root__',
+        'dev' => true,
+    ),
+    'versions' => array(
+        '__root__' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'reference' => '1e393fddaa4007474d37853d912f51001bea32ed',
+            'dev_requirement' => false,
+        ),
+        'php-stubs/wordpress-globals' => array(
+            'pretty_version' => 'v0.2.0',
+            'version' => '0.2.0.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../php-stubs/wordpress-globals',
+            'aliases' => array(),
+            'reference' => '748a1fb2ae8fda94844bd0545935095dbf404b32',
+            'dev_requirement' => false,
+        ),
+        'php-stubs/wordpress-stubs' => array(
+            'pretty_version' => 'v6.8.2',
+            'version' => '6.8.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../php-stubs/wordpress-stubs',
+            'aliases' => array(),
+            'reference' => '9c8e22e437463197c1ec0d5eaa9ddd4a0eb6d7f8',
+            'dev_requirement' => false,
+        ),
+    ),
+);
