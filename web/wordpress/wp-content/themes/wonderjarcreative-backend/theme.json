@@ -1,0 +1,184 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 3,
+  "settings": {
+    "appearanceTools": true,
+    "color": {
+      "defaultDuotone": false,
+      "defaultGradients": false,
+      "defaultPalette": false,
+      "palette": [
+        {
+          "slug": "teal",
+          "name": "Teal",
+          "color": "#50C9B4"
+        },
+        {
+          "slug": "warm-coral",
+          "name": "Warm Coral",
+          "color": "#F2685E"
+        },
+        {
+          "slug": "muted-brick-red",
+          "name": "Muted Brick Red",
+          "color": "#C24D53"
+        },
+        {
+          "slug": "deep-black",
+          "name": "Deep Black",
+          "color": "#000000"
+        },
+        {
+          "slug": "retro-teal",
+          "name": "Retro Teal",
+          "color": "#4D7A7F"
+        },
+        {
+          "slug": "soft-cream",
+          "name": "Soft Cream",
+          "color": "#EFE5D5"
+        },
+        {
+          "slug": "charcoal-gray",
+          "name": "Charcoal Gray",
+          "color": "#4E5664"
+        },
+        {
+          "slug": "marigold-yellow",
+          "name": "Marigold Yellow",
+          "color": "#EAA221"
+        },
+        {
+          "slug": "white",
+          "name": "White",
+          "color": "#FFFFFF"
+        }
+      ]
+    },
+    "layout": {
+      "contentSize": "645px",
+      "wideSize": "1280px"
+    },
+    "spacing": {
+      "defaultSpacingSizes": false,
+      "spacingSizes": [
+        {
+          "name": "Tiny",
+          "size": "10px",
+          "slug": "20"
+        },
+        {
+          "name": "X-Small",
+          "size": "20px",
+          "slug": "30"
+        },
+        {
+          "name": "Small",
+          "size": "30px",
+          "slug": "40"
+        },
+        {
+          "name": "Regular",
+          "size": "clamp(30px, 5vw, 50px)",
+          "slug": "50"
+        },
+        {
+          "name": "Large",
+          "size": "clamp(30px, 7vw, 70px)",
+          "slug": "60"
+        },
+        {
+          "name": "X-Large",
+          "size": "clamp(50px, 7vw, 90px)",
+          "slug": "70"
+        },
+        {
+          "name": "XX-Large",
+          "size": "clamp(70px, 10vw, 140px)",
+          "slug": "80"
+        }
+      ],
+      "units": [
+        "%",
+        "px",
+        "em",
+        "rem",
+        "vh",
+        "vw"
+      ]
+    },
+    "typography": {
+      "writingMode": true,
+      "defaultFontSizes": false,
+      "fluid": true,
+      "fontSizes": [
+        {
+          "slug": "xs",
+          "size": "0.75rem",
+          "name": "XS"
+        },
+        {
+          "slug": "sm",
+          "size": "0.875rem",
+          "name": "SM"
+        },
+        {
+          "slug": "base",
+          "size": "1rem",
+          "name": "Base"
+        },
+        {
+          "slug": "lg",
+          "size": "1.125rem",
+          "name": "LG"
+        },
+        {
+          "slug": "xl",
+          "size": "1.25rem",
+          "name": "XL"
+        },
+        {
+          "slug": "2xl",
+          "size": "1.5rem",
+          "name": "2XL"
+        },
+        {
+          "slug": "3xl",
+          "size": "1.875rem",
+          "name": "3XL"
+        },
+        {
+          "slug": "4xl",
+          "size": "2.25rem",
+          "name": "4XL"
+        },
+        {
+          "slug": "5xl",
+          "size": "3rem",
+          "name": "5XL"
+        },
+        {
+          "slug": "6xl",
+          "size": "3.75rem",
+          "name": "6XL"
+        },
+        {
+          "slug": "7xl",
+          "size": "4.5rem",
+          "name": "7XL"
+        },
+        {
+          "slug": "8xl",
+          "size": "6rem",
+          "name": "8XL"
+        },
+        {
+          "slug": "9xl",
+          "size": "8rem",
+          "name": "9XL"
+        }
+      ]
+    },
+    "useRootPaddingAwareAlignments": true
+  }
+}
