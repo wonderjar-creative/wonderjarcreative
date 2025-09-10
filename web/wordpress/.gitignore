@@ -1,0 +1,6 @@
+# WordPress specific files
+wp-config.php
+
+# Composer specific files
+vendor/
+composer.lock
