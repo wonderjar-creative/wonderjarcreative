@@ -9,6 +9,9 @@
  */
 
 namespace WonderjarCreativeBackend\Inc;
+use WonderjarCreativeBackend\Inc\Loader;
+use WonderjarCreativeBackend\Inc\I18n;
+use WonderjarCreativeBackend\Inc\Features\RestFeature;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
@@ -35,7 +38,7 @@ class Theme {
    *
    * @since 1.0.0
    */
-  const VERSION = '1.0.0';
+  const VERSION = WONDERJAR_CREATIVE_BACKEND_VERSION ?? '1.0.0';
 
   /**
    * The loader instance.
@@ -52,6 +55,14 @@ class Theme {
    * @var I18n $i18n The i18n instance.
    */
   protected $i18n;
+
+  /**
+   * The REST feature instance.
+   *
+   * @since 1.0.0
+   * @var RestFeature $rest_feature The REST feature instance.
+   */
+  protected $rest_feature;
 
   /**
    * Get the instance of the class.
@@ -96,6 +107,8 @@ class Theme {
   private function initialize_classes() {
     $this->loader = new Loader();
     $this->i18n = new I18n( $this->loader );
+    $this->rest_feature = new RestFeature( self::THEME_SLUG, self::VERSION, $this->loader );
+
   }
 
   /**
@@ -105,16 +118,8 @@ class Theme {
    * @return void
    */
   private function define_hooks() {
-    $this->loader->add_action( 'wp_enqueue_scripts', $this, 'enqueue_scripts' );
-  }
-
-  /**
-   * Enqueue scripts.
-   *
-   * @since 1.0.0
-   * @return void
-   */
-  public function enqueue_scripts() {
+    $this->loader->add_action( 'after_setup_theme', $this, 'setup_theme' );
+    $this->loader->add_filter( 'upload_mimes', $this, 'allowed_mime_types' );
   }
 
   /**
@@ -125,6 +130,40 @@ class Theme {
    */
   public function run() {
     $this->loader->run();
+  }
+
+  /**
+   * Setup theme defaults and registers support for various WordPress features.
+   *
+   * @since 1.0.0
+   * @return void
+   * @link https://developer.wordpress.org/themes/functionality/theme-support/
+   * @link https://developer.wordpress.org/reference/functions/register_nav_menus/
+   */
+  public function setup_theme() {
+    // Add theme support
+    add_theme_support( 'post-thumbnails' );
+    
+    // Register navigation menus for the theme
+    register_nav_menus( 
+      array( 
+        'primary-menu' => __( 'Primary menu', self::THEME_SLUG )
+      )
+    );
+  }
+
+  /**
+   * Allowed Mime Types.
+   * 
+   * Filters the allowed mime types for file uploads.
+   * 
+   * @since 1.0.0
+   * @param array $mimes The allowed mime types.
+   * @return array The filtered allowed mime types.
+   */
+  public function allowed_mime_types( $mimes ) {
+    $mimes['svg'] = 'image/svg+xml';
+    return $mimes;
   }
 
   /**
@@ -154,7 +193,7 @@ class Theme {
    * @return string
    */
   public static function get_snake_case_slug() {
-    return str_replace( '-', '_', self::THEME_SLUG );
+    return str_replace( '-', '_', self::get_slug() );
   }
 
   /**
