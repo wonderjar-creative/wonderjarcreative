@@ -28,7 +28,7 @@ class Loader {
    * The array of actions registered with WordPress.
    *
    * @since 1.0.0
-   * @var array $actions The actions registered with WordPress to fire when the plugin loads.
+   * @var array $actions The actions registered with WordPress to fire when the theme loads.
    */
   protected $actions;
 
@@ -36,7 +36,7 @@ class Loader {
    * The array of filters registered with WordPress.
    *
    * @since 1.0.0
-   * @var array $filters The filters registered with WordPress to fire when the plugin loads.
+   * @var array $filters The filters registered with WordPress to fire when the theme loads.
    */
   protected $filters;
 
