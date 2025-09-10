@@ -2,13 +2,13 @@
 /**
  * Loader class file.
  * 
- * @package FossiliciousTwentyTwentyFiveChild/Inc
+ * @package WonderjarCreativeBackend/Inc
  * @since 1.0.0
- * @author mediaworksmatt <matt@mediaworksweb.com>
- * @link https://www.mediaworksweb.com/
+ * @author wjmatt <matt@wonderjarcreative.com>
+ * @link https://www.wonderjarcreative.com/
  */
 
-namespace FossiliciousTwentyTwentyFiveChild\Inc;
+namespace WonderjarCreativeBackend\Inc;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
@@ -18,9 +18,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * This class is responsible for loading and managing the various components of the theme.
  * It handles the registration of actions and filters with WordPress.
  * 
- * @package FossiliciousTwentyTwentyFiveChild/Inc
+ * @package WonderjarCreativeBackend/Inc
  * @since 1.0.0
- * @link https://www.mediaworksweb.com/
+ * @link https://www.wonderjarcreative.com/
  */
 class Loader {
 

@@ -2,13 +2,13 @@
 /**
  * Theme class file.
  * 
- * @package FossiliciousTwentyTwentyFiveChild/Inc
+ * @package WonderjarCreativeBackend/Inc
  * @since 1.0.0
- * @author mediaworksmatt <matt@mediaworksweb.com>
- * @link https://www.mediaworksweb.com/
+ * @author wjmatt <matt@wonderjarcreative.com>
+ * @link https://www.wonderjarcreative.com/
  */
 
-namespace FossiliciousTwentyTwentyFiveChild\Inc;
+namespace WonderjarCreativeBackend\Inc;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
@@ -17,9 +17,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * 
  * This class initializes the theme and provides methods to get theme information.
  * 
- * @package FossiliciousTwentyTwentyFiveChild/Inc
+ * @package WonderjarCreativeBackend/Inc
  * @since 1.0.0
- * @link https://www.mediaworksweb.com/
+ * @link https://www.wonderjarcreative.com/
  */
 class Theme {
 
@@ -28,7 +28,7 @@ class Theme {
    *
    * @since 1.0.0
    */
-  const THEME_SLUG = 'fossilicious-twentytwentyfive-child';
+  const THEME_SLUG = 'wonderjarcreative-backend';
 
   /**
    * The version of the theme.
@@ -44,14 +44,6 @@ class Theme {
    * @var Loader $loader The loader instance.
    */
   protected $loader;
-
-  /**
-   * The vite manifest.
-   *
-   * @since 1.0.0
-   * @var array $manifest The vite manifest file.
-   */
-  protected $manifest;
 
   /**
    * The i18n instance.
@@ -89,22 +81,8 @@ class Theme {
    * @return void
    */
   private function __construct() {
-    $this->load_manifest();
     $this->initialize_classes();
     $this->define_hooks();
-  }
-
-  /**
-   * Load the Vite manifest file.
-   *
-   * @since 1.0.0
-   * @return void
-   */
-  private function load_manifest() {
-    $manifest_path = get_stylesheet_directory() . '/dist/.vite/manifest.json';
-    if ( file_exists( $manifest_path ) ) {
-      $this->manifest = json_decode( file_get_contents( $manifest_path ), true );
-    }
   }
 
   /**
@@ -137,28 +115,6 @@ class Theme {
    * @return void
    */
   public function enqueue_scripts() {
-    $js_key = 'src/js/main.ts';
-    if ( isset( $this->manifest[$js_key] ) ) {
-      $js_path = self::get_theme_url() . '/dist/' . $this->manifest[$js_key]['file'];
-      wp_enqueue_script( 
-        self::get_slug() . '-main',
-        $js_path,
-        array(),
-        self::get_version(),
-        true
-      );
-    }
-
-    $css_key = 'src/css/main-style.css';
-    if ( isset( $this->manifest[$css_key] ) ) {
-      $css_path = self::get_theme_url() . '/dist/' . $this->manifest[$css_key]['file'];
-      wp_enqueue_style( 
-        self::get_slug() . '-main',
-        $css_path,
-        array(),
-        self::get_version()
-      );
-    }
   }
 
   /**
@@ -189,6 +145,16 @@ class Theme {
    */
   public static function get_theme_url() {
     return get_stylesheet_directory_uri();
+  }
+
+  /**
+   * Get the theme slug in snake case format.
+   *
+   * @since 1.0.0
+   * @return string
+   */
+  public static function get_snake_case_slug() {
+    return str_replace( '-', '_', self::THEME_SLUG );
   }
 
   /**

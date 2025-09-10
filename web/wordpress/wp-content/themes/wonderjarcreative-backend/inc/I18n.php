@@ -2,23 +2,23 @@
 /**
  * I18n class file.
  * 
- * @package FossiliciousTwentyTwentyFiveChild/Inc
+ * @package WonderjarCreativeBackend/Inc
  * @since 1.0.0
- * @author mediaworksmatt <matt@mediaworksweb.com>
- * @link https://www.mediaworksweb.com/
+ * @author wjmatt <matt@wonderjarcreative.com>
+ * @link https://www.wonderjarcreative.com/
  */
 
-namespace FossiliciousTwentyTwentyFiveChild\Inc;
-use FossiliciousTwentyTwentyFiveChild\Inc\Theme;
+namespace WonderjarCreativeBackend\Inc;
+use WonderjarCreativeBackend\Inc\Theme;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
  * Class I18n.
  * 
- * @package FossiliciousTwentyTwentyFiveChild/Inc
+ * @package WonderjarCreativeBackend/Inc
  * @since 1.0.0
- * @link https://www.mediaworksweb.com/
+ * @link https://www.wonderjarcreative.com/
  */
 class I18n {
 
@@ -69,7 +69,7 @@ class I18n {
    */
   public function load_textdomain() {
     load_theme_textdomain( 
-      'fossilicious-twentytwentyfive-child',
+      'wonderjarcreative-backend',
       Theme::get_theme_path() . '/languages' );
   }
 }
