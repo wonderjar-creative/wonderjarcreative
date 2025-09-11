@@ -6,7 +6,6 @@
 @source inline('bg-{teal,warm-coral,muted-brick-red,deep-black,retro-teal,soft-cream,charcoal-gray,marigold-yellow,white}');
 @source inline('border-{teal,warm-coral,muted-brick-red,deep-black,retro-teal,soft-cream,charcoal-gray,marigold-yellow,white}');
 
-
 @theme {
   /* Colors */
   --color-teal: #50C9B4;
