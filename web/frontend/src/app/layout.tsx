@@ -2,8 +2,6 @@ import { draftMode } from "next/headers";
 import { Roboto, Caveat } from "next/font/google";
 
 import "@/app/globals.css";
-
-import SiteHeader from "@/components/Globals/SiteHeader/SiteHeader";
 import { PreviewNotice } from "@/components/Globals/PreviewNotice/PreviewNotice";
 
 const roboto = Roboto({
@@ -28,8 +26,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     >
       <body>
         {isEnabled && <PreviewNotice />}
-        <SiteHeader />
-        {children}
+        <div className="wp-site-blocks">
+          {children}
+        </div>
       </body>
     </html>
   );
