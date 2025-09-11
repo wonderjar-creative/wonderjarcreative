@@ -60,7 +60,7 @@ export const getBlockClasses = (
     gradient ? `has-${gradient}` : '',
     id ? `wp-image-${id}` : '',
     isStackedOnMobile ? 'is-stacked-on-mobile' : '',
-    layout?.type ? `is-layout-${layout.type}` : '',
+    layout?.type ? `${layout.type}` : '',
     sizeSlug ? `size-${sizeSlug}` : '',
     textAlign ? `text-${textAlign}` : '',
     textColor ? `text-${textColor}` : '',
