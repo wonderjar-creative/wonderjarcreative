@@ -1,4 +1,4 @@
-import { CoreGroupBlock } from '@/utils/blockTypes';
+import { CoreGroupBlock } from '@/types/coreBlockTypes';
 import { getBlockBaseClass, getBlockClasses, getBlockStyleAttr } from '@/utils/blockStyles';
 
 const Group: React.FC<CoreGroupBlock> = ({ name, attributes, innerBlocks }) => {

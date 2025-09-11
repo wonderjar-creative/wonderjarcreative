@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { CoreCoverBlock } from '@/utils/blockTypes';
+import { CoreCoverBlock } from '@/types/coreBlockTypes';
 import { getBlockBaseClass, getBlockClasses, getBlockStyleAttr } from '@/utils/blockStyles';
 
 const Cover: React.FC<CoreCoverBlock> = ({ name, attributes, featuredImage, mediaItem, innerBlocks }) => {

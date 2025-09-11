@@ -1,4 +1,4 @@
-import { CoreParagraphBlock } from '@/utils/blockTypes';
+import { CoreParagraphBlock } from '@/types/coreBlockTypes';
 import { getBlockBaseClass, getBlockClasses, getBlockStyleAttr } from '@/utils/blockStyles';
 import { stripOuterTag } from '@/utils/htmlTransformations';
 

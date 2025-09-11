@@ -1,4 +1,4 @@
-import { CoreHeadingBlock } from '@/utils/blockTypes';
+import { CoreHeadingBlock } from '@/types/coreBlockTypes';
 import { getBlockBaseClass, getBlockClasses, getBlockStyleAttr } from '@/utils/blockStyles';
 import { stripOuterTag, getTransformedHtml } from '@/utils/htmlTransformations';
 

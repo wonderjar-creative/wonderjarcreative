@@ -47,6 +47,8 @@ export function generateStaticParams() {
   return [];
 }
 
+export const revalidate = 300; // 5 minutes
+
 export default async function Page({ params }: Props) {
   const _params = await params;
   const slug = nextSlugToWpSlug(_params.slug);

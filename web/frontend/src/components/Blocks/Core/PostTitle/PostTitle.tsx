@@ -1,4 +1,4 @@
-import { CorePostTitleBlock } from '@/utils/blockTypes';
+import { CorePostTitleBlock } from '@/types/coreBlockTypes';
 import { getBlockBaseClass, getBlockClasses, getBlockStyleAttr } from '@/utils/blockStyles';
 import { stripOuterTag } from '@/utils/htmlTransformations';
 import React from 'react';
@@ -6,7 +6,7 @@ import React from 'react';
 const PostTitle: React.FC<CorePostTitleBlock> = ({ name, attributes, isDynamic, dynamicContent, saveContent }) => {
   const { level, style } = attributes || {};
   const blockClasses = getBlockClasses(attributes || {}, getBlockBaseClass(name));
-  const blockStyleAttr = getBlockStyleAttr(attributes || {});
+  const blockStyleAttr = getBlockStyleAttr(style || {});
   const Tag = `h${level}` || 'h2';
   const TagComponent = Tag as keyof JSX.IntrinsicElements;
   const content = dynamicContent || saveContent;

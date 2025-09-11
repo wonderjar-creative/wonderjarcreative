@@ -1,4 +1,4 @@
-import { CoreButtonsBlock } from '@/utils/blockTypes';
+import { CoreButtonsBlock } from '@/types/coreBlockTypes';
 import { getBlockBaseClass, getBlockClasses, getBlockStyleAttr } from '@/utils/blockStyles';
 
 const Buttons: React.FC<CoreButtonsBlock> = ({ name, attributes, innerBlocks }) => {

@@ -1,4 +1,4 @@
-import { FrontendBlock } from '@/utils/blockTypes';
+import { FrontendBlock } from '@/types/coreBlockTypes';
 import { getBlockClasses, getBlockStyleAttr } from '@/utils/blockStyles';
 
 const Default: React.FC<FrontendBlock> = ({ attributes, dynamicContent, saveContent, innerBlocks }) => {

@@ -1,4 +1,4 @@
-import { CoreColumnsBlock } from '@/utils/blockTypes';
+import { CoreColumnsBlock } from '@/types/coreBlockTypes';
 import { getBlockBaseClass, getBlockClasses, getBlockStyleAttr } from '@/utils/blockStyles';
 
 const Columns: React.FC<CoreColumnsBlock> = ({ name, attributes, innerBlocks }) => {
