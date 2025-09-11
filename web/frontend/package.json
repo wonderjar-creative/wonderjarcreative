@@ -3,15 +3,20 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "predev": "npm run fetch-wp-template-structure",
     "dev": "graphql-codegen --config codegen.ts && node ./add-ts-nocheck.js && next dev",
+    "prebuild": "npm run fetch-wp-template-structure",
     "build": "graphql-codegen --config codegen.ts && node ./add-ts-nocheck.js && next build",
     "start": "next start",
     "lint": "next lint",
-    "codegen": "graphql-codegen --config codegen.ts && node ./add-ts-nocheck.js"
+    "codegen": "graphql-codegen --config codegen.ts && node ./add-ts-nocheck.js",
+    "fetch-wp-template-structure": "node ./scripts/fetch-wp-template-structure.js"
   },
   "dependencies": {
     "@svgr/webpack": "^8.1.0",
     "@tailwindcss/postcss": "^4.1.0",
+    "@wordpress/block-serialization-default-parser": "^5.28.0",
+    "dotenv": "^17.2.1",
     "graphql": "^16.9.0",
     "graphql-tag": "^2.12.6",
     "html-react-parser": "^5.2.5",
