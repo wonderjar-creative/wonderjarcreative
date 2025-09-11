@@ -28,11 +28,9 @@ class RestFeature extends FeatureBase {
    * Initialize the class and set its properties.
    *
    * @since 1.0.0
-   * 
    * @param string $slug The slug of the feature.
    * @param string $version The version of the feature.
    * @param WonderjarCreativeBackend\Inc\Loader $loader The loader instance.
-   *
    * @return void
    */
   public function __construct( $slug, $version, $loader ) {
@@ -44,9 +42,7 @@ class RestFeature extends FeatureBase {
    * Define the hooks for this feature.
    *
    * @since 1.0.0
-   * 
    * @return void
-   * 
    * @see WonderjarCreativeBackend\Inc\Loader::add_filter()
    */
   private function define_hooks() {
@@ -65,11 +61,8 @@ class RestFeature extends FeatureBase {
    * Changes the REST API root URL to use the home URL as the base.
    *
    * @since 1.0.0
-   * 
    * @param string $url The complete URL including scheme and path.
-   * 
    * @return string The REST API root URL.
-   *
    * @link home_url() https://developer.wordpress.org/reference/functions/home_url/
    * @link site_url() https://developer.wordpress.org/reference/functions/site_url/
    */
@@ -84,10 +77,8 @@ class RestFeature extends FeatureBase {
    * This function modifies the preview link for a post to point to a headless client setup.
    *
    * @since 1.0.0
-   * 
    * @param string  $link Original WordPress preview link.
-   * @param WP_Post $post Current post object.
-   * 
+   * @param \WP_Post $post Current post object.
    * @return string Modified headless preview link.
    */
   public function set_headless_preview_link( string $link, \WP_Post $post ): string {
@@ -109,12 +100,9 @@ class RestFeature extends FeatureBase {
    * for draft posts and a modified permalink for published posts.
    *
    * @since 1.0.0
-   * 
    * @param \WP_REST_Response $response The REST API response object.
    * @param \WP_Post         $post     The current post object.
-   * 
    * @return \WP_REST_Response The modified REST API response object.
-   * 
    * @link get_preview_post_link() https://developer.wordpress.org/reference/functions/get_preview_post_link/
    * @link get_permalink() https://developer.wordpress.org/reference/functions/get_permalink/
    * @link get_site_url() https://developer.wordpress.org/reference/functions/get_site_url/
@@ -150,11 +138,8 @@ class RestFeature extends FeatureBase {
    * Requires HEADLESS_URL and HEADLESS_SECRET to be defined in wp-config.php
    *
    * @since 1.0.0
-   * 
    * @param int $post_ID The ID of the post being saved.
-   * 
    * @return void
-   * 
    * @link wp_remote_request() https://developer.wordpress.org/reference/functions/wp_remote_request/
    * @link is_wp_error() https://developer.wordpress.org/reference/functions/is_wp_error/
    * @link error_log() https://developer.wordpress.org/reference/functions/error_log/
@@ -195,14 +180,11 @@ class RestFeature extends FeatureBase {
    * Registers custom REST API routes for generating sitemap data.
    * 
    * @since 1.0.0
-   * 
    * @return void
-   * 
    * @see WonderjarCreativeBackend\Inc\Features\RestFeature::generate_posts_api()
    * @see WonderjarCreativeBackend\Inc\Features\RestFeature::generate_taxonomy_api()
    * @see WonderjarCreativeBackend\Inc\Features\RestFeature::generate_author_api()
    * @see WonderjarCreativeBackend\Inc\Features\RestFeature::generate_totalpages_api()
-   * 
    * @link register_rest_route() https://developer.wordpress.org/reference/functions/register_rest_route/
    */
   function register_sitemap_routes() {
@@ -230,11 +212,8 @@ class RestFeature extends FeatureBase {
    * Generates the author API.
    * 
    * @since 1.0.0
-   * 
    * @return array An array of author URLs.
-   * 
    * @see WonderjarCreativeBackend\Inc\Features\RestFeature::get_user_inputs()
-   * 
    * @link get_users() https://developer.wordpress.org/reference/functions/get_users/
    * @link get_author_posts_url() https://developer.wordpress.org/reference/functions/get_author_posts_url/
    * @link esc_url() https://developer.wordpress.org/reference/functions/esc_url/
@@ -261,11 +240,8 @@ class RestFeature extends FeatureBase {
    * Generates the taxonomy API.
    * 
    * @since 1.0.0
-   * 
    * @return array An array of taxonomy URLs.
-   * 
    * @see WonderjarCreativeBackend\Inc\Features\RestFeature::get_user_inputs()
-   * 
    * @link get_tags() https://developer.wordpress.org/reference/functions/get_tags/
    * @link get_categories() https://developer.wordpress.org/reference/functions/get_categories/
    * @link get_category_link() https://developer.wordpress.org/reference/functions/get_category_link/
@@ -294,11 +270,8 @@ class RestFeature extends FeatureBase {
    * Generates the posts API.
    * 
    * @since 1.0.0
-   * 
    * @return array An array of post URLs with their modified dates.
-   * 
    * @see WonderjarCreativeBackend\Inc\Features\RestFeature::get_user_inputs()
-   * 
    * @link WP_Query https://developer.wordpress.org/reference/classes/wp_query/
    * @link get_permalink() https://developer.wordpress.org/reference/functions/get_permalink/
    * @link get_the_modified_date() https://developer.wordpress.org/reference/functions/get_the_modified_date/
@@ -328,9 +301,7 @@ class RestFeature extends FeatureBase {
    * Generates the total pages API for posts, categories, tags, and users.
    * 
    * @since 1.0.0
-   * 
    * @return array An array containing the total counts of posts, categories, tags, and users.
-   * 
    * @link get_post_types() https://developer.wordpress.org/reference/functions/get_post_types/
    * @link get_categories() https://developer.wordpress.org/reference/functions/get_categories/
    * @link get_tags() https://developer.wordpress.org/reference/functions/get_tags/
@@ -363,14 +334,11 @@ class RestFeature extends FeatureBase {
    * Register template structure routes.
    *
    * @since 1.0.0
-   * 
    * @return void
-   * 
    * @see WonderjarCreativeBackend\Inc\Features\RestFeature::get_full_template_structure()
    * @see WonderjarCreativeBackend\Inc\Features\RestFeature::get_template_structure_template()
    * @see WonderjarCreativeBackend\Inc\Features\RestFeature::get_template_structure_part()
    * @see WonderjarCreativeBackend\Inc\Features\RestFeature::get_template_structure_pattern()
-   * 
    * @link register_rest_route() https://developer.wordpress.org/reference/functions/register_rest_route/
    */
   public function register_template_structure_routes() {
@@ -404,15 +372,11 @@ class RestFeature extends FeatureBase {
    * the frontend at build time.
    *
    * @since 1.0.0
-   * 
    * @param WP_REST_Request $request The REST API request.
-   * 
    * @return array An array of template structure blocks with their slugs and content.
-   * 
    * @see WonderjarCreativeBackend\Inc\Features\RestFeature::get_theme_path()
    * @see WonderjarCreativeBackend\Inc\Features\RestFeature::render_dynamic_blocks()
    * @see WonderjarCreativeBackend\Inc\Features\RestFeature::normalize_block_keys()
-   * 
    * @link parse_blocks() https://developer.wordpress.org/reference/functions/parse_blocks/
    */
   public function get_full_template_structure( $request ) {
@@ -473,15 +437,11 @@ class RestFeature extends FeatureBase {
    * Get the template structure for a template.
    *
    * @since 1.0.0
-   * 
    * @param WP_REST_Request $request The REST API request.
-   * 
    * @return array|WP_Error The template structure or an error.
-   * 
    * @see WonderjarCreativeBackend\Inc\Features\RestFeature::get_theme_path()
    * @see WonderjarCreativeBackend\Inc\Features\RestFeature::render_dynamic_blocks()
    * @see WonderjarCreativeBackend\Inc\Features\RestFeature::normalize_block_keys()
-   * 
    * @link parse_blocks() https://developer.wordpress.org/reference/functions/parse_blocks/
    */
   public function get_template_structure_template( $request ) {
@@ -520,11 +480,9 @@ class RestFeature extends FeatureBase {
    * @since 1.0.0
    * @param WP_REST_Request $request The REST API request.
    * @return array|WP_Error The template structure or an error.
-   * 
    * @see WonderjarCreativeBackend\Inc\Features\RestFeature::get_theme_path()
    * @see WonderjarCreativeBackend\Inc\Features\RestFeature::render_dynamic_blocks()
-   * @see WonderjarCreativeBackend\Inc\Features\RestFeature::normalize_block_keys
-   * 
+   * @see WonderjarCreativeBackend\Inc\Features\RestFeature::normalize_block_keys()
    * @link parse_blocks() https://developer.wordpress.org/reference/functions/parse_blocks/
    */
   public function get_template_structure_part( $request ) {
@@ -561,13 +519,11 @@ class RestFeature extends FeatureBase {
    * Get the template structure for a pattern.
    *
    * @since 1.0.0
-   * @param WP_REST_Request $request The REST API request.
-   * @return array|WP_Error The template structure or an error.
-   * 
+   * @param \WP_REST_Request $request The REST API request.
+   * @return array|\WP_Error The template structure or an error.
    * @see WonderjarCreativeBackend\Inc\Features\RestFeature::get_theme_path()
-   * @see WonderjarCreativeBackend\Inc\Features\RestFeature::render_dynamic_blocks
-   * @see WonderjarCreativeBackend\Inc\Features\RestFeature::normalize_block_keys
-   * 
+   * @see WonderjarCreativeBackend\Inc\Features\RestFeature::render_dynamic_blocks()
+   * @see WonderjarCreativeBackend\Inc\Features\RestFeature::normalize_block_keys()
    * @link parse_blocks() https://developer.wordpress.org/reference/functions/parse_blocks/
    */
   public function get_template_structure_pattern( $request ) {
@@ -654,11 +610,8 @@ class RestFeature extends FeatureBase {
    * Render dynamic blocks.
    *
    * @since 1.0.0
-   * 
    * @param array $blocks The blocks to render.
-   * 
    * @return array The rendered blocks.
-   * 
    * @link https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/#is_dynamic
    * @link https://developer.wordpress.org/reference/functions/render_block/
    */
@@ -683,9 +636,7 @@ class RestFeature extends FeatureBase {
    * Converts 'blockName' to 'name' and 'attrs' to 'attributes'.
    * 
    * @since 1.0.0
-   * 
    * @param array $blocks The blocks to normalize.
-   * 
    * @return array The normalized blocks.
    */
   private static function normalize_block_keys( $blocks ) {
