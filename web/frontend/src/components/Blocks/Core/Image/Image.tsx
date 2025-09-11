@@ -1,9 +1,7 @@
 import Image from 'next/image';
-import { CoreImageBlockAttributes } from '@/gql/graphql';
-import { CoreImageBlock } from '@/utils/blockTypes';
+import { CoreImageBlock } from '@/types/coreBlockTypes';
 import { getBlockBaseClass, getBlockClasses, getBlockStyleAttr } from '@/utils/blockStyles';
-import { getMediaSize, getSizesAttribute } from '@/utils/blockMedia';
-import { stripOuterTag } from '@/utils/htmlTransformations';
+import { getMediaSize, getSizesAttribute } from '@/utils/mediaSizes';
 
 const ImageComponent: React.FC<CoreImageBlock> = ({ name, attributes, mediaItem }) => {
   const { url, align, alt, anchor, aspectRatio, style, width, height, scale, sizeSlug, ...imageAttributes } = attributes || {};
