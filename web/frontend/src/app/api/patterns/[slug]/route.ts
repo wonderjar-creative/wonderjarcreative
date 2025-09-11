@@ -5,10 +5,10 @@ const WP_API = process.env.NEXT_PUBLIC_WORDPRESS_API_URL || 'http://localhost:80
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  context: { params: Promise<{ slug: string }> }
 ) {
-  const _params = await params;
-  const slug = _params.slug;
+  const params = await context.params;
+  const slug = params.slug;
 
   try {
     const wpRes = await fetch(`${WP_API}/wp-json/template-structure/v1/patterns/${encodeURIComponent(slug)}`, {
