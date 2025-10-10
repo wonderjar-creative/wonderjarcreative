@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { CoreSiteLogoBlock } from '@/types/coreBlockTypes';
 import { getBlockBaseClass, getBlockClasses, getBlockStyleAttr } from '@/utils/blockStyles';
 import { getMediaSize, getSizesAttribute } from '@/utils/mediaSizes';
+import getDynamicMediaItem from '@/utils/getDynamicBlockMediaItem';
 
 const SiteLogo: React.FC<CoreSiteLogoBlock> = ({
   attributes,
@@ -10,22 +11,49 @@ const SiteLogo: React.FC<CoreSiteLogoBlock> = ({
   saveContent,
   mediaItem
 }) => {
-  console.log('SiteLogo attributes:', attributes);
-  console.log('SiteLogo mediaItem', mediaItem );
-  console.log('isDynamic:', isDynamic);
+  const { width } = attributes || {};
+
+  if (isDynamic && dynamicContent && !mediaItem) {
+    const dynamicMediaItem = getDynamicMediaItem(dynamicContent);
+
+    if (dynamicMediaItem?.node?.sourceUrl) {
+      const dynamicWidth = dynamicMediaItem.node.mediaDetails?.width || 1350;
+      const dynamicHeight = dynamicMediaItem.node.mediaDetails?.height || 490;
+      const aspectRatio = dynamicHeight / dynamicWidth;
+      const calculatedHeight = Math.round(width ?? 120 * aspectRatio);
+
+      const blockClasses = getBlockClasses(attributes || {}, getBlockBaseClass('core-site-logo'));
+      const blockStyleAttr = getBlockStyleAttr(attributes?.style);
+      
+      const Logo = () => (
+        <Image
+          src={dynamicMediaItem.node.sourceUrl || ''}
+          alt={dynamicMediaItem.node.altText || ''}
+          width={width ?? 120}
+          height={calculatedHeight}
+          priority
+        />
+      );
+
+      return (
+        <div className={blockClasses} style={blockStyleAttr}>
+          <a href="/" className="wp-block-site-logo__link" rel="home">
+            <Logo />
+          </a>
+        </div>
+      );
+    }
+  }
+
+  // Fallback for non-dynamic or missing content
   return (
-    <p>Image here</p>
-    // <Image
-    //   src={attributes?.metadata?.url}
-    //   alt={attributes?.alt}
-    //   className={getBlockClasses(attributes)}
-    //   style={getBlockStyleAttr(attributes)}
-    //   sizes={getSizesAttribute(attributes)}
-    //   layout="responsive"
-    //   width={getMediaSize(attributes, 'width')}
-    //   height={getMediaSize(attributes, 'height')}
-    // />
+    <div 
+      className={getBlockClasses(attributes ?? {}, getBlockBaseClass('core-site-logo'))}
+      style={getBlockStyleAttr(attributes?.style)}
+    >
+      {/* Fallback content or empty */}
+    </div>
   );
-}
+};
 
 export default SiteLogo;
