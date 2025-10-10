@@ -4,8 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "57b11d5812194d9061d2c34cb6647078",
-    "packages": [
+    "content-hash": "d1d2c39cfbac9b503b253374e6b8ed78",
+    "packages": [],
+    "packages-dev": [
         {
             "name": "php-stubs/wordpress-globals",
             "version": "v0.2.0",
@@ -99,7 +100,6 @@
             "time": "2025-07-16T06:41:00+00:00"
         }
     ],
-    "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": [],
