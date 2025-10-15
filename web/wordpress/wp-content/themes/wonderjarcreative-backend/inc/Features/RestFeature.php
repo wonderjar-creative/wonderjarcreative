@@ -204,18 +204,22 @@ class RestFeature extends FeatureBase {
     register_rest_route( 'sitemap/v1', '/posts', array( 
       'methods' => 'GET',
       'callback' => [ $this, 'generate_posts_api' ],
+      'permission_callback' => '__return_true'
     ));
     register_rest_route( 'sitemap/v1', '/taxonomy', array( 
       'methods' => 'GET',
       'callback' => [ $this, 'generate_taxonomy_api' ],
+      'permission_callback' => '__return_true'
     ));
     register_rest_route( 'sitemap/v1', '/author', array( 
       'methods' => 'GET',
       'callback' => [ $this, 'generate_author_api' ],
+      'permission_callback' => '__return_true'
     ));
     register_rest_route( 'sitemap/v1', '/totalpages', array( 
       'methods' => 'GET',
       'callback' => [ $this, 'generate_totalpages_api' ],
+      'permission_callback' => '__return_true'
     ));
   }
 
