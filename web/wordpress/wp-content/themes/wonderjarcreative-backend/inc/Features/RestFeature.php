@@ -51,8 +51,7 @@ class RestFeature extends FeatureBase {
     $this->loader->add_filter( 'rest_prepare_page', $this, 'set_headless_rest_preview_link', 10, 2 );
     $this->loader->add_filter( 'rest_prepare_post', $this, 'set_headless_rest_preview_link', 10, 2 );
     $this->loader->add_action( 'transition_post_status', $this, 'headless_revalidate', 10, 3 );
-    $this->loader->add_action( 'rest_api_init', $this, 'register_sitemap_routes' );
-    $this->loader->add_action( 'rest_api_init', $this, 'register_template_structure_routes' );
+    $this->loader->add_action( 'rest_api_init', $this, 'register_api_routes' );
   }
 
   /**
@@ -175,6 +174,20 @@ class RestFeature extends FeatureBase {
   }
 
   /**
+   * Register all API routes.
+   * 
+   * Registers all custom REST API routes for the feature.
+   * 
+   * @since 1.0.0
+   * @return void
+   */
+  public function register_api_routes() {
+    $this->register_sitemap_routes();
+    $this->register_template_structure_routes();
+    $this->register_block_routes();
+  }
+
+  /**
    * Register REST API routes for sitemap.
    * 
    * Registers custom REST API routes for generating sitemap data.
@@ -187,7 +200,7 @@ class RestFeature extends FeatureBase {
    * @see WonderjarCreativeBackend\Inc\Features\RestFeature::generate_totalpages_api()
    * @link register_rest_route() https://developer.wordpress.org/reference/functions/register_rest_route/
    */
-  function register_sitemap_routes() {
+  private function register_sitemap_routes() {
     register_rest_route( 'sitemap/v1', '/posts', array( 
       'methods' => 'GET',
       'callback' => [ $this, 'generate_posts_api' ],
@@ -341,7 +354,7 @@ class RestFeature extends FeatureBase {
    * @see WonderjarCreativeBackend\Inc\Features\RestFeature::get_template_structure_pattern()
    * @link register_rest_route() https://developer.wordpress.org/reference/functions/register_rest_route/
    */
-  public function register_template_structure_routes() {
+  private function register_template_structure_routes() {
     register_rest_route( 'template-structure/v1', '/full', [
       'methods' => 'GET',
       'callback' => [ $this, 'get_full_template_structure' ],
@@ -662,5 +675,63 @@ class RestFeature extends FeatureBase {
 
       return $block;
     }, $blocks );
+  }
+
+  /**
+   * Register template structure routes.
+   *
+   * @since 1.0.0
+   * @return void
+   * @see WonderjarCreativeBackend\Inc\Features\RestFeature::get_full_template_structure()
+   * @see WonderjarCreativeBackend\Inc\Features\RestFeature::get_template_structure_template()
+   * @see WonderjarCreativeBackend\Inc\Features\RestFeature::get_template_structure_part()
+   * @see WonderjarCreativeBackend\Inc\Features\RestFeature::get_template_structure_pattern()
+   * @link register_rest_route() https://developer.wordpress.org/reference/functions/register_rest_route/
+   */
+  private function register_block_routes() {
+    register_rest_route( 'blocks/v1', '/navigation/(?P<id>\d+)', [
+      'methods' => 'GET',
+      'callback' => [ $this, 'get_navigation_data' ],
+      'permission_callback' => '__return_true'
+    ]);
+  }
+
+  /**
+   * Get navigation data from wp_navigation post.
+   *
+   * Fetches the navigation blocks from a wp_navigation custom post type
+   * and returns them in a normalized format for the frontend.
+   *
+   * @since 1.0.0
+   * @param WP_REST_Request $request The REST API request with 'id' parameter.
+   * @return array|WP_Error Navigation data with parsed blocks or error.
+   */
+  public function get_navigation_data( $request ) {
+    $nav_id = $request->get_param( 'id' );
+    
+    // Get the wp_navigation post
+    $nav_post = get_post( $nav_id );
+    
+    if ( ! $nav_post || $nav_post->post_type !== 'wp_navigation' ) {
+      return new \WP_Error( 
+        'navigation_not_found', 
+        'Navigation with the specified ID not found', 
+        [ 'status' => 404 ] 
+      );
+    }
+    
+    // Parse the navigation content
+    $content = $nav_post->post_content;
+    $blocks = parse_blocks( $content );
+    
+    // Render dynamic blocks and normalize
+    $blocks = self::render_dynamic_blocks( $blocks );
+    $blocks = self::normalize_block_keys( $blocks );
+    
+    return [
+      'id' => $nav_post->ID,
+      'title' => $nav_post->post_title,
+      'blocks' => array_values( $blocks ),
+    ];
   }
 }
