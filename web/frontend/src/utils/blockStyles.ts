@@ -65,6 +65,7 @@ export const getBlockClasses = (
     textAlign ? `text-${textAlign}` : '',
     textColor ? `text-${textColor}` : '',
     verticalAlignClass,
+    layout?.type === 'flex' && verticalAlignClass !== 'items-center' ? 'items-center' : '',
     layout?.type === 'constrained' ? 'has-global-padding' : '',
   ];
 
