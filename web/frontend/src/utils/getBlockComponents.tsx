@@ -1,6 +1,23 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
-import { Maybe, CoreButtonBlockAttributes, CoreButtonsBlockAttributes, CoreColumnBlockAttributes, CoreGroupBlockAttributes, CoreImageBlockAttributes, CoreCoverBlockAttributes, CoreHeadingBlockAttributes, CoreParagraphBlockAttributes, CorePostTitleBlockAttributes, CoreSiteTitleBlockAttributes, CoreSiteLogoBlockAttributes, CoreColumnsBlockAttributes, Page, NodeWithFeaturedImageToMediaItemConnectionEdge } from '@/gql/graphql';
+import {
+  Maybe,
+  CoreButtonBlockAttributes,
+  CoreButtonsBlockAttributes,
+  CoreColumnBlockAttributes,
+  CoreGroupBlockAttributes,
+  CoreImageBlockAttributes,
+  CoreCoverBlockAttributes,
+  CoreHeadingBlockAttributes,
+  CoreNavigationBlockAttributes,
+  CoreParagraphBlockAttributes,
+  CorePostTitleBlockAttributes,
+  CoreSiteTitleBlockAttributes,
+  CoreSiteLogoBlockAttributes,
+  CoreColumnsBlockAttributes,
+  Page,
+  NodeWithFeaturedImageToMediaItemConnectionEdge
+} from '@/gql/graphql';
 import renderTemplatePart from './renderTemplatePart';
 import renderPattern from './renderPattern';
 import { enrichBlocksWithMedia } from '@/utils/blockMedia';
@@ -154,6 +171,19 @@ const getBlockComponents = async (
             name={block.name}
             attributes={block.attributes as CoreImageBlockAttributes}
             mediaItem={block.mediaItem}
+          />
+        );
+      }
+      case 'core/navigation': {
+        const Navigation = dynamic(() => import('@/components/Blocks/Core/Navigation/Navigation'), { ssr: true });
+
+        return (
+          <Navigation
+            key={index}
+            name={block.name}
+            attributes={block.attributes as CoreNavigationBlockAttributes}
+            innerBlocks={innerBlocks}
+            saveContent={block.saveContent}
           />
         );
       }
