@@ -1,8 +1,8 @@
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+const WP_URL = process.env.NEXT_PUBLIC_WORDPRESS_API_URL || 'http://localhost:3000';
 
 export async function fetchTemplateWithISR(slug: string) {
   try {
-    const res = await fetch(`${SITE_URL}/api/templates/${slug}`, {
+    const res = await fetch(`${WP_URL}/wp-json/template-structure/v1/templates/${slug}`, {
       next: { revalidate: 300 }, // 5 minutes
     });
     if (!res.ok) return null;
@@ -15,7 +15,7 @@ export async function fetchTemplateWithISR(slug: string) {
 
 export async function fetchTemplatePartWithISR(slug: string) {
   try {
-    const res = await fetch(`${SITE_URL}/api/template-parts/${slug}`, {
+    const res = await fetch(`${WP_URL}/wp-json/template-structure/v1/parts/${slug}`, {
       next: { revalidate: 300 },
     });
     if (!res.ok) return null;
@@ -28,7 +28,7 @@ export async function fetchTemplatePartWithISR(slug: string) {
 
 export async function fetchPatternWithISR(slug: string) {
   try {
-    const res = await fetch(`${SITE_URL}/api/patterns/${slug}`, {
+    const res = await fetch(`${WP_URL}/wp-json/template-structure/v1/patterns/${slug}`, {
       next: { revalidate: 300 },
     });
     if (!res.ok) return null;
