@@ -7,7 +7,7 @@ const PostContent: React.FC<CorePostContentBlock> = async ({ name, attributes, p
     <div className={`${getBlockClasses(attributes || {}, getBlockBaseClass(name))}`}>
       {await getBlockComponents(
         JSON.parse(page?.blocksJSON || '[]'),
-        page,
+        page ?? null,
         []
       )}
     </div>
