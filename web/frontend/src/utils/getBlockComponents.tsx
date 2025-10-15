@@ -10,6 +10,7 @@ import {
   CoreCoverBlockAttributes,
   CoreHeadingBlockAttributes,
   CoreNavigationBlockAttributes,
+  CoreNavigationLinkBlockAttributes,
   CoreParagraphBlockAttributes,
   CorePostTitleBlockAttributes,
   CoreSiteTitleBlockAttributes,
@@ -30,7 +31,7 @@ const generateRandomId = (length = 8) => {
 
 const getBlockComponents = async (
   enrichedBlocks: EnrichedBlock[],
-  page: Page,
+  page: Maybe<Page>,
   stylesCollector?: string[],
 ): Promise<React.ReactNode[]> => {
   if (!enrichedBlocks || enrichedBlocks.length === 0) {
@@ -38,7 +39,7 @@ const getBlockComponents = async (
     return [];
   }
 
-  const featuredImage: Maybe<NodeWithFeaturedImageToMediaItemConnectionEdge> = page.featuredImage || null;
+  const featuredImage: Maybe<NodeWithFeaturedImageToMediaItemConnectionEdge> = page?.featuredImage || null;
 
   return Promise.all(enrichedBlocks.map(async (block: EnrichedBlock, index: number) => {
     
@@ -182,7 +183,18 @@ const getBlockComponents = async (
             key={index}
             name={block.name}
             attributes={block.attributes as CoreNavigationBlockAttributes}
-            innerBlocks={innerBlocks}
+            saveContent={block.saveContent}
+          />
+        );
+      }
+      case 'core/navigation-link': {
+        const NavigationLink = dynamic(() => import('@/components/Blocks/Core/NavigationLink/NavigationLink'), { ssr: true });
+
+        return (
+          <NavigationLink
+            key={index}
+            name={block.name}
+            attributes={block.attributes as CoreNavigationLinkBlockAttributes}
             saveContent={block.saveContent}
           />
         );
@@ -207,7 +219,7 @@ const getBlockComponents = async (
             key={index}
             name={block.name}
             attributes={block.attributes}
-            page={page}
+            page={page ?? null}
           />
         );
       }
