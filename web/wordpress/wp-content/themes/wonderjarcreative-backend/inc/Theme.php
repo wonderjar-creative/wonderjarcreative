@@ -108,7 +108,6 @@ class Theme {
     $this->loader = new Loader();
     $this->i18n = new I18n( $this->loader );
     $this->rest_feature = new RestFeature( self::THEME_SLUG, self::VERSION, $this->loader );
-
   }
 
   /**
