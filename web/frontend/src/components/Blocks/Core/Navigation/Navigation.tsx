@@ -1,6 +1,7 @@
 import { CoreNavigationBlock } from "@/types/coreBlockTypes";
 import { getBlockBaseClass, getBlockClasses, getBlockStyleAttr } from "@/utils/blockStyles";
-import Link from "next/link";
+import { enrichBlocksWithMedia } from "@/utils/blockMedia";
+import getBlockComponents from "@/utils/getBlockComponents";
 
 interface NavigationData {
   id: number;
@@ -12,13 +13,10 @@ const fetchNavigationData = async (ref: number | undefined): Promise<NavigationD
   if (!ref) return null;
 
   try {
-    // Fetch from our Next.js API route which proxies the WordPress REST API
     const baseUrl = process.env.NEXT_PUBLIC_WORDPRESS_API_URL || 'http://localhost:3000';
     const response = await fetch(`${baseUrl}/wp-json/blocks/v1/navigation/${ref}`, {
       next: { revalidate: 3600 }
     });
-
-    console.log(`${baseUrl}/wp-json/blocks/v1/navigation/${ref}`);
 
     if (!response.ok) {
       console.error('Navigation fetch failed:', response.status, response.statusText);
@@ -26,8 +24,6 @@ const fetchNavigationData = async (ref: number | undefined): Promise<NavigationD
     }
 
     const data: NavigationData = await response.json();
-    console.log('Navigation data received:', data);
-    
     return data;
   } catch (error) {
     console.error('Error fetching navigation:', error);
@@ -36,50 +32,38 @@ const fetchNavigationData = async (ref: number | undefined): Promise<NavigationD
 };
 
 const Navigation: React.FC<CoreNavigationBlock> = async ({ name, attributes, innerBlocks }) => {
-  const { ref } = attributes || {};
-
-  console.log('Navigation Block Attributes:', attributes);
-  console.log('Inner Blocks:', innerBlocks);
-
-  // Get the navigation object from GraphQL if ref is provided
+  const { ref, layout } = attributes || {};
   const navData = await fetchNavigationData(ref as number | undefined);
-
-  console.log('Navigation Data:', navData);
-  
-  const blockClasses = getBlockClasses(attributes || {}, getBlockBaseClass(name));
-  const blockStyleAttr = getBlockStyleAttr(attributes?.style);
+  const navClasses = getBlockClasses(attributes ?? {}, getBlockBaseClass(name));
+  const navStyleAttr = getBlockStyleAttr(attributes?.style);
+  const listLayout = layout?.type || 'flex';
+  const listFlexWrap = layout?.flexWrap || 'nowrap';
+  const listOrientation = layout?.orientation || 'horizontal';
+  const listAttributes = { layout: { type: listLayout, flexWrap: listFlexWrap }, orientation: listOrientation };
+  const listClasses = getBlockClasses(listAttributes, 'wp-block-navigation__list');
+  const listStyleAttr = getBlockStyleAttr(attributes?.style?.elements?.list);
 
   // Fallback if no navigation data
-  if (!navData) {
+  if (!navData || !navData.blocks || navData.blocks.length === 0) {
     return (
-      <nav className={blockClasses} style={blockStyleAttr}>
-        <ul>
+      <nav className={navClasses} style={navStyleAttr}>
+        <ul className={listClasses} style={listStyleAttr}>
           <li>
-            <Link href="/">Home (fallback)</Link>
+            <a href="/">Home (fallback)</a>
           </li>
         </ul>
       </nav>
     );
   }
 
-  // Render the navigation blocks
+  // Filter out only navigation-link blocks and those with names (ignore null blockName entries)
+  const navigationLinkBlocks = navData.blocks.filter((block) => block.name === 'core/navigation-link');
+  const enrichedBlocks = await enrichBlocksWithMedia(navigationLinkBlocks);
+
   return (
-    <nav className={blockClasses} style={blockStyleAttr} aria-label={navData.title}>
-      <ul>
-        {navData.blocks.map((block, index) => {
-          // Each block should be a core/navigation-link
-          if (block.name === 'core/navigation-link') {
-            const { label, url, kind, type } = block.attributes || {};
-            return (
-              <li key={index}>
-                <Link href={url || '/'}>
-                  {label || 'Link'}
-                </Link>
-              </li>
-            );
-          }
-          return null;
-        })}
+    <nav className={navClasses} style={navStyleAttr}>
+      <ul className={listClasses} style={listStyleAttr}>
+        {(await getBlockComponents(enrichedBlocks, null))}
       </ul>
     </nav>
   );
