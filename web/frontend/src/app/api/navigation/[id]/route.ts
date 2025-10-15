@@ -19,7 +19,7 @@ export async function GET(
   }
 
   try {
-    const response = await fetch(`${wpUrl}/wp-json/template-structure/v1/navigation/${id}`, {
+    const response = await fetch(`${wpUrl}/wp-json/blocks/v1/navigation/${id}`, {
       cache: 'force-cache',
     });
 
