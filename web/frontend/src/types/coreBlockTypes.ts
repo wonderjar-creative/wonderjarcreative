@@ -11,6 +11,7 @@ import {
   CoreHeadingBlockAttributes,
   CoreImageBlockAttributes,
   CoreNavigationBlockAttributes,
+  CoreNavigationLinkBlockAttributes,
   CoreParagraphBlockAttributes,
   CorePostTitleBlockAttributes,
   CoreSiteTitleBlockAttributes,
@@ -91,18 +92,22 @@ export interface CoreNavigationBlock extends FrontendBlock {
   attributes?: CoreNavigationBlockAttributes;
 }
 
+export interface CoreNavigationLinkBlock extends FrontendBlock {
+  attributes?: CoreNavigationLinkBlockAttributes;
+}
+
 export interface CoreParagraphBlock extends FrontendBlock {
   attributes?: CoreParagraphBlockAttributes;
 }
 
 export interface CorePatternBlock extends FrontendBlock {
   attributes?: CorePatternBlockAttributes;
-  page: Page;
+  page: Maybe<Page>;
 }
 
 export interface CorePostContentBlock extends FrontendBlock {
   attributes?: CorePostContentBlockAttributes;
-  page: Page;
+  page: Maybe<Page>;
 }
 
 export interface CorePostTitleBlock extends FrontendBlock {
