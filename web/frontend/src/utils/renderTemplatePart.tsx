@@ -1,4 +1,4 @@
-import { Page } from "@/gql/graphql";
+import { Maybe, Page } from "@/gql/graphql";
 import { fetchTemplatePartWithISR } from "./isrFetchers";
 import { enrichBlocksWithMedia } from "./blockMedia";
 import getBlockComponents from "./getBlockComponents";
@@ -12,7 +12,7 @@ const getSemanticTag = (slug: string): keyof JSX.IntrinsicElements => {
 
 const renderTemplatePart = async (
   slug: string,
-  page: Page,
+  page: Maybe<Page>,
   stylesCollector?: string[],
   index?: number
 ) => {
