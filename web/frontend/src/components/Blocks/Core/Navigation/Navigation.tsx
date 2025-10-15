@@ -13,12 +13,12 @@ const fetchNavigationData = async (ref: number | undefined): Promise<NavigationD
 
   try {
     // Fetch from our Next.js API route which proxies the WordPress REST API
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
-    const response = await fetch(`${baseUrl}/wp-json/template-structure/v1/navigation/${ref}`, {
+    const baseUrl = process.env.NEXT_PUBLIC_WORDPRESS_API_URL || 'http://localhost:3000';
+    const response = await fetch(`${baseUrl}/wp-json/blocks/v1/navigation/${ref}`, {
       next: { revalidate: 3600 }
     });
 
-    console.log(`${baseUrl}/wp-json/template-structure/v1/navigation/${ref}`);
+    console.log(`${baseUrl}/wp-json/blocks/v1/navigation/${ref}`);
 
     if (!response.ok) {
       console.error('Navigation fetch failed:', response.status, response.statusText);
