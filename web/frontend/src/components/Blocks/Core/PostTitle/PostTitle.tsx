@@ -1,25 +1,22 @@
 import { CorePostTitleBlock } from '@/types/coreBlockTypes';
 import { getBlockBaseClass, getBlockClasses, getBlockStyleAttr } from '@/utils/blockStyles';
 import { stripOuterTag } from '@/utils/htmlTransformations';
-import React from 'react';
 
-const PostTitle: React.FC<CorePostTitleBlock> = ({ name, attributes, isDynamic, dynamicContent, saveContent }) => {
+const PostTitle: React.FC<CorePostTitleBlock> = ({ name, attributes, dynamicContent, saveContent, page }) => {
   const { level, style } = attributes || {};
   const blockClasses = getBlockClasses(attributes || {}, getBlockBaseClass(name));
   const blockStyleAttr = getBlockStyleAttr(style || {});
-  const Tag = `h${level}` || 'h2';
-  const TagComponent = Tag as keyof JSX.IntrinsicElements;
-  const content = dynamicContent || saveContent;
-  const html = stripOuterTag(content || '', Tag);
+  const Tag = `h${level || 2}` as keyof JSX.IntrinsicElements;
+  const { title } = page || {};
+  const content = title || stripOuterTag(dynamicContent || saveContent || '', Tag.toString());
 
   return (
-    <TagComponent
+    <Tag
       className={blockClasses}
       style={blockStyleAttr}
-      dangerouslySetInnerHTML={{
-        __html: html || ''
-      }}
-    />
+    >
+      {content}
+    </Tag>
   );
 };
 
