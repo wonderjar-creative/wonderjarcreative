@@ -27,25 +27,25 @@ export const getBlockClasses = (
     textColor,
     sizeSlug,
     style,
-    verticalAlignment,
     // add more as needed
   } = attributes;
 
-  // Determine vertical alignment class based on block type
-  let verticalAlignClass = '';
-  if (verticalAlignment) {
-    if (baseClass?.includes('wp-block-columns')) {
-      // For columns block
-      verticalAlignClass = `items-${verticalAlignment}`;
-    } else if (baseClass?.includes('wp-block-column')) {
-      // For column block
-      verticalAlignClass = `self-${verticalAlignment}`;
-    } else {
-      // Fallback for other blocks
-      verticalAlignClass = `self-${verticalAlignment}`;
-    }
-  }
+  // // Determine vertical alignment class based on block type
+  // let verticalAlignClass = '';
+  // if (verticalAlignment) {
+  //   if (baseClass?.includes('wp-block-columns')) {
+  //     // For columns block
+  //     verticalAlignClass = `items-${verticalAlignment}`;
+  //   } else if (baseClass?.includes('wp-block-column')) {
+  //     // For column block
+  //     verticalAlignClass = `self-${verticalAlignment}`;
+  //   } else {
+  //     // Fallback for other blocks
+  //     verticalAlignClass = `self-${verticalAlignment}`;
+  //   }
+  // }
 
+  // Main classes array
   const classes = [
     baseClass,
     align ? `align${align}` : '',
@@ -60,14 +60,57 @@ export const getBlockClasses = (
     gradient ? `has-${gradient}` : '',
     id ? `wp-image-${id}` : '',
     isStackedOnMobile ? 'is-stacked-on-mobile' : '',
-    layout?.type ? `${layout.type}` : '',
     sizeSlug ? `size-${sizeSlug}` : '',
     textAlign ? `text-${textAlign}` : '',
-    textColor ? `text-${textColor}` : '',
-    verticalAlignClass,
-    layout?.type === 'flex' && verticalAlignClass !== 'items-center' ? 'items-center' : '',
-    layout?.type === 'constrained' ? 'has-global-padding' : '',
+    textColor ? `text-${textColor}` : ''
   ];
+
+  const { type, flexWrap, justifyContent, verticalAlignment } = layout || {};
+
+  if (type) {
+    classes.push(type);
+
+    // Layout defaults
+    if (verticalAlignment) {
+      classes.push(
+        `items-${verticalAlignment
+          .replace('top', 'start')
+          .replace('bottom', 'end')}`
+      );
+    } else {
+      classes.push('items-center');
+
+    }
+    if (justifyContent) {
+      classes.push(
+        `justify-${justifyContent
+          .replace('space-', '')
+          .replace('right', 'end')
+          .replace('left', 'start')}`
+      );
+    } else {
+      classes.push('justify-between');
+    }
+
+    if (flexWrap) {
+      classes.push(`flex-${flexWrap}`);
+    } else {
+      classes.push('flex-wrap');
+    }
+
+    if (type === 'constrained') {
+      classes.push('has-global-padding');
+    }
+  }
+
+  // Handle isStackedOnMobile
+  if (isStackedOnMobile !== undefined) {
+    if (isStackedOnMobile) {
+      classes.push('flex-col', 'sm:flex-row');
+    } else {
+      classes.push('flex-row');
+    }
+  }
 
   // Handle classes from style object
   if (style) {
