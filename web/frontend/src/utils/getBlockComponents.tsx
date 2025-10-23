@@ -234,6 +234,7 @@ const getBlockComponents = async (
             isDynamic={block.isDynamic}
             dynamicContent={block.dynamicContent}
             saveContent={block.saveContent}
+            page={page}
           />
         );
       }
