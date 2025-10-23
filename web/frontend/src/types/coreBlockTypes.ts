@@ -112,6 +112,7 @@ export interface CorePostContentBlock extends FrontendBlock {
 
 export interface CorePostTitleBlock extends FrontendBlock {
   attributes?: CorePostTitleBlockAttributes;
+  page?: Maybe<Page>;
 };
 
 export interface CoreSiteTitleBlock extends FrontendBlock {
