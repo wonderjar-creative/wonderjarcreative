@@ -111,7 +111,7 @@ const Cover: React.FC<CoreCoverBlock> = ({ name, attributes, featuredImage, medi
       width={1600}
       height={900}
     />
-  ); 
+  );
 
   return (
     <TagComponent
