@@ -1,7 +1,6 @@
 import { CoreNavigationBlock } from "@/types/coreBlockTypes";
 import { getBlockBaseClass, getBlockClasses, getBlockStyleAttr } from "@/utils/blockStyles";
-import { enrichBlocksWithMedia } from "@/utils/blockMedia";
-import getBlockComponents from "@/utils/getBlockComponents";
+import NavigationMenu from "./NavigationMenu";
 
 interface NavigationData {
   id: number;
@@ -56,16 +55,25 @@ const Navigation: React.FC<CoreNavigationBlock> = async ({ name, attributes, inn
     );
   }
 
-  // Filter out only navigation-link blocks and those with names (ignore null blockName entries)
-  const navigationLinkBlocks = navData.blocks.filter((block) => block.name === 'core/navigation-link');
-  const enrichedBlocks = await enrichBlocksWithMedia(navigationLinkBlocks);
+  // Filter out only navigation-link blocks and extract link data
+  const navigationLinks = navData.blocks
+    .filter((block) => block.name === 'core/navigation-link')
+    .map((block) => ({
+      id: block.attributes?.id?.toString(),
+      label: block.attributes?.label || 'Link',
+      url: block.attributes?.url || '/',
+      path: block.attributes?.url || '/',
+      target: block.attributes?.target,
+      cssClasses: block.attributes?.className ? [block.attributes.className] : []
+    }));
 
   return (
-    <nav className={navClasses} style={navStyleAttr}>
-      <ul className={listClasses} style={listStyleAttr}>
-        {(await getBlockComponents(enrichedBlocks, null))}
-      </ul>
-    </nav>
+    <NavigationMenu
+      links={navigationLinks}
+      title={navData.title}
+      className={navClasses}
+      style={navStyleAttr}
+    />
   );
 };
 
