@@ -4,6 +4,7 @@ export default {
   content: {
     files: [
       "./src/**/*.{js,ts,jsx,tsx,mdx}",
+      "./data/*.{json}"
     ],
   },
   theme: {
