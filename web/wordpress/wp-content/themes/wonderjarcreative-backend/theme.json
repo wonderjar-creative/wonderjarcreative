@@ -180,5 +180,22 @@
       ]
     },
     "useRootPaddingAwareAlignments": true
-  }
+  },
+  "templateParts": [
+    {
+      "name": "header",
+      "title": "Header",
+      "area": "header"
+    },
+    {
+      "name": "header-absolute",
+      "title": "Header Absolute",
+      "area": "header"
+    },
+    {
+      "name": "footer",
+      "title": "Footer",
+      "area": "footer"
+    }
+  ]
 }
