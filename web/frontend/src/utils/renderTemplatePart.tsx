@@ -4,9 +4,9 @@ import { enrichBlocksWithMedia } from "./blockMedia";
 import getBlockComponents from "./getBlockComponents";
 
 const getSemanticTag = (slug: string): keyof JSX.IntrinsicElements => {
-  if (slug === 'header') return 'header';
-  if (slug === 'footer') return 'footer';
-  if (slug === 'sidebar') return 'aside';
+  if (slug.includes('header')) return 'header';
+  if (slug.includes('footer')) return 'footer';
+  if (slug.includes('sidebar')) return 'aside';
   return 'div';
 };
 
