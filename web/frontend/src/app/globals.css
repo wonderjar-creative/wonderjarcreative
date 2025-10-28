@@ -5,6 +5,7 @@
 @source inline('text-{teal,warm-coral,muted-brick-red,deep-black,retro-teal,soft-cream,charcoal-gray,marigold-yellow,white}');
 @source inline('bg-{teal,warm-coral,muted-brick-red,deep-black,retro-teal,soft-cream,charcoal-gray,marigold-yellow,white}');
 @source inline('border-{teal,warm-coral,muted-brick-red,deep-black,retro-teal,soft-cream,charcoal-gray,marigold-yellow,white}');
+@source inline('{top-,right-,bottom-,left-}{0}');
 
 @theme {
   /* Colors */
