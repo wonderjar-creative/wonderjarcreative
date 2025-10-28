@@ -12,10 +12,10 @@
  * @link https://wonderjarcreative.com
  */
 ?>
-<!-- wp:group {"style":{"position":{"type":"sticky","top":"0px"}},"layout":{"type":"constrained"}} -->
+<!-- wp:group {"style":{"position":{"type":""}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group"><!-- wp:group {"align":"wide","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
 <div class="wp-block-group alignwide"><!-- wp:site-logo {"width":160,"style":{"spacing":{"margin":{"top":"var:preset|spacing|30","bottom":"var:preset|spacing|30"}}}} /-->
 
-<!-- wp:navigation {"ref":372} /--></div>
+<!-- wp:navigation {"ref":372,"textColor":"deep-black"} /--></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
