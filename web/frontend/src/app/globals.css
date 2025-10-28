@@ -45,6 +45,22 @@
   --font-sans: var(--roboto), sans-serif;
   --font-cursive: var(--caveat), cursive;
 
+  /* Font-Sizes */
+  --font-size-1xs: 0.625rem; /* 10px */
+  --font-size-xs: 0.75rem;   /* 12px */
+  --font-size-sm: 0.875rem;  /* 14px */
+  --font-size-base: 1rem;    /* 16px */
+  --font-size-lg: 1.125rem;  /* 18px */
+  --font-size-xl: 1.25rem;   /* 20px */
+  --font-size-2xl: 1.5rem;   /* 24px */
+  --font-size-3xl: 1.875rem; /* 30px */
+  --font-size-4xl: 2.25rem;  /* 36px */
+  --font-size-5xl: 3rem;     /* 48px */
+  --font-size-6xl: 3.75rem;  /* 60px */
+  --font-size-7xl: 4.5rem;   /* 72px */
+  --font-size-8xl: 6rem;     /* 96px */
+  --font-size-9xl: 8rem;     /* 128px */
+
   /* Padding */
   --global-padding: var(--spacing-30);
 }
@@ -112,6 +128,16 @@
 
   .flow > *:last-child {
     @apply mb-0;
+  }
+
+  main.wp-block-group > *:last-child:has(.has-background:last-child),
+  main.wp-block-group > *:last-child:has([style*="padding-bottom"]:last-child) {
+    @apply !pb-0;
+  }
+
+  main.wp-block-group:has( > *:last-child:has(.has-background:last-child) ) + footer.wp-block-template-part,
+  main.wp-block-group:has( > *:last-child:has([style*="padding-bottom"]:last-child) ) + footer.wp-block-template-part {
+    @apply !mt-0;
   }
 }
 
