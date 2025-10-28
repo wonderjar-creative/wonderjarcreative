@@ -17,7 +17,8 @@ import {
   CoreSiteLogoBlockAttributes,
   CoreColumnsBlockAttributes,
   Page,
-  NodeWithFeaturedImageToMediaItemConnectionEdge
+  NodeWithFeaturedImageToMediaItemConnectionEdge,
+  CoreDetailsBlockAttributes
 } from '@/gql/graphql';
 import renderTemplatePart from './renderTemplatePart';
 import renderPattern from './renderPattern';
@@ -135,6 +136,19 @@ const getBlockComponents = async (
             featuredImage={featuredImage}
             mediaItem={block.mediaItem}
             innerBlocks={innerBlocks}
+          />
+        );
+      }
+      case 'core/details': {
+        const Details = dynamic(() => import('@/components/Blocks/Core/Details/Details'), { ssr: true });
+        
+        return (
+          <Details
+            key={index}
+            name={block.name}
+            attributes={block.attributes as CoreDetailsBlockAttributes}
+            innerBlocks={innerBlocks}
+            saveContent={block.saveContent}
           />
         );
       }
