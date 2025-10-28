@@ -7,6 +7,7 @@ import {
   CoreColumnBlockAttributes,
   CoreColumnsBlockAttributes,
   CoreCoverBlockAttributes,
+  CoreDetailsBlockAttributes,
   CoreGroupBlockAttributes,
   CoreHeadingBlockAttributes,
   CoreImageBlockAttributes,
@@ -19,7 +20,8 @@ import {
   CoreTemplatePartBlockAttributes,
   NodeWithFeaturedImageToMediaItemConnectionEdge,
   CorePatternBlockAttributes,
-  CoreSiteLogoBlockAttributes
+  CoreSiteLogoBlockAttributes,
+  
 } from '@/gql/graphql';
 import React from 'react';
 
@@ -74,6 +76,10 @@ export interface CoreColumnsBlock extends FrontendBlock {
 export interface CoreCoverBlock extends FrontendBlock {
   attributes?: CoreCoverBlockAttributes;
   featuredImage?: Maybe<NodeWithFeaturedImageToMediaItemConnectionEdge>;
+}
+
+export interface CoreDetailsBlock extends FrontendBlock {
+  attributes?: CoreDetailsBlockAttributes;
 }
 
 export interface CoreGroupBlock extends FrontendBlock {
