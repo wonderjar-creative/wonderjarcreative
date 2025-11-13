@@ -33,6 +33,16 @@ interface GravityFormsFormProps {
   saveContent?: string | null;
 }
 
+interface NameInput {
+  id: string;
+  label: string;
+  name?: string;
+  autocompleteAttribute?: string;
+  choices?: Array<{ text: string; value: string }>;
+  isHidden?: boolean;
+  inputType?: string;
+}
+
 interface FormField {
   id: number;
   label: string;
@@ -41,6 +51,8 @@ interface FormField {
   choices?: Array<{ text: string; value: string }>;
   description?: string;
   placeholder?: string;
+  inputs?: NameInput[]; // Add this for name fields
+  nameFormat?: string;
 }
 
 interface GravityForm {
@@ -157,6 +169,72 @@ export default function GravityFormsForm({ name, attributes, saveContent }: Grav
     const commonClasses = 'w-full border px-3 py-2';
 
     switch (field.type) {
+      case 'name':
+        return (
+          <div key={field.id} className="mb-4">
+            <fieldset>
+              <legend style={labelStyles} className="block mb-2 font-medium">
+                {field.label}
+                {field.isRequired && <span className="text-red-500 ml-1">*</span>}
+              </legend>
+              {field.description && (
+                <p style={descriptionStyles} className="mb-2">{field.description}</p>
+              )}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {field.inputs?.filter(input => !input.isHidden).map((input) => {
+                  const inputId = `input_${input.id}`;
+                  const isSelect = input.inputType === 'radio' || input.choices;
+                  
+                  return (
+                    <div key={input.id}>
+                      {isSelect ? (
+                        <select
+                          id={inputId}
+                          name={inputId}
+                          style={inputStyles}
+                          className={commonClasses}
+                          value={formData[inputId] || ''}
+                          onChange={(e) => handleChange(inputId, e.target.value)}
+                          required={field.isRequired}
+                          aria-label={input.label}
+                        >
+                          <option value="">{input.label}</option>
+                          {input.choices?.map((choice, idx) => (
+                            <option key={idx} value={choice.value}>
+                              {choice.text}
+                            </option>
+                          ))}
+                        </select>
+                      ) : (
+                        <input
+                          type="text"
+                          id={inputId}
+                          name={inputId}
+                          style={inputStyles}
+                          className={commonClasses}
+                          placeholder={input.label}
+                          value={formData[inputId] || ''}
+                          onChange={(e) => handleChange(inputId, e.target.value)}
+                          required={field.isRequired}
+                          autoComplete={input.autocompleteAttribute}
+                          aria-label={input.label}
+                        />
+                      )}
+                      <label 
+                        htmlFor={inputId}
+                        style={{ fontSize: `${(attributes.descriptionFontSize || 13) - 1}px`, color: attributes.descriptionColor }}
+                        className="block mt-1 text-xs"
+                      >
+                        {input.label}
+                      </label>
+                    </div>
+                  );
+                })}
+              </div>
+            </fieldset>
+          </div>
+        );
+
       case 'text':
       case 'email':
       case 'phone':
