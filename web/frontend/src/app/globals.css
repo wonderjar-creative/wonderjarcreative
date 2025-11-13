@@ -98,6 +98,11 @@
   h6 {
     @apply text-base;
   }
+
+  :where(.wp-site-blocks) > *:not(:first-child),  
+  :where(.constrained) > *:not(:first-child) {
+    @apply space-y-6 space-y-reverse;
+  }
 }
 
 /* Components Layer: Reusable UI components */
