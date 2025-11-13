@@ -10,6 +10,7 @@
  * @author wjmatt <matt@wonderjarcreative.com>
  * @link https://wonderjarcreative.com
  */
+
 ?>
 <!-- wp:cover {"overlayColor":"teal","isUserOverlayColor":true,"minHeight":100,"minHeightUnit":"vh","contentPosition":"bottom center","isDark":false,"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}}},"fontSize":"xl","layout":{"type":"constrained"}} -->
 <div class="wp-block-cover alignfull is-light has-custom-content-position is-position-bottom-center has-xl-font-size" style="padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--60);padding-left:var(--wp--preset--spacing--50);min-height:100vh"><span aria-hidden="true" class="wp-block-cover__background has-teal-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:columns {"verticalAlignment":"center","align":"wide"} -->
@@ -143,20 +144,8 @@
 
 <!-- wp:group {"align":"full","style":{"spacing":{"margin":{"top":"0","bottom":"0"},"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"backgroundColor":"teal","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull has-teal-background-color has-background" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading {"textAlign":"center","fontSize":"8xl"} -->
-<h2 class="wp-block-heading has-text-align-center has-8-xl-font-size">Get Started</h2>
+<h2 class="wp-block-heading has-text-align-center has-8-xl-font-size">Let's Work Together</h2>
 <!-- /wp:heading -->
-
-<!-- wp:paragraph {"align":"center"} -->
-<p class="has-text-align-center">Let’s build something that moves the needle.</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph {"align":"center"} -->
-<p class="has-text-align-center">Whether you’re exploring a full digital overhaul, a campaign launch, or a specialty project, we’ll help you define the right path and assemble the right team.</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph {"align":"center"} -->
-<p class="has-text-align-center">Share a bit about your goals or project idea.</p>
-<!-- /wp:paragraph -->
 
 <!-- wp:group {"style":{"spacing":{"margin":{"top":"var:preset|spacing|50"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group" style="margin-top:var(--wp--preset--spacing--50)"><!-- wp:gravityforms/form {"formId":"1","title":false,"description":false,"ajax":true,"inputPrimaryColor":"#F2685E","buttonPrimaryBackgroundColor":"#F2685E"} /--></div>
