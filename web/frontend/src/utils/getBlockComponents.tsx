@@ -76,7 +76,19 @@ const getBlockComponents = async (
       })()
       : null;
 
-    switch (block.name) {      
+    switch (block.name) {
+      case 'gravityforms/form': {
+        const GravityFormsForm = dynamic(() => import('@/components/Blocks/GravityForms/Form/Form'), { ssr: true });
+
+        return (
+          <GravityFormsForm
+            key={index}
+            name={block.name}
+            attributes={block.attributes as any}
+            saveContent={block.saveContent}
+          />
+        );
+      }
       case 'core/button': {
         const Button = dynamic(() => import('@/components/Blocks/Core/Button/Button'), { ssr: true });
 
