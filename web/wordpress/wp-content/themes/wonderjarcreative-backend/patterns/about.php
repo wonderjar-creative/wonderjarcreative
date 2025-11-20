@@ -91,8 +91,8 @@
 <h2 class="wp-block-heading has-text-align-center has-6-xl-font-size" style="margin-bottom:var(--wp--preset--spacing--60);font-style:normal;font-weight:700">What We Stand For</h2>
 <!-- /wp:heading -->
 
-<!-- wp:group {"align":"wide","fontSize":"xl","layout":{"type":"constrained","contentSize":""}} -->
-<div class="wp-block-group alignwide has-xl-font-size"><!-- wp:details {"showContent":true,"style":{"border":{"bottom":{"width":"1px"},"top":[],"right":[],"left":[]}},"borderColor":"contrast-2"} -->
+<!-- wp:group {"fontSize":"xl","layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch"}} -->
+<div class="wp-block-group has-xl-font-size"><!-- wp:details {"showContent":true,"style":{"border":{"bottom":{"width":"1px"},"top":[],"right":[],"left":[]}},"borderColor":"contrast-2"} -->
 <details class="wp-block-details has-border-color has-contrast-2-border-color" style="border-bottom-width:1px" open><summary><strong>Clarity over noise</strong></summary><!-- wp:paragraph {"style":{"spacing":{"margin":{"top":"var:preset|spacing|30"}}}} -->
 <p style="margin-top:var(--wp--preset--spacing--30)">Strategy first. Every feature earns its place. We cut through complexity to focus on what actually moves your business forward.</p>
 <!-- /wp:paragraph --></details>
