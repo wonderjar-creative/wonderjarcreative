@@ -2,7 +2,7 @@
 /**
  * Title: Call to Action - Start a Project
  * Slug: wonderjarcreative-backend/cta-start-project
- * Categories: page
+ * Categories: call-to-action
  * Description: Call to action pattern with a button to start a project.
  * 
  * @package WonderjarCreativeBackend
