@@ -58,26 +58,40 @@ export const getBlockClasses = (
     // Layout defaults
     if (orientation && orientation === 'vertical') {
       classes.push('flex-col');
-      if (verticalAlignment) {
+      
+      if (justifyContent) {
         classes.push(
-          `justify-${verticalAlignment
-            .replace('top', 'start')
-            .replace('bottom', 'end')}`
+          `justify-${justifyContent
+            .replace('space-', '')
+            .replace('right', 'start')
+            .replace('left', 'end')}`
         );
       } else {
         classes.push('justify-center');
       }
-      if (justifyContent) {
+      
+      if (verticalAlignment) {
         classes.push(
-          `items-${justifyContent
-            .replace('space-', '')
-            .replace('right', 'end')
-            .replace('left', 'start')}`
+          `items-${verticalAlignment
+            .replace('top', 'start')
+            .replace('bottom', 'end')}`
         );
       } else {
-        classes.push('items-stretch');
+        classes.push('items-start');
       }
     } else {
+      classes.push('flex-row');
+      if (justifyContent) {
+        classes.push(
+          `justify-${justifyContent
+            .replace('space-', '')
+            .replace('top', 'start')
+            .replace('bottom', 'end')}`
+        );
+      } else {
+        classes.push('justify-start');
+      }
+      
       if (verticalAlignment) {
         classes.push(
           `items-${verticalAlignment
@@ -86,17 +100,6 @@ export const getBlockClasses = (
         );
       } else {
         classes.push('items-center');
-
-      }
-      if (justifyContent) {
-        classes.push(
-          `justify-${justifyContent
-            .replace('space-', '')
-            .replace('right', 'end')
-            .replace('left', 'start')}`
-        );
-      } else {
-        classes.push('justify-between');
       }
     }
 
@@ -189,7 +192,7 @@ export const getBlockStyleAttr = (styleObj: StyleProps): React.CSSProperties => 
   if (styleObj.border) {
     // Handle simple border properties
     if (styleObj.border.width) result.borderWidth = styleObj.border.width;
-    if (styleObj.border.color) result.borderColor = styleObj.border.color;
+    if (styleObj.border.color) result.borderColor = styleObj.border.color.includes('var:') ? convertPreset(styleObj.border.color) : styleObj.border.color;
     if (styleObj.border.style) result.borderStyle = styleObj.border.style;
     
     // Handle border radius
@@ -209,13 +212,14 @@ export const getBlockStyleAttr = (styleObj: StyleProps): React.CSSProperties => 
     const sides = ['top', 'right', 'bottom', 'left'] as const;
     sides.forEach((side) => {
       const borderSide = styleObj.border[side];
+      console.log('borderSide', side, borderSide);
       if (borderSide && typeof borderSide === 'object' && Object.keys(borderSide).length > 0) {
         const capitalizedSide = side.charAt(0).toUpperCase() + side.slice(1);
         if (borderSide.width) {
           result[`border${capitalizedSide}Width` as keyof React.CSSProperties] = borderSide.width;
         }
         if (borderSide.color) {
-          result[`border${capitalizedSide}Color` as keyof React.CSSProperties] = borderSide.color;
+          result[`border${capitalizedSide}Color` as keyof React.CSSProperties] = borderSide.color.includes('var:') ? convertPreset(borderSide.color) : borderSide.color;
         }
         if (borderSide.style) {
           result[`border${capitalizedSide}Style` as keyof React.CSSProperties] = borderSide.style;
@@ -226,9 +230,9 @@ export const getBlockStyleAttr = (styleObj: StyleProps): React.CSSProperties => 
 
   // Handle color
   if (styleObj.color) {
-    if (styleObj.color.background) result.background = styleObj.color.background;
-    if (styleObj.color.gradient) result.background = styleObj.color.gradient;
-    if (styleObj.color.text) result.color = styleObj.color.text;
+    if (styleObj.color.background) result.background = styleObj.color.background.includes('var:') ? convertPreset(styleObj.color.background) : styleObj.color.background;
+    if (styleObj.color.gradient) result.background = styleObj.color.gradient.includes('var:') ? convertPreset(styleObj.color.gradient) : styleObj.color.gradient;
+    if (styleObj.color.text) result.color = styleObj.color.text.includes('var:') ? convertPreset(styleObj.color.text) : styleObj.color.text;
   }
 
   // Handle typography
