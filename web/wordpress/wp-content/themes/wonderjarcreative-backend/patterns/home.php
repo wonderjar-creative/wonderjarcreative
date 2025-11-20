@@ -15,14 +15,22 @@
 <!-- wp:cover {"overlayColor":"teal","isUserOverlayColor":true,"minHeight":100,"minHeightUnit":"vh","contentPosition":"bottom center","isDark":false,"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|80","bottom":"var:preset|spacing|80","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}}},"fontSize":"xl","layout":{"type":"constrained"}} -->
 <div class="wp-block-cover alignfull is-light has-custom-content-position is-position-bottom-center has-xl-font-size" style="padding-top:var(--wp--preset--spacing--80);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--80);padding-left:var(--wp--preset--spacing--50);min-height:100vh"><span aria-hidden="true" class="wp-block-cover__background has-teal-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:columns {"verticalAlignment":"center","align":"wide"} -->
 <div class="wp-block-columns alignwide are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center","width":"60%","layout":{"type":"default"}} -->
-<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:60%"><!-- wp:post-title {"level":1,"fontSize":"9xl"} /-->
+<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:60%"><!-- wp:group {"layout":{"type":"flex","orientation":"vertical","flexWrap":"nowrap"}} -->
+<div class="wp-block-group"><!-- wp:heading {"level":1,"style":{"border":{"bottom":{"color":"var:preset|color|retro-teal","width":"3px"},"top":{},"right":{},"left":{}}},"fontSize":"9xl"} -->
+<h1 class="wp-block-heading has-9-xl-font-size" style="border-bottom-color:var(--wp--preset--color--retro-teal);border-bottom-width:3px">Jump</h1>
+<!-- /wp:heading -->
+
+<!-- wp:heading {"fontSize":"8xl"} -->
+<h2 class="wp-block-heading has-8-xl-font-size">To A Better Web</h2>
+<!-- /wp:heading --></div>
+<!-- /wp:group -->
 
 <!-- wp:paragraph -->
 <p>Wonderjar Creative is a parent studio for web, cloud, and growth—leading projects built to launch fast and scale well.</p>
 <!-- /wp:paragraph -->
 
-<!-- wp:buttons {"style":{"spacing":{"margin":{"top":"var:preset|spacing|40"}}}} -->
-<div class="wp-block-buttons" style="margin-top:var(--wp--preset--spacing--40)"><!-- wp:button -->
+<!-- wp:buttons {"style":{"spacing":{"margin":{"top":"var:preset|spacing|50"}}}} -->
+<div class="wp-block-buttons" style="margin-top:var(--wp--preset--spacing--50)"><!-- wp:button -->
 <div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="http://localhost:3000/about/">Work With Our Team</a></div>
 <!-- /wp:button --></div>
 <!-- /wp:buttons --></div>
