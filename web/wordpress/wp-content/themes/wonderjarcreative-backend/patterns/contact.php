@@ -42,12 +42,12 @@
 <!-- /wp:columns --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"align":"full","style":{"spacing":{"margin":{"top":"var:preset|spacing|60","bottom":"0"}},"elements":{"link":{"color":{"text":"var:preset|color|base"}}}},"backgroundColor":"contrast","textColor":"base","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull has-base-color has-contrast-background-color has-text-color has-background has-link-color" style="margin-top:var(--wp--preset--spacing--60);margin-bottom:0"><!-- wp:heading {"textAlign":"center","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|50"}}},"fontSize":"6xl"} -->
+<!-- wp:group {"align":"full","style":{"spacing":{"margin":{"top":"var:preset|spacing|70","bottom":"0"}},"elements":{"link":{"color":{"text":"var:preset|color|base"}}}},"backgroundColor":"contrast","textColor":"base","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull has-base-color has-contrast-background-color has-text-color has-background has-link-color" style="margin-top:var(--wp--preset--spacing--70);margin-bottom:0"><!-- wp:heading {"textAlign":"center","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|50"}}},"fontSize":"6xl"} -->
 <h2 class="wp-block-heading has-text-align-center has-6-xl-font-size" style="margin-bottom:var(--wp--preset--spacing--50)">Frequently Asked Questions</h2>
 <!-- /wp:heading -->
 
-<!-- wp:group {"align":"wide","fontSize":"xl","layout":{"type":"constrained","contentSize":"800px"}} -->
+<!-- wp:group {"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|40"}},"fontSize":"xl","layout":{"type":"constrained","contentSize":"800px"}} -->
 <div class="wp-block-group alignwide has-xl-font-size"><!-- wp:details {"showContent":true,"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|30"}},"border":{"bottom":{"width":"1px"},"top":[],"right":[],"left":[]}},"borderColor":"contrast-2"} -->
 <details class="wp-block-details has-border-color has-contrast-2-border-color" style="border-bottom-width:1px;margin-bottom:var(--wp--preset--spacing--30)" open><summary><strong>What types of projects do you work on?</strong></summary><!-- wp:paragraph {"placeholder":"Type / to add a hidden block","style":{"spacing":{"margin":{"top":"var:preset|spacing|30"}}}} -->
 <p style="margin-top:var(--wp--preset--spacing--30)">We specialize in brand identity, web design and development, print design, and creative strategy. From startups to established businesses, we work with clients across all industries.</p>
