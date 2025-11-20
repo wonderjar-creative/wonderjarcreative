@@ -187,8 +187,12 @@ export const getBlockStyleAttr = (styleObj: StyleProps): React.CSSProperties => 
 
   // Handle border
   if (styleObj.border) {
+    // Handle simple border properties
     if (styleObj.border.width) result.borderWidth = styleObj.border.width;
     if (styleObj.border.color) result.borderColor = styleObj.border.color;
+    if (styleObj.border.style) result.borderStyle = styleObj.border.style;
+    
+    // Handle border radius
     if (styleObj.border.radius) {
       const r = styleObj.border?.radius;
       if (typeof r === 'string') {
@@ -200,6 +204,24 @@ export const getBlockStyleAttr = (styleObj: StyleProps): React.CSSProperties => 
         if (r.bottomLeft) result.borderBottomLeftRadius = `${r.bottomLeft}`;
       }
     }
+
+    // Handle individual border sides (top, right, bottom, left) as objects
+    const sides = ['top', 'right', 'bottom', 'left'] as const;
+    sides.forEach((side) => {
+      const borderSide = styleObj.border[side];
+      if (borderSide && typeof borderSide === 'object' && Object.keys(borderSide).length > 0) {
+        const capitalizedSide = side.charAt(0).toUpperCase() + side.slice(1);
+        if (borderSide.width) {
+          result[`border${capitalizedSide}Width` as keyof React.CSSProperties] = borderSide.width;
+        }
+        if (borderSide.color) {
+          result[`border${capitalizedSide}Color` as keyof React.CSSProperties] = borderSide.color;
+        }
+        if (borderSide.style) {
+          result[`border${capitalizedSide}Style` as keyof React.CSSProperties] = borderSide.style;
+        }
+      }
+    });
   }
 
   // Handle color

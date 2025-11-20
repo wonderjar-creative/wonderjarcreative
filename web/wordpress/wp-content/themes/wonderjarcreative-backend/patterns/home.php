@@ -12,13 +12,13 @@
  */
 
 ?>
-<!-- wp:cover {"overlayColor":"teal","isUserOverlayColor":true,"minHeight":100,"minHeightUnit":"vh","contentPosition":"bottom center","isDark":false,"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}}},"fontSize":"xl","layout":{"type":"constrained"}} -->
-<div class="wp-block-cover alignfull is-light has-custom-content-position is-position-bottom-center has-xl-font-size" style="padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--60);padding-left:var(--wp--preset--spacing--50);min-height:100vh"><span aria-hidden="true" class="wp-block-cover__background has-teal-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:columns {"verticalAlignment":"center","align":"wide"} -->
-<div class="wp-block-columns alignwide are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center","width":"60%","style":{"spacing":{"padding":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|40"}}},"layout":{"type":"default"}} -->
-<div class="wp-block-column is-vertically-aligned-center" style="padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40);flex-basis:60%"><!-- wp:post-title {"level":1,"fontSize":"8xl"} /-->
+<!-- wp:cover {"overlayColor":"teal","isUserOverlayColor":true,"minHeight":100,"minHeightUnit":"vh","contentPosition":"bottom center","isDark":false,"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|80","bottom":"var:preset|spacing|80","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}}},"fontSize":"xl","layout":{"type":"constrained"}} -->
+<div class="wp-block-cover alignfull is-light has-custom-content-position is-position-bottom-center has-xl-font-size" style="padding-top:var(--wp--preset--spacing--80);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--80);padding-left:var(--wp--preset--spacing--50);min-height:100vh"><span aria-hidden="true" class="wp-block-cover__background has-teal-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:columns {"verticalAlignment":"center","align":"wide"} -->
+<div class="wp-block-columns alignwide are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center","width":"60%","layout":{"type":"default"}} -->
+<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:60%"><!-- wp:post-title {"level":1,"fontSize":"9xl"} /-->
 
 <!-- wp:paragraph -->
-<p>Wonderjar Creative is the parent studio behind modern web, cloud, and growth solutions. We lead impactful digital projects through specialized teams—helping you launch faster, scale smarter, and stay ready for what’s next.</p>
+<p>Wonderjar Creative is a parent studio for web, cloud, and growth—leading projects built to launch fast and scale well.</p>
 <!-- /wp:paragraph -->
 
 <!-- wp:buttons {"style":{"spacing":{"margin":{"top":"var:preset|spacing|40"}}}} -->
@@ -36,21 +36,21 @@
 <!-- /wp:columns --></div></div>
 <!-- /wp:cover -->
 
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"},"margin":{"top":"0","bottom":"0"}},"elements":{"link":{"color":{"text":"var:preset|color|retro-teal"}}}},"backgroundColor":"warm-coral","layout":{"type":"constrained","contentSize":"80%"}} -->
-<div class="wp-block-group alignfull has-warm-coral-background-color has-background has-link-color" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:paragraph {"align":"center","style":{"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"textColor":"white","fontSize":"3xl"} -->
+<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"},"margin":{"top":"0","bottom":"0"}},"elements":{"link":{"color":{"text":"var:preset|color|retro-teal"}}}},"backgroundColor":"warm-coral","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull has-warm-coral-background-color has-background has-link-color" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:paragraph {"align":"center","style":{"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"textColor":"white","fontSize":"3xl"} -->
 <p class="has-text-align-center has-white-color has-text-color has-link-color has-3-xl-font-size">We’re Wonderjar Creative — a collective of focused digital studios. From flagship builds and specialty projects to ongoing optimization, we assemble the right mix of strategy, design, engineering, and growth under one roof.</p>
 <!-- /wp:paragraph --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"},"margin":{"top":"0","bottom":"0"}}},"backgroundColor":"soft-cream","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull has-soft-cream-background-color has-background" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading {"align":"wide","fontSize":"8xl"} -->
-<h2 class="wp-block-heading alignwide has-8-xl-font-size">Agile Studios.<br>Scalable Services.<br>Built for the Future.</h2>
+<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"},"margin":{"top":"0","bottom":"0"}}},"backgroundColor":"soft-cream","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull has-soft-cream-background-color has-background" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:heading {"align":"wide","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}},"fontSize":"8xl"} -->
+<h2 class="wp-block-heading alignwide has-8-xl-font-size" style="margin-bottom:var(--wp--preset--spacing--40)">Agile Studios.<br>Scalable Services.<br>Built for the Future.</h2>
 <!-- /wp:heading -->
 
-<!-- wp:columns {"verticalAlignment":"center","align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"},"blockGap":{"top":"var:preset|spacing|50"}}}} -->
-<div class="wp-block-columns alignwide are-vertically-aligned-center" style="margin-top:var(--wp--preset--spacing--70);margin-bottom:var(--wp--preset--spacing--70)"><!-- wp:column {"verticalAlignment":"center","width":"50%","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}},"border":{"radius":"4px"}},"backgroundColor":"white"} -->
-<div class="wp-block-column is-vertically-aligned-center has-white-background-color has-background" style="border-radius:4px;padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50);flex-basis:50%"><!-- wp:heading {"level":3,"fontSize":"4xl"} -->
-<h3 class="wp-block-heading has-4-xl-font-size">Web Development</h3>
+<!-- wp:columns {"verticalAlignment":"center","align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|60"},"blockGap":{"top":"var:preset|spacing|50"}}}} -->
+<div class="wp-block-columns alignwide are-vertically-aligned-center" style="margin-top:var(--wp--preset--spacing--50);margin-bottom:var(--wp--preset--spacing--60)"><!-- wp:column {"verticalAlignment":"center","width":"50%","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60","left":"var:preset|spacing|60","right":"var:preset|spacing|60"}},"border":{"radius":"0.5rem"}},"backgroundColor":"white"} -->
+<div class="wp-block-column is-vertically-aligned-center has-white-background-color has-background" style="border-radius:0.5rem;padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60);padding-left:var(--wp--preset--spacing--60);flex-basis:50%"><!-- wp:heading {"level":3,"fontSize":"5xl"} -->
+<h3 class="wp-block-heading has-5-xl-font-size">Web Development</h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
@@ -65,16 +65,16 @@
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
 
-<!-- wp:columns {"verticalAlignment":"center","align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"},"blockGap":{"left":"var:preset|spacing|50"}}}} -->
-<div class="wp-block-columns alignwide are-vertically-aligned-center" style="margin-top:var(--wp--preset--spacing--70);margin-bottom:var(--wp--preset--spacing--70)"><!-- wp:column {"verticalAlignment":"center","width":"50%","layout":{"type":"default"}} -->
+<!-- wp:columns {"verticalAlignment":"center","align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"},"blockGap":{"left":"var:preset|spacing|50"}}}} -->
+<div class="wp-block-columns alignwide are-vertically-aligned-center" style="margin-top:var(--wp--preset--spacing--60);margin-bottom:var(--wp--preset--spacing--60)"><!-- wp:column {"verticalAlignment":"center","width":"50%","layout":{"type":"default"}} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:50%"><!-- wp:image {"id":428,"width":"400px","sizeSlug":"full","linkDestination":"none","align":"center"} -->
 <figure class="wp-block-image aligncenter size-full is-resized"><img src="http://wonderjarcreative.local/wp-content/uploads/2025/10/Slang-To-the-Moon-cryptocurrency-crypto-web-3.0-metaverse-bitcoin-ethereum.png" alt="Rocket and Moon" class="wp-image-428" style="width:400px"/></figure>
 <!-- /wp:image --></div>
 <!-- /wp:column -->
 
-<!-- wp:column {"verticalAlignment":"center","width":"50%","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}},"border":{"radius":"4px"}},"backgroundColor":"white"} -->
-<div class="wp-block-column is-vertically-aligned-center has-white-background-color has-background" style="border-radius:4px;padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50);flex-basis:50%"><!-- wp:heading {"level":3,"fontSize":"4xl"} -->
-<h3 class="wp-block-heading has-4-xl-font-size">Cloud Hosting &amp; Infrastructure</h3>
+<!-- wp:column {"verticalAlignment":"center","width":"50%","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60","left":"var:preset|spacing|60","right":"var:preset|spacing|60"}},"border":{"radius":"0.5rem"}},"backgroundColor":"white"} -->
+<div class="wp-block-column is-vertically-aligned-center has-white-background-color has-background" style="border-radius:0.5rem;padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60);padding-left:var(--wp--preset--spacing--60);flex-basis:50%"><!-- wp:heading {"level":3,"fontSize":"5xl"} -->
+<h3 class="wp-block-heading has-5-xl-font-size">Cloud Hosting</h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
@@ -83,10 +83,10 @@
 <!-- /wp:column --></div>
 <!-- /wp:columns -->
 
-<!-- wp:columns {"verticalAlignment":"center","align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"},"blockGap":{"left":"var:preset|spacing|50"}}}} -->
-<div class="wp-block-columns alignwide are-vertically-aligned-center" style="margin-top:var(--wp--preset--spacing--70);margin-bottom:var(--wp--preset--spacing--70)"><!-- wp:column {"verticalAlignment":"center","width":"50%","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}},"border":{"radius":"4px"}},"backgroundColor":"white"} -->
-<div class="wp-block-column is-vertically-aligned-center has-white-background-color has-background" style="border-radius:4px;padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50);flex-basis:50%"><!-- wp:heading {"level":3,"fontSize":"4xl"} -->
-<h3 class="wp-block-heading has-4-xl-font-size">Special Projects &amp; Campaigns</h3>
+<!-- wp:columns {"verticalAlignment":"center","align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"},"blockGap":{"left":"var:preset|spacing|50"}}}} -->
+<div class="wp-block-columns alignwide are-vertically-aligned-center" style="margin-top:var(--wp--preset--spacing--60);margin-bottom:var(--wp--preset--spacing--60)"><!-- wp:column {"verticalAlignment":"center","width":"50%","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60","left":"var:preset|spacing|60","right":"var:preset|spacing|60"}},"border":{"radius":"0.5rem"}},"backgroundColor":"white"} -->
+<div class="wp-block-column is-vertically-aligned-center has-white-background-color has-background" style="border-radius:0.5rem;padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60);padding-left:var(--wp--preset--spacing--60);flex-basis:50%"><!-- wp:heading {"level":3,"fontSize":"5xl"} -->
+<h3 class="wp-block-heading has-5-xl-font-size">Special Projects</h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
@@ -102,13 +102,13 @@
 <!-- /wp:columns --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"},"margin":{"top":"0","bottom":"0"}},"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"backgroundColor":"deep-black","textColor":"white","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull has-white-color has-deep-black-background-color has-text-color has-background has-link-color" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading {"textAlign":"center","align":"wide","style":{"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"textColor":"white","fontSize":"8xl"} -->
-<h2 class="wp-block-heading alignwide has-text-align-center has-white-color has-text-color has-link-color has-8-xl-font-size">Why Work With<br>Wonderjar Creative?</h2>
+<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"},"margin":{"top":"0","bottom":"0"}},"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"backgroundColor":"deep-black","textColor":"white","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull has-white-color has-deep-black-background-color has-text-color has-background has-link-color" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:heading {"textAlign":"center","align":"wide","style":{"elements":{"link":{"color":{"text":"var:preset|color|white"}}},"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}},"textColor":"white","fontSize":"7xl"} -->
+<h2 class="wp-block-heading alignwide has-text-align-center has-white-color has-text-color has-link-color has-7-xl-font-size" style="margin-bottom:var(--wp--preset--spacing--40)">Why Work With<br>Wonderjar Creative?</h2>
 <!-- /wp:heading -->
 
-<!-- wp:columns {"align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|50"}}}} -->
-<div class="wp-block-columns alignwide" style="margin-top:var(--wp--preset--spacing--50)"><!-- wp:column -->
+<!-- wp:columns {"align":"wide"} -->
+<div class="wp-block-columns alignwide"><!-- wp:column {"style":{"spacing":{"blockGap":"var:preset|spacing|40"}}} -->
 <div class="wp-block-column"><!-- wp:details {"showContent":true,"fontSize":"3xl"} -->
 <details class="wp-block-details has-3-xl-font-size" open><summary><strong>Built for What’s Next</strong></summary><!-- wp:paragraph {"fontSize":"xl"} -->
 <p class="has-xl-font-size">We don’t chase trends — we build on strategy. By exploring emerging tools, technologies, and design systems, we keep your digital presence adaptable, reliable, and ready for the future.</p>
@@ -142,12 +142,16 @@
 <!-- /wp:columns --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"align":"full","style":{"spacing":{"margin":{"top":"0","bottom":"0"},"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"}}},"backgroundColor":"teal","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull has-teal-background-color has-background" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:heading {"textAlign":"center","fontSize":"8xl"} -->
-<h2 class="wp-block-heading has-text-align-center has-8-xl-font-size">Let's Work Together</h2>
+<!-- wp:group {"align":"full","style":{"spacing":{"margin":{"top":"0","bottom":"0"},"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"}}},"backgroundColor":"teal","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull has-teal-background-color has-background" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:heading {"textAlign":"center","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}},"fontSize":"7xl"} -->
+<h2 class="wp-block-heading has-text-align-center has-7-xl-font-size" style="margin-bottom:var(--wp--preset--spacing--40)">Let's Work Together</h2>
 <!-- /wp:heading -->
 
-<!-- wp:group {"style":{"spacing":{"margin":{"top":"var:preset|spacing|50"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group" style="margin-top:var(--wp--preset--spacing--50)"><!-- wp:gravityforms/form {"formId":"1","title":false,"description":false,"ajax":true,"inputPrimaryColor":"#F2685E","buttonPrimaryBackgroundColor":"#F2685E"} /--></div>
+<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60","left":"var:preset|spacing|60","right":"var:preset|spacing|60"},"margin":{"top":"var:preset|spacing|50"}},"border":{"radius":"0.5rem"}},"backgroundColor":"soft-cream","layout":{"type":"default"}} -->
+<div class="wp-block-group has-soft-cream-background-color has-background" style="border-radius:0.5rem;margin-top:var(--wp--preset--spacing--50);padding-top:var(--wp--preset--spacing--60);padding-right:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60);padding-left:var(--wp--preset--spacing--60)"><!-- wp:paragraph {"align":"center","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}}} -->
+<p class="has-text-align-center" style="margin-bottom:var(--wp--preset--spacing--40)">Let’s make something that matters. Share your project details below, and we’ll connect with the right next steps.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:gravityforms/form {"formId":"1","title":false,"description":false,"ajax":true,"inputPrimaryColor":"#F2685E","buttonPrimaryBackgroundColor":"#F2685E"} /--></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
