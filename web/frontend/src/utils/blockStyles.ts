@@ -30,21 +30,6 @@ export const getBlockClasses = (
     // add more as needed
   } = attributes;
 
-  // // Determine vertical alignment class based on block type
-  // let verticalAlignClass = '';
-  // if (verticalAlignment) {
-  //   if (baseClass?.includes('wp-block-columns')) {
-  //     // For columns block
-  //     verticalAlignClass = `items-${verticalAlignment}`;
-  //   } else if (baseClass?.includes('wp-block-column')) {
-  //     // For column block
-  //     verticalAlignClass = `self-${verticalAlignment}`;
-  //   } else {
-  //     // Fallback for other blocks
-  //     verticalAlignClass = `self-${verticalAlignment}`;
-  //   }
-  // }
-
   // Main classes array
   const classes = [
     baseClass,
@@ -65,31 +50,54 @@ export const getBlockClasses = (
     textColor ? `text-${textColor}` : ''
   ];
 
-  const { type, flexWrap, justifyContent, verticalAlignment } = layout || {};
+  const { type, flexWrap, justifyContent, orientation, verticalAlignment } = layout || {};
 
   if (type) {
     classes.push(type);
 
     // Layout defaults
-    if (verticalAlignment) {
-      classes.push(
-        `items-${verticalAlignment
-          .replace('top', 'start')
-          .replace('bottom', 'end')}`
-      );
+    if (orientation && orientation === 'vertical') {
+      classes.push('flex-col');
+      if (verticalAlignment) {
+        classes.push(
+          `justify-${verticalAlignment
+            .replace('top', 'start')
+            .replace('bottom', 'end')}`
+        );
+      } else {
+        classes.push('justify-center');
+      }
+      if (justifyContent) {
+        classes.push(
+          `items-${justifyContent
+            .replace('space-', '')
+            .replace('right', 'end')
+            .replace('left', 'start')}`
+        );
+      } else {
+        classes.push('items-stretch');
+      }
     } else {
-      classes.push('items-center');
+      if (verticalAlignment) {
+        classes.push(
+          `items-${verticalAlignment
+            .replace('top', 'start')
+            .replace('bottom', 'end')}`
+        );
+      } else {
+        classes.push('items-center');
 
-    }
-    if (justifyContent) {
-      classes.push(
-        `justify-${justifyContent
-          .replace('space-', '')
-          .replace('right', 'end')
-          .replace('left', 'start')}`
-      );
-    } else {
-      classes.push('justify-between');
+      }
+      if (justifyContent) {
+        classes.push(
+          `justify-${justifyContent
+            .replace('space-', '')
+            .replace('right', 'end')
+            .replace('left', 'start')}`
+        );
+      } else {
+        classes.push('justify-between');
+      }
     }
 
     if (flexWrap) {
