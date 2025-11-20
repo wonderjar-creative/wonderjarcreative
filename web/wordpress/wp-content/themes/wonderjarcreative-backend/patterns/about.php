@@ -14,8 +14,8 @@
 ?>
 <!-- wp:cover {"overlayColor":"teal","isUserOverlayColor":true,"minHeight":400,"isDark":false,"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|80","bottom":"var:preset|spacing|80"}}}} -->
 <div class="wp-block-cover alignfull is-light" style="padding-top:var(--wp--preset--spacing--80);padding-bottom:var(--wp--preset--spacing--80);min-height:400px"><span aria-hidden="true" class="wp-block-cover__background has-teal-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:group {"align":"wide","layout":{"type":"constrained","contentSize":""}} -->
-<div class="wp-block-group alignwide"><!-- wp:heading {"textAlign":"center","level":1,"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}},"fontSize":"8xl"} -->
-<h1 class="wp-block-heading has-text-align-center has-8-xl-font-size" style="margin-bottom:var(--wp--preset--spacing--40)">Get In Touch</h1>
+<div class="wp-block-group alignwide"><!-- wp:heading {"textAlign":"center","level":1,"align":"wide","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}},"fontSize":"9xl"} -->
+<h1 class="wp-block-heading alignwide has-text-align-center has-9-xl-font-size" style="margin-bottom:var(--wp--preset--spacing--40)">Get In Touch</h1>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":"1.25rem"}}} -->
@@ -27,8 +27,8 @@
 <!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"},"margin":{"top":"0","bottom":"0"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|50","left":"var:preset|spacing|50"}}}} -->
 <div class="wp-block-columns alignwide"><!-- wp:column {"width":"60%"} -->
-<div class="wp-block-column" style="flex-basis:60%"><!-- wp:heading {"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}},"elements":{"link":{"color":{"text":"var:preset|color|deep-black"}}}},"textColor":"deep-black","fontSize":"6xl"} -->
-<h2 class="wp-block-heading has-deep-black-color has-text-color has-link-color has-6-xl-font-size" style="margin-bottom:var(--wp--preset--spacing--40)">Our Story</h2>
+<div class="wp-block-column" style="flex-basis:60%"><!-- wp:heading {"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}},"elements":{"link":{"color":{"text":"var:preset|color|deep-black"}}}},"textColor":"deep-black","fontSize":"7xl"} -->
+<h2 class="wp-block-heading has-deep-black-color has-text-color has-link-color has-7-xl-font-size" style="margin-bottom:var(--wp--preset--spacing--40)">Our Story</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|30"}}}} -->
@@ -49,8 +49,8 @@
 <!-- /wp:group -->
 
 <!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"},"margin":{"top":"0","bottom":"0"}},"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"backgroundColor":"deep-black","textColor":"white","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull has-white-color has-deep-black-background-color has-text-color has-background has-link-color" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:heading {"textAlign":"center","style":{"typography":{"fontWeight":"700","fontStyle":"normal"},"spacing":{"margin":{"bottom":"var:preset|spacing|60"}},"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"textColor":"white","fontSize":"6xl"} -->
-<h2 class="wp-block-heading has-text-align-center has-white-color has-text-color has-link-color has-6-xl-font-size" style="margin-bottom:var(--wp--preset--spacing--60);font-style:normal;font-weight:700">Our Approach</h2>
+<div class="wp-block-group alignfull has-white-color has-deep-black-background-color has-text-color has-background has-link-color" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:heading {"textAlign":"center","style":{"typography":{"fontWeight":"700","fontStyle":"normal"},"spacing":{"margin":{"bottom":"var:preset|spacing|60"}},"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"textColor":"white","fontSize":"7xl"} -->
+<h2 class="wp-block-heading has-text-align-center has-white-color has-text-color has-link-color has-7-xl-font-size" style="margin-bottom:var(--wp--preset--spacing--60);font-style:normal;font-weight:700">Our Approach</h2>
 <!-- /wp:heading -->
 
 <!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|50","left":"var:preset|spacing|50"}}}} -->
@@ -87,8 +87,8 @@
 <!-- /wp:group -->
 
 <!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"},"margin":{"top":"0","bottom":"0"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:heading {"textAlign":"center","style":{"typography":{"fontWeight":"700","fontStyle":"normal"},"spacing":{"margin":{"bottom":"var:preset|spacing|60"}}},"fontSize":"6xl"} -->
-<h2 class="wp-block-heading has-text-align-center has-6-xl-font-size" style="margin-bottom:var(--wp--preset--spacing--60);font-style:normal;font-weight:700">What We Stand For</h2>
+<div class="wp-block-group alignfull" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:heading {"textAlign":"center","style":{"typography":{"fontWeight":"700","fontStyle":"normal"},"spacing":{"margin":{"bottom":"var:preset|spacing|60"}}},"fontSize":"7xl"} -->
+<h2 class="wp-block-heading has-text-align-center has-7-xl-font-size" style="margin-bottom:var(--wp--preset--spacing--60);font-style:normal;font-weight:700">What We Stand For</h2>
 <!-- /wp:heading -->
 
 <!-- wp:group {"fontSize":"xl","layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch"}} -->
@@ -131,8 +131,8 @@
 <!-- /wp:group -->
 
 <!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"},"margin":{"top":"0","bottom":"0"}},"elements":{"link":{"color":{"text":"var:preset|color|base"}}}},"backgroundColor":"teal","textColor":"base","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull has-base-color has-teal-background-color has-text-color has-background has-link-color" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:heading {"textAlign":"center","style":{"typography":{"fontWeight":"700","fontStyle":"normal"},"spacing":{"margin":{"bottom":"var:preset|spacing|60"}}},"fontSize":"6xl"} -->
-<h2 class="wp-block-heading has-text-align-center has-6-xl-font-size" style="margin-bottom:var(--wp--preset--spacing--60);font-style:normal;font-weight:700">Experience That Shows</h2>
+<div class="wp-block-group alignfull has-base-color has-teal-background-color has-text-color has-background has-link-color" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:heading {"textAlign":"center","style":{"typography":{"fontWeight":"700","fontStyle":"normal"},"spacing":{"margin":{"bottom":"var:preset|spacing|60"}}},"fontSize":"7xl"} -->
+<h2 class="wp-block-heading has-text-align-center has-7-xl-font-size" style="margin-bottom:var(--wp--preset--spacing--60);font-style:normal;font-weight:700">Experience That Shows</h2>
 <!-- /wp:heading -->
 
 <!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|50","left":"var:preset|spacing|50"}}}} -->
@@ -171,8 +171,8 @@
 <!-- wp:pattern {"slug":"wonderjarcreative-backend/cta-start-project"} /-->
 
 <!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"},"margin":{"top":"0","bottom":"0"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:heading {"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}},"fontSize":"6xl"} -->
-<h2 class="wp-block-heading has-6-xl-font-size" style="margin-bottom:var(--wp--preset--spacing--40)">How We Work</h2>
+<div class="wp-block-group alignfull" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:heading {"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}},"fontSize":"7xl"} -->
+<h2 class="wp-block-heading has-7-xl-font-size" style="margin-bottom:var(--wp--preset--spacing--40)">How We Work</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph -->
