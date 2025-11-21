@@ -45,7 +45,7 @@ export const getBlockClasses = (
     gradient ? `has-${gradient}` : '',
     id ? `wp-image-${id}` : '',
     isStackedOnMobile ? 'is-stacked-on-mobile' : '',
-    sizeSlug ? `size-${sizeSlug}` : '',
+    sizeSlug ? `wp-img-size-${sizeSlug}` : '',
     textAlign ? `text-${textAlign}` : '',
     textColor ? `text-${textColor}` : ''
   ];
@@ -55,58 +55,28 @@ export const getBlockClasses = (
   if (type) {
     classes.push(type);
 
-    // Layout defaults
-    if (orientation && orientation === 'vertical') {
-      classes.push('flex-col');
-      
-      if (justifyContent) {
-        classes.push(
-          `justify-${justifyContent
-            .replace('space-', '')
-            .replace('right', 'start')
-            .replace('left', 'end')}`
-        );
+    if (type === 'flex') {
+      // Handle flex layout specifics
+      const isVertical = orientation === 'vertical';
+      if (orientation) {
+        classes.push(isVertical ? 'flex-col' : 'flex-row');
       } else {
-        classes.push('justify-center');
+        classes.push('flex-row');
       }
-      
-      if (verticalAlignment) {
-        classes.push(
-          `items-${verticalAlignment
-            .replace('top', 'start')
-            .replace('bottom', 'end')}`
-        );
-      } else {
-        classes.push('items-start');
-      }
-    } else {
-      classes.push('flex-row');
-      if (justifyContent) {
-        classes.push(
-          `justify-${justifyContent
-            .replace('space-', '')
-            .replace('top', 'start')
-            .replace('bottom', 'end')}`
-        );
-      } else {
-        classes.push('justify-start');
-      }
-      
-      if (verticalAlignment) {
-        classes.push(
-          `items-${verticalAlignment
-            .replace('top', 'start')
-            .replace('bottom', 'end')}`
-        );
-      } else {
-        classes.push('items-center');
-      }
-    }
 
-    if (flexWrap) {
-      classes.push(`flex-${flexWrap}`);
-    } else {
-      classes.push('flex-wrap');
+      if (isVertical) {
+        classes.push(`items-${justifyContent || 'start'}`);
+        classes.push(`justify-${verticalAlignment || 'center'}`);
+      } else {
+        classes.push(`justify-${justifyContent?.replace('space-', '') || 'start'}`);
+        classes.push(`items-${verticalAlignment || 'center'}`);
+      }
+
+      if (flexWrap) {
+        classes.push(`flex-${flexWrap}`);
+      } else {
+        classes.push('flex-wrap');
+      }
     }
 
     if (type === 'constrained') {
@@ -155,8 +125,6 @@ export const getBlockStyleAttr = (styleObj: StyleProps): React.CSSProperties => 
   const result: React.CSSProperties = {};
 
   if (!styleObj || typeof styleObj !== 'object') return result;
-
-  // console.log('styleObj', styleObj);
 
   // Handle spacing (padding, margin)
   if (styleObj.spacing) {
@@ -212,7 +180,6 @@ export const getBlockStyleAttr = (styleObj: StyleProps): React.CSSProperties => 
     const sides = ['top', 'right', 'bottom', 'left'] as const;
     sides.forEach((side) => {
       const borderSide = styleObj.border[side];
-      console.log('borderSide', side, borderSide);
       if (borderSide && typeof borderSide === 'object' && Object.keys(borderSide).length > 0) {
         const capitalizedSide = side.charAt(0).toUpperCase() + side.slice(1);
         if (borderSide.width) {
@@ -238,6 +205,7 @@ export const getBlockStyleAttr = (styleObj: StyleProps): React.CSSProperties => 
   // Handle typography
   if (styleObj.typography) {
     const t = styleObj.typography;
+    if (t.fontSize) result.fontSize = typeof t.fontSize === 'number' ? `${t.fontSize}px` : t.fontSize;
     if (t.fontStyle) result.fontStyle = t.fontStyle;
     if (t.fontWeight) result.fontWeight = t.fontWeight;
     if (t.lineHeight) result.lineHeight = t.lineHeight;
@@ -316,7 +284,6 @@ export const styleElementsToCSS = (
                   ? 'color'
                   : `${property}-${subProp}`.replace(/[A-Z]/g, m => '-' + m.toLowerCase());
               
-                // console.log('propname', cssPropName);
                 const cssValue =
                 typeof subValue === 'string' && subValue.startsWith('var:')
                   ? convertPreset(subValue)
