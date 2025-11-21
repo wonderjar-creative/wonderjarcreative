@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### [0.10.0] - 2025-11-21
+
 ### Added
 - Environment-specific configuration (`.env.development.local`, `.env.production.local`)
 - GraphQL codegen with WordPress schema integration

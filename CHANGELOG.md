@@ -7,7 +7,7 @@ For component-specific changes, see:
 - [WordPress Backend Changelog](./web/wordpress/CHANGELOG.md)
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+and this project adheres to [Calendar Versioning](https://calver.org/) (YYYY.MM.MICRO).
 
 ## [Unreleased]
 
@@ -16,7 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Production WordPress deployment on AWS Lightsail
 - Environment configuration for development and production
 
-## [0.1.0] - 2025-11-21
+## [2024.11.0] - 2024-11-21
 
 ### Summary
 Initial release of the Wonderjar Creative headless WordPress website with Next.js frontend.
@@ -44,14 +44,18 @@ Initial release of the Wonderjar Creative headless WordPress website with Next.j
 
 ## Release Process
 
+### Versioning
+- **Root**: Calendar Versioning (YYYY.MM.MICRO) - tracks deployment dates
+- **Frontend**: Semantic Versioning - tracks code changes (major.minor.patch)
+- **WordPress**: Semantic Versioning - tracks theme changes (major.minor.patch)
+
 ### When to Release
-- **Major (1.0.0)**: Complete redesign, breaking API changes
-- **Minor (0.X.0)**: New features, pages, or significant improvements
-- **Patch (0.0.X)**: Bug fixes, small improvements
+- **New Month (YYYY.MM.0)**: First deployment of the month
+- **Patch (YYYY.MM.X)**: Additional deployments within the same month
 
 ### Steps
 1. Update component changelogs (frontend/wordpress)
 2. Update this root changelog with summary
-3. Create git tag: `git tag -a v0.1.0 -m "Release v0.1.0"`
-4. Push tag: `git push origin v0.1.0`
+3. Create git tag: `git tag -a v2024.11.0 -m "Release v2024.11.0"`
+4. Push tag: `git push origin v2024.11.0`
 5. Deploy to production

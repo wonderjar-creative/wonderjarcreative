@@ -1,0 +1,23 @@
+{
+  "name": "wonderjarcreative-monorepo",
+  "version": "2024.11.0",
+  "private": true,
+  "workspaces": [
+    "web/frontend"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=frontend",
+    "build": "npm run build --workspace=frontend",
+    "lint": "npm run lint --workspace=frontend",
+    "clean": "rm -rf node_modules web/frontend/node_modules web/frontend/.next",
+    "format": "prettier --write \"**/*.{ts,tsx,md,json}\""
+  },
+  "devDependencies": {
+    "prettier": "^3.1.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "packageManager": "npm@10.2.4"
+}
