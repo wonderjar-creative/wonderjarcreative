@@ -1,7 +1,25 @@
 const fs = require('fs');
 const path = require('path');
 const fetch = require('node-fetch');
-require('dotenv').config();
+
+// Load environment-specific .env file
+const NODE_ENV = process.env.NODE_ENV || 'development';
+const envFiles = [
+  `.env.${NODE_ENV}.local`,
+  '.env.local',
+  `.env.${NODE_ENV}`,
+  '.env'
+];
+
+// Load the first env file that exists
+for (const envFile of envFiles) {
+  const envPath = path.join(__dirname, '..', envFile);
+  if (fs.existsSync(envPath)) {
+    require('dotenv').config({ path: envPath });
+    console.log(`Loaded env from: ${envFile}`);
+    break;
+  }
+}
 
 const WP_API = process.env.NEXT_PUBLIC_WORDPRESS_API_URL || 'http://localhost:8000';
 
