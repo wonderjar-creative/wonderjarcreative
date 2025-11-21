@@ -16,6 +16,7 @@ import {
   CoreSiteTitleBlockAttributes,
   CoreSiteLogoBlockAttributes,
   CoreColumnsBlockAttributes,
+  CoreSeparatorBlockAttributes,
   Page,
   NodeWithFeaturedImageToMediaItemConnectionEdge,
   CoreDetailsBlockAttributes
@@ -234,6 +235,17 @@ const getBlockComponents = async (
             name={block.name}
             attributes={block.attributes as CoreParagraphBlockAttributes}
             saveContent={block.saveContent}
+          />
+        );
+      }
+      case 'core/separator': {
+        const Separator = dynamic(() => import('@/components/Blocks/Core/Separator/Separator'), { ssr: true });
+
+        return (
+          <Separator
+            key={index}
+            name={block.name}
+            attributes={block.attributes as CoreSeparatorBlockAttributes}
           />
         );
       }
