@@ -119,6 +119,7 @@ class Theme {
   private function define_hooks() {
     $this->loader->add_action( 'after_setup_theme', $this, 'setup_theme' );
     $this->loader->add_filter( 'upload_mimes', $this, 'allowed_mime_types' );
+    $this->loader->add_action( 'init', $this, 'add_cors_headers' );
   }
 
   /**
@@ -163,6 +164,42 @@ class Theme {
   public function allowed_mime_types( $mimes ) {
     $mimes['svg'] = 'image/svg+xml';
     return $mimes;
+  }
+
+  /**
+   * Add CORS headers for headless WordPress.
+   * 
+   * Allows frontend domains to access WordPress resources.
+   * 
+   * @since 1.0.0
+   * @return void
+   */
+  public function add_cors_headers() {
+    // Allow requests from production and preview domains
+    $allowed_origins = array(
+      'https://wonderjarcreative.com',
+      'https://www.wonderjarcreative.com',
+    );
+
+    // Also allow Vercel preview deployments
+    if ( isset( $_SERVER['HTTP_ORIGIN'] ) ) {
+      $origin = $_SERVER['HTTP_ORIGIN'];
+      
+      // Check if origin is in allowed list or is a Vercel preview URL
+      if ( in_array( $origin, $allowed_origins ) || 
+           strpos( $origin, '.vercel.app' ) !== false ) {
+        header( 'Access-Control-Allow-Origin: ' . $origin );
+        header( 'Access-Control-Allow-Methods: GET, POST, OPTIONS' );
+        header( 'Access-Control-Allow-Credentials: true' );
+        header( 'Access-Control-Allow-Headers: Authorization, Content-Type, X-Requested-With' );
+      }
+    }
+
+    // Handle preflight requests
+    if ( $_SERVER['REQUEST_METHOD'] === 'OPTIONS' ) {
+      status_header( 200 );
+      exit;
+    }
   }
 
   /**
