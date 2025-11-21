@@ -7,6 +7,12 @@ const Separator: React.FC<CoreSeparatorBlock> = ({ name, attributes }) => {
   const blockClasses = getBlockClasses(separatorAttributes, getBlockBaseClass(name));
   const blockStyleAttr = getBlockStyleAttr(style);
 
+  // Adjust logic to accommodate background color as color
+  if (blockStyleAttr && blockStyleAttr.background && !blockStyleAttr.color) {
+    blockStyleAttr.color = blockStyleAttr.background as string;
+    blockStyleAttr.background = 'none';
+  }
+
   return (
     <hr
       {...(anchor && { id: anchor })}
