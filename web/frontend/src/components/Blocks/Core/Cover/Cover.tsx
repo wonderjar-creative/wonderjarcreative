@@ -75,7 +75,7 @@ const Cover: React.FC<CoreCoverBlock> = ({ name, attributes, featuredImage, medi
 
   const innerContainerClasses = getBlockClasses(
     {},
-    `wp-block-cover__inner-container relative z-10 w-full max-w-full`
+    `wp-block-cover__inner-container relative z-10 m-0 w-full max-w-full`
   );
 
   const image = useFeaturedImage && featuredImage ? (
