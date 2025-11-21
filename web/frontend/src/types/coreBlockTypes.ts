@@ -14,14 +14,14 @@ import {
   CoreNavigationBlockAttributes,
   CoreNavigationLinkBlockAttributes,
   CoreParagraphBlockAttributes,
-  CorePostTitleBlockAttributes,
-  CoreSiteTitleBlockAttributes,
+  CorePatternBlockAttributes,
   CorePostContentBlockAttributes,
+  CorePostTitleBlockAttributes,
+  CoreSeparatorBlockAttributes,
+  CoreSiteLogoBlockAttributes,
+  CoreSiteTitleBlockAttributes,
   CoreTemplatePartBlockAttributes,
   NodeWithFeaturedImageToMediaItemConnectionEdge,
-  CorePatternBlockAttributes,
-  CoreSiteLogoBlockAttributes,
-  
 } from '@/gql/graphql';
 import React from 'react';
 
@@ -120,6 +120,11 @@ export interface CorePostTitleBlock extends FrontendBlock {
   attributes?: CorePostTitleBlockAttributes;
   page?: Maybe<Page>;
 };
+
+export interface CoreSeparatorBlock {
+  name: string;
+  attributes?: CoreSeparatorBlockAttributes;
+}
 
 export interface CoreSiteTitleBlock extends FrontendBlock {
   attributes?: CoreSiteTitleBlockAttributes;
