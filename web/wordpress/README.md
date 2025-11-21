@@ -9,7 +9,7 @@ This is a modern WordPress block theme that serves as a headless CMS for the Nex
 ## Theme Information
 
 - **Theme Name**: WonderJar Creative Backend
-- **Version**: 1.0.0
+- **Version**: 1.0.1
 - **Description**: Headless WordPress theme with custom blocks and patterns
 - **Author**: wjmatt
 - **License**: Proprietary

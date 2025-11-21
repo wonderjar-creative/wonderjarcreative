@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### [1.0.1] 2025-11-21
+
 ### Added
 - CORS headers for Vercel and production domains
 - Documentation: README.md with theme setup and usage
@@ -17,7 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 - CORS blocking Vercel preview and production domains
 
-## [1.0.0] - 2024-11-21
+## [1.0.0] - 2025-11-21
 
 ### Added
 - Custom theme: wonderjarcreative-backend
