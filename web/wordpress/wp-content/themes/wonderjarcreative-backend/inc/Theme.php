@@ -119,7 +119,7 @@ class Theme {
   private function define_hooks() {
     $this->loader->add_action( 'after_setup_theme', $this, 'setup_theme' );
     $this->loader->add_filter( 'upload_mimes', $this, 'allowed_mime_types' );
-    $this->loader->add_action( 'init', $this, 'add_cors_headers' );
+    $this->loader->add_action( 'rest_api_init', $this, 'add_cors_headers' );
   }
 
   /**
@@ -169,9 +169,10 @@ class Theme {
   /**
    * Add CORS headers for headless WordPress.
    * 
-   * Allows frontend domains to access WordPress resources.
+   * Allows frontend domains to access WordPress REST API and GraphQL.
+   * Only applies to API requests, not regular WordPress pages.
    * 
-   * @since 1.0.0
+   * @since 1.0.1
    * @return void
    */
   public function add_cors_headers() {
@@ -181,24 +182,23 @@ class Theme {
       'https://www.wonderjarcreative.com',
     );
 
-    // Also allow Vercel preview deployments
-    if ( isset( $_SERVER['HTTP_ORIGIN'] ) ) {
-      $origin = $_SERVER['HTTP_ORIGIN'];
-      
-      // Check if origin is in allowed list or is a Vercel preview URL
-      if ( in_array( $origin, $allowed_origins ) || 
-           strpos( $origin, '.vercel.app' ) !== false ) {
-        header( 'Access-Control-Allow-Origin: ' . $origin );
-        header( 'Access-Control-Allow-Methods: GET, POST, OPTIONS' );
-        header( 'Access-Control-Allow-Credentials: true' );
-        header( 'Access-Control-Allow-Headers: Authorization, Content-Type, X-Requested-With' );
-      }
+    // Get the origin from the request
+    $origin = isset( $_SERVER['HTTP_ORIGIN'] ) ? $_SERVER['HTTP_ORIGIN'] : '';
+    
+    if ( empty( $origin ) ) {
+      return;
     }
 
-    // Handle preflight requests
-    if ( $_SERVER['REQUEST_METHOD'] === 'OPTIONS' ) {
-      status_header( 200 );
-      exit;
+    // Check if origin is allowed (whitelist or Vercel preview)
+    $is_allowed = in_array( $origin, $allowed_origins ) || 
+                  strpos( $origin, '.vercel.app' ) !== false;
+    
+    if ( $is_allowed ) {
+      header( 'Access-Control-Allow-Origin: ' . $origin );
+      header( 'Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS' );
+      header( 'Access-Control-Allow-Credentials: true' );
+      header( 'Access-Control-Allow-Headers: Authorization, Content-Type, X-Requested-With' );
+      header( 'Access-Control-Max-Age: 86400' );
     }
   }
 
