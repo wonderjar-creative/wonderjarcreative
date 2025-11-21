@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  *
  * @since 1.0.0
  */
-define( 'WONDERJAR_CREATIVE_BACKEND_VERSION', '1.0.0' );
+define( 'WONDERJAR_CREATIVE_BACKEND_VERSION', '1.0.1' );
 
 /**
  * Include Composer's autoloader.
