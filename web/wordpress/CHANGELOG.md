@@ -7,8 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### [1.0.2] 2025-11-21
+
 ### Changed
 - Migrated base styles from frontend `globals.css` to WordPress `theme.json` for unified color, spacing, and typography presets.
+
 ### [1.0.1] 2025-11-21
 
 ### Added
