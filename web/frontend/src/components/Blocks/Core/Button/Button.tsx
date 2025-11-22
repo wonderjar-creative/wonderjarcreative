@@ -18,7 +18,7 @@ const Button: React.FC<CoreButtonBlock> = ({ name, attributes, saveContent }) =>
       className={blockClasses}
       {...(style && { style: blockStyleAttr })}
     >
-      {url && (url.startsWith('/') || url.startsWith('http://localhost:3000')) ? (
+      {url && (url.startsWith('/') || (process.env.NEXT_PUBLIC_BASE_URL && url.startsWith(process.env.NEXT_PUBLIC_BASE_URL))) ? (
         <Link
           className={`${linkClasses} is-next-link _direct`}
           href={url}
