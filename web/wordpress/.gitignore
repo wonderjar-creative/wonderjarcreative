@@ -3,3 +3,6 @@ wp-config.php
 
 # Composer specific files
 vendor/
+
+# Ignore log files
+*.log
