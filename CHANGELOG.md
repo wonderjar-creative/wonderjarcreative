@@ -12,6 +12,9 @@ and this project adheres to [Calendar Versioning](https://calver.org/) (YYYY.MM.
 ## [Unreleased]
 
 ### Project-wide
+- Migrated base styles from frontend `globals.css` to WordPress `theme.json` for unified design system (colors, spacing, typography).
+- Updated theme.json to ensure block editor matches frontend design.
+### Project-wide
 - Prepared for Vercel deployment (frontend)
 - Production WordPress deployment on AWS Lightsail
 - Environment configuration for development and production
