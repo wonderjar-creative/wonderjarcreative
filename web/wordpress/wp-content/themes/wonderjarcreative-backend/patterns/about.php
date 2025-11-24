@@ -12,17 +12,7 @@
  */
 
 ?>
-<!-- wp:cover {"overlayColor":"teal","isUserOverlayColor":true,"minHeight":70,"minHeightUnit":"vh","isDark":false,"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"}}}} -->
-<div class="wp-block-cover alignfull is-light" style="padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70);min-height:70vh"><span aria-hidden="true" class="wp-block-cover__background has-teal-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:group {"align":"wide","layout":{"type":"constrained","contentSize":""}} -->
-<div class="wp-block-group alignwide"><!-- wp:heading {"textAlign":"center","level":1,"align":"wide","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}},"fontSize":"9xl"} -->
-<h1 class="wp-block-heading alignwide has-text-align-center has-9-xl-font-size" style="margin-bottom:var(--wp--preset--spacing--40)">About Us</h1>
-<!-- /wp:heading -->
-
-<!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":"1.25rem"}}} -->
-<p class="has-text-align-center" style="font-size:1.25rem">Learn how we turn ideas into meaningful digital experiences</p>
-<!-- /wp:paragraph --></div>
-<!-- /wp:group --></div></div>
-<!-- /wp:cover -->
+<!-- wp:pattern {"slug":"wonderjarcreative-backend/hero-about"} /-->
 
 <!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"},"margin":{"top":"0","bottom":"0"}},"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"backgroundColor":"warm-coral","textColor":"white","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull has-white-color has-warm-coral-background-color has-text-color has-background has-link-color" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|50","left":"var:preset|spacing|50"}}}} -->
