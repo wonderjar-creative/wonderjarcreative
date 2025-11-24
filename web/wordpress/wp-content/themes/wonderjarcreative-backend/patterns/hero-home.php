@@ -6,7 +6,7 @@
  * Description: Full-height hero section for home page with gradient background, animated text, and blast-off image effect.
  *
  * @package WonderjarCreativeBackend
- * @since 1.0.0
+ * @since 1.1.0
  * @author wjmatt <matt@wonderjarcreative.com>
  * @link https://wonderjarcreative.com
  */

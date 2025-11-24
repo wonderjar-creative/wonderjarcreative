@@ -6,7 +6,7 @@
  * Description: Hero section for contact page with subtle gradient background.
  *
  * @package WonderjarCreativeBackend
- * @since 1.0.0
+ * @since 1.1.0
  * @author wjmatt <matt@wonderjarcreative.com>
  * @link https://wonderjarcreative.com
  */
