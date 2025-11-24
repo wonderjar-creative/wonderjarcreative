@@ -81,21 +81,20 @@ Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&ut
 3. Set `Sample page` as `Static page` in Settings -> Reading
 4. Create a new page called `404 not found` ensuring the slug is `404-not-found`
 5. Install and activate following plugins:
-   - Add WPGraphQL SEO
    - Classic Editor
    - Redirection
    - WPGraphQL
    - [WPGraphQL JWT Authentication](https://github.com/wp-graphql/wp-graphql-jwt-authentication/releases)
-   - Yoast SEO
+   - Rank Math SEO
+   - [WPGraphQL for Rank Math](https://github.com/AxeWP/wp-graphql-rank-math)
    - [Advanced Custom Fields PRO](https://www.advancedcustomfields.com/pro/) (optional)
    - WPGraphQL for ACF (optional)
 6. Do first-time install of Redirection. Recommended to enable monitor of changes
-7. Configure Yoast SEO with:
+7. Configure Rank Math SEO with:
 
-   - Disable XML Sitemaps under Yoast SEO -> Settings
-   - If you did not change the `Site Address (URL)` before installing Yoast, it will ask you to run optimize SEO data after changing permalinks, do so
-   - Generate a robots.txt file under Yoast SEO -> Tools -> File Editor
-   - Modify robots.txt sitemap reference from `wp-sitemap.xml` to `sitemap.xml`
+   - Generate a robots.txt file under Rank Math -> General Settings -> Edit robots.txt
+   - Ensure sitemap reference is `sitemap.xml` (not `wp-sitemap.xml`)
+   - Enable headless mode if available in settings
 
 8. `Enable Public Introspection` under GraphQL -> Settings
 9. Add following constants to `wp-config.php`
@@ -178,7 +177,7 @@ Each template can then have their own queries for fetching specific content for 
 
 ## SEO
 
-We are using Yoast SEO for handling SEO in WordPress, and then all routes are requesting the Yoast SEO object, and parsing this to a dynamic `generateMetadata()` function
+We are using Rank Math SEO for handling SEO in WordPress, and then all routes are requesting the Rank Math SEO object via WPGraphQL, and parsing this to a dynamic `generateMetadata()` function
 
 ## Folder structure
 

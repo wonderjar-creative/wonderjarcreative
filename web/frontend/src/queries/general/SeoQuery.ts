@@ -8,41 +8,40 @@ export const SeoQuery = gql`
   ) {
     contentNode(id: $slug, idType: $idType, asPreview: $preview) {
       seo {
-        canonical
-        cornerstone
-        focuskw
-        metaDesc
-        metaKeywords
-        metaRobotsNofollow
-        metaRobotsNoindex
-        opengraphAuthor
-        opengraphDescription
-        opengraphModifiedTime
-        opengraphPublishedTime
-        opengraphPublisher
-        opengraphSiteName
-        opengraphTitle
-        opengraphType
-        opengraphUrl
-        readingTime
         title
-        twitterDescription
-        twitterTitle
-        opengraphImage {
-          altText
-          mediaDetails {
-            height
+        description
+        canonicalUrl
+        focusKeywords
+        robots
+        isPillarContent
+        fullHead
+        breadcrumbTitle
+        openGraph {
+          title
+          description
+          url
+          siteName
+          type
+          locale
+          image {
+            url
             width
+            height
           }
-          sourceUrl
+          articleMeta {
+            section
+            publishedTime
+            modifiedTime
+          }
+          twitterMeta {
+            card
+            title
+            description
+            image
+          }
         }
-        twitterImage {
-          altText
-          mediaDetails {
-            width
-            height
-          }
-          sourceUrl
+        jsonLd {
+          raw
         }
       }
     }
