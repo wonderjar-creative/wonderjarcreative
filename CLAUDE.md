@@ -4,82 +4,101 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Wonderjar Creative is a headless CMS architecture combining:
-- **Frontend**: Next.js 15 (App Router) with TypeScript and Tailwind CSS on Vercel
-- **Backend**: WordPress block theme with GraphQL API on AWS Lightsail
+Headless WordPress monorepo with Next.js 15 frontend (TypeScript, Tailwind CSS v4) on Vercel and WordPress block theme with WPGraphQL on AWS Lightsail.
 
-## Common Commands
+**Critical**: The frontend cannot build without a live WordPress instance - GraphQL CodeGen fetches the schema at build time.
+
+## Commands
 
 ```bash
-# Root commands (from project root)
-npm run dev           # Start frontend dev server (includes codegen)
-npm run build         # Build frontend for production
-npm run lint          # ESLint check
-npm run format        # Format with Prettier
+# From project root
+npm run dev           # Runs: fetch-template-structure → codegen → next dev
+npm run build         # Production build (requires WordPress)
+npm run lint          # ESLint
+npm run format        # Prettier
 
-# Frontend-specific (from web/frontend/)
-npm run codegen       # Regenerate GraphQL types from WordPress schema
-npm run fetch-wp-template-structure  # Fetch template data from WordPress
+# From web/frontend/
+npm run codegen       # Regenerate GraphQL types manually
+npm run fetch-wp-template-structure  # Update template/pattern cache
 ```
 
 ## Architecture
 
-### Routing & Content Flow
-1. Catch-all route `[[...slug]]` at `src/app/[[...slug]]/page.tsx` handles all URLs
-2. WordPress GraphQL determines content type (Page, Post, etc.)
-3. Template components (`src/components/Templates/`) render the appropriate layout
-4. Blocks are recursively rendered via `getBlockComponents.tsx`
+### Content Flow
+1. Catch-all route `src/app/[[...slug]]/page.tsx` receives all URLs
+2. `ContentInfoQuery` determines content type via GraphQL
+3. Routes to `PageTemplate` or `PostTemplate` in `src/components/Templates/`
+4. Templates call `getBlockComponents()` for recursive block rendering
 
-### Block Rendering System
-- WordPress blocks map to React components in `src/components/Blocks/Core/`
-- Each component receives: `name`, `attributes`, `saveContent`, `innerBlocks`
-- `blockStyles.ts` converts WordPress attributes to Tailwind classes
-- Template parts and patterns are fetched and resolved recursively
+### Block System
+WordPress blocks → React components in `src/components/Blocks/Core/`:
+- Each receives `{ name, attributes, saveContent, innerBlocks }`
+- `core/template-part` and `core/pattern` blocks resolve dynamically via `renderTemplatePart()` and `renderPattern()`
+- `blockMedia.ts` batch-fetches media details via REST API, enriches blocks with `mediaItem` data
 
-### GraphQL Integration
-- Types auto-generated in `src/gql/` via CodeGen (excluded from git)
-- Queries defined in `src/queries/`
-- `fetchGraphQL.ts` handles authentication and draft mode
-- **Requires live WordPress instance** - cannot build without `NEXT_PUBLIC_WORDPRESS_API_URL`
+### Adding New Blocks
+1. Create component: `src/components/Blocks/Core/[BlockName]/[BlockName].tsx`
+2. Add case in `getBlockComponents.tsx` switch statement with `dynamic()` import
+3. Import attribute types from `@/gql/graphql`
+4. Use `getBlockClasses()` and `getBlockBaseClass()` from `blockStyles.ts`
 
-### Preview Mode
-- JWT authentication via `WP_USER` and `WP_APP_PASS` credentials
-- `/api/preview` endpoint handles preview links from WordPress
-- Cookie-based session with `wp_jwt` token
+### GraphQL
+- Types generated in `src/gql/` (gitignored) - run `npm run codegen` to regenerate
+- Queries in `src/queries/`
+- `fetchGraphQL.ts` handles auth headers for draft/preview mode
 
 ### Caching
-- ISR with 5-minute revalidation (`/api/revalidate` endpoint)
-- Templates and patterns have ISR-cached fetchers
+- Pages: 5-minute ISR (`revalidate = 300`)
+- Template parts/patterns: 1-hour ISR cache, stored in `data/*.json`
+- Navigation: 1-hour static cache via `api/navigation/[id]/route.ts`
+- Revalidation: `/api/revalidate` endpoint triggered by WordPress (requires `X-Headless-Secret-Key` header)
+
+### Preview/Draft Mode
+- WordPress preview link → `/api/preview` → JWT auth → Next.js `draftMode()`
+- Requires `WP_USER` and `WP_APP_PASS` for authentication
 
 ## Key Files
 
 | Path | Purpose |
 |------|---------|
-| `src/app/[[...slug]]/page.tsx` | Main dynamic route handler |
-| `src/utils/getBlockComponents.tsx` | Block-to-component mapper |
-| `src/utils/blockStyles.ts` | WordPress attrs → Tailwind classes |
-| `src/utils/fetchGraphQL.ts` | GraphQL client with auth |
-| `src/components/Blocks/Core/` | WordPress block renderers |
-| `src/components/Templates/` | Page/Post templates |
-| `middleware.ts` | Redirect handling from WordPress Redirection plugin |
-| `codegen.ts` | GraphQL CodeGen configuration |
+| `web/frontend/src/app/[[...slug]]/page.tsx` | Main route handler |
+| `web/frontend/src/utils/getBlockComponents.tsx` | Block-to-component mapper |
+| `web/frontend/src/utils/blockStyles.ts` | WordPress attrs → Tailwind classes |
+| `web/frontend/src/utils/blockMedia.ts` | Media enrichment via REST API |
+| `web/frontend/src/utils/fetchGraphQL.ts` | GraphQL client with auth |
+| `web/frontend/src/utils/htmlTransformations.tsx` | HTML parsing utilities |
+| `web/frontend/middleware.ts` | Redirect handling (WordPress Redirection plugin) |
+| `web/wordpress/wp-content/themes/wonderjarcreative-backend/` | WordPress theme |
 
 ## Environment Variables
 
-Required in `.env.development.local` or `.env.production.local`:
-- `NEXT_PUBLIC_WORDPRESS_API_URL` - WordPress GraphQL endpoint
-- `HEADLESS_SECRET` - ISR revalidation secret
-- `WP_USER` / `WP_APP_PASS` - WordPress app password for preview
-- `GRAVITY_FORMS_CONSUMER_KEY` / `GRAVITY_FORMS_CONSUMER_SECRET` - Forms API
+Required in `web/frontend/.env.development.local`:
+```bash
+NEXT_PUBLIC_WORDPRESS_API_URL=https://cms.wonderjarcreative.com
+HEADLESS_SECRET=xxx                  # ISR revalidation
+WP_USER=username                     # WordPress app password user
+WP_APP_PASS=xxxx xxxx xxxx xxxx      # WordPress app password
+GRAVITY_FORMS_CONSUMER_KEY=ck_xxx    # Optional: Forms API
+GRAVITY_FORMS_CONSUMER_SECRET=cs_xxx
+```
 
-## Adding New Block Types
+## WordPress Theme
 
-1. Create component in `src/components/Blocks/Core/[BlockName]/`
-2. Add mapping in `getBlockComponents.tsx`
-3. Block receives `{ name, attributes, saveContent, innerBlocks }`
-4. Use `blockStyles.ts` utilities for styling
+Located in `web/wordpress/wp-content/themes/wonderjarcreative-backend/`:
+- Class-based architecture: `Theme.php` → `Loader.php` → Feature modules in `inc/Features/`
+- REST endpoint: `/wp-json/template-structure/v1/full` for template data
+- `theme.json` defines color palette and spacing scale (synced with Tailwind)
+
+Required plugins: WPGraphQL, WPGraphQL SEO, Gravity Forms + REST API, Redirection, Yoast SEO, WPGraphQL JWT Authentication
+
+## Troubleshooting
+
+- **Build fails with GraphQL errors**: Verify `NEXT_PUBLIC_WORDPRESS_API_URL` and WordPress accessibility
+- **Preview not working**: Check JWT auth credentials
+- **Template parts missing**: Run `npm run fetch-wp-template-structure`
+- **Styles missing**: Ensure `theme.json` matches Tailwind config
 
 ## Versioning
 
-- **Root**: Calendar Versioning (YYYY.MM.MICRO) - deployment dates
-- **Frontend/WordPress**: Semantic Versioning (major.minor.patch)
+- **Root monorepo**: Calendar versioning (YYYY.MM.MICRO) - deployment dates
+- **Frontend/WordPress**: Semantic versioning (major.minor.patch)
