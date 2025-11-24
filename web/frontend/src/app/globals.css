@@ -6,6 +6,7 @@
 @source inline('text-{teal,warm-coral,muted-brick-red,deep-black,retro-teal,soft-cream,charcoal-gray,marigold-yellow,white}');
 @source inline('bg-{teal,warm-coral,muted-brick-red,deep-black,retro-teal,soft-cream,charcoal-gray,marigold-yellow,white}');
 @source inline('border-{teal,warm-coral,muted-brick-red,deep-black,retro-teal,soft-cream,charcoal-gray,marigold-yellow,white}');
+@source inline('bg-{gradient-tech,gradient-warm,gradient-subtle,gradient-radial-teal,gradient-radial-coral}');
 @source inline('{top-,right-,bottom-,left-}{0}');
 
 @theme {
@@ -28,6 +29,13 @@
   --color-marigold-yellow: oklch(0.7636 0.1533 75.16);
   --color-white: #FFFFFF;
   --color-white: oklch(1 0 0);
+
+  /* Gradients */
+  --color-gradient-tech: linear-gradient(135deg, #50C9B4 0%, #4D7A7F 100%);
+  --color-gradient-warm: linear-gradient(135deg, #F2685E 0%, #EAA221 100%);
+  --color-gradient-subtle: linear-gradient(180deg, #EFE5D5 0%, #FFFFFF 100%);
+  --color-gradient-radial-teal: radial-gradient(circle at 50% 0%, rgba(80, 201, 180, 0.2) 0%, transparent 70%);
+  --color-gradient-radial-coral: radial-gradient(circle at 50% 0%, rgba(242, 104, 94, 0.2) 0%, transparent 70%);
 
   /* Spacing */
   --spacing-20: 10px;
