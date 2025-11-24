@@ -11,6 +11,20 @@ and this project adheres to [Calendar Versioning](https://calver.org/) (YYYY.MM.
 
 ## [Unreleased]
 
+## [2025.11.2] - 2025-11-24
+
+### Summary
+Hotfix deployment - Fixed Tailwind v4 gradient utilities on frontend.
+
+### Frontend (v1.0.1)
+- Fixed gradient utilities not working with Tailwind CSS v4
+- Corrected gradient configuration using `@theme` block and `@source` directives
+- Removed unused `backgroundImage` from tailwind.config.ts
+
+### Notes
+- Patch release fixing gradient rendering on production frontend
+- No WordPress changes in this deployment
+
 ## [2025.11.1] - 2025-11-24
 
 ### Summary
