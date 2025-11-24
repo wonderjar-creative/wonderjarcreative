@@ -11,15 +11,29 @@ and this project adheres to [Calendar Versioning](https://calver.org/) (YYYY.MM.
 
 ## [Unreleased]
 
-### Project-wide
-- Migrated base styles from frontend `globals.css` to WordPress `theme.json` for unified design system (colors, spacing, typography).
-- Updated theme.json to ensure block editor matches frontend design.
-### Project-wide
-- Prepared for Vercel deployment (frontend)
-- Production WordPress deployment on AWS Lightsail
-- Environment configuration for development and production
+## [2025.11.1] - 2025-11-24
 
-## [2024.11.0] - 2024-11-21
+### Summary
+Production deployment with SEO migration and gradient design system enhancements.
+
+### Frontend (v1.0.0) 🎉
+- **First production release!**
+- Migrated from Yoast SEO to Rank Math SEO for improved SEO capabilities
+- Added gradient utilities to Tailwind config for design consistency
+- Enhanced build system with proper environment handling
+
+### WordPress (v1.1.0)
+- Added 5 gradient presets to theme.json (tech, warm, subtle, radial glows)
+- Created reusable hero patterns with gradient backgrounds
+- Refactored home, about, and contact pages to use modular hero components
+- Updated plugin requirements (Rank Math SEO + WPGraphQL for Rank Math)
+
+### Infrastructure
+- Production environment validated with Rank Math SEO integration
+- GraphQL schema successfully regenerated with new SEO fields
+- All builds passing with updated type system
+
+## [2025.11.0] - 2025-11-21
 
 ### Summary
 Initial release of the Wonderjar Creative headless WordPress website with Next.js frontend.

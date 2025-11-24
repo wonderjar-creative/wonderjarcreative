@@ -7,6 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2025-11-24
+
+### Summary
+**First production release!** Migrated from Yoast SEO to Rank Math SEO and added gradient design system.
+
+### Added
+- Gradient background utilities in Tailwind config (`gradient-tech`, `gradient-warm`, `gradient-subtle`, `gradient-radial-teal`, `gradient-radial-coral`)
+- Production codegen script (`codegen:prod`) for explicit production environment
+- Enhanced build script with `NODE_ENV` defaulting to production
+
+### Changed
+- **BREAKING**: Migrated from Yoast SEO to Rank Math SEO
+- Updated `SeoQuery.ts` to use Rank Math GraphQL field structure
+- Refactored `seoData.ts` to parse Rank Math SEO data (robots array, nested OpenGraph, simplified Twitter image)
+- Modified `package.json` build script to respect `NODE_ENV` environment variable
+- Updated all documentation references from Yoast to Rank Math (README, CLAUDE.md, copilot-instructions.md)
+
+### Removed
+- All Yoast SEO GraphQL queries and type references
+- Yoast-specific field mappings (`metaDesc`, `opengraphImage.sourceUrl`, etc.)
+
 ### [0.10.0] - 2025-11-21
 
 ### Added

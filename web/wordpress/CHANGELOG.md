@@ -7,7 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### [1.0.2] 2025-11-21
+## [1.1.0] - 2025-11-24
+
+### Added
+- **Gradients in theme.json**: 5 new gradient presets (`gradient-tech`, `gradient-warm`, `gradient-subtle`, `gradient-radial-teal`, `gradient-radial-coral`)
+- **Hero patterns**: `hero-home.php`, `hero-about.php`, `hero-contact.php` with gradient backgrounds
+- Reusable hero components for consistent page headers
+
+### Changed
+- **home.php**: Refactored to use `hero-home` pattern (tech gradient)
+- **about.php**: Refactored to use `hero-about` pattern (warm gradient)
+- **contact.php**: Refactored to use `hero-contact` pattern (subtle gradient with radial glow)
+- Updated plugin requirements: Replaced Yoast SEO with Rank Math SEO + WPGraphQL for Rank Math
+
+### Removed
+- Inline hero Cover blocks from page patterns (replaced with reusable hero patterns)
+
+## [1.0.2] - 2025-11-21
 
 ### Changed
 - Migrated base styles from frontend `globals.css` to WordPress `theme.json` for unified color, spacing, and typography presets.
