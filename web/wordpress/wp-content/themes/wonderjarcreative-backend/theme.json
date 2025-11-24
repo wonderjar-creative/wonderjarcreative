@@ -53,6 +53,33 @@
           "name": "White",
           "color": "#FFFFFF"
         }
+      ],
+      "gradients": [
+        {
+          "slug": "gradient-tech",
+          "name": "Tech Gradient (Teal to Retro Teal)",
+          "gradient": "linear-gradient(135deg, #50C9B4 0%, #4D7A7F 100%)"
+        },
+        {
+          "slug": "gradient-warm",
+          "name": "Warm Gradient (Coral to Marigold)",
+          "gradient": "linear-gradient(135deg, #F2685E 0%, #EAA221 100%)"
+        },
+        {
+          "slug": "gradient-subtle",
+          "name": "Subtle Gradient (Cream to White)",
+          "gradient": "linear-gradient(180deg, #EFE5D5 0%, #FFFFFF 100%)"
+        },
+        {
+          "slug": "gradient-radial-teal",
+          "name": "Radial Glow (Teal)",
+          "gradient": "radial-gradient(circle at 50% 0%, rgba(80, 201, 180, 0.2) 0%, transparent 70%)"
+        },
+        {
+          "slug": "gradient-radial-coral",
+          "name": "Radial Glow (Coral)",
+          "gradient": "radial-gradient(circle at 50% 0%, rgba(242, 104, 94, 0.2) 0%, transparent 70%)"
+        }
       ]
     },
     "layout": {

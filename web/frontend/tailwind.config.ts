@@ -19,7 +19,14 @@ export default {
         'charcoal-gray': 'var(--color-charcoal-gray, #4E5664)',
         'marigold-yellow': 'var(--color-marigold-yellow, #EAA221)',
         'white': 'var(--color-white, #FFFFFF)',
-      }
+      },
+      backgroundImage: {
+        'gradient-tech': 'linear-gradient(135deg, #50C9B4 0%, #4D7A7F 100%)',
+        'gradient-warm': 'linear-gradient(135deg, #F2685E 0%, #EAA221 100%)',
+        'gradient-subtle': 'linear-gradient(180deg, #EFE5D5 0%, #FFFFFF 100%)',
+        'gradient-radial-teal': 'radial-gradient(circle at 50% 0%, rgba(80, 201, 180, 0.2) 0%, transparent 70%)',
+        'gradient-radial-coral': 'radial-gradient(circle at 50% 0%, rgba(242, 104, 94, 0.2) 0%, transparent 70%)',
+      },
     }
   },
   plugins: [],
