@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.1] - 2025-11-24
+
+### Fixed
+- Gradient utilities not working with Tailwind CSS v4
+- Added `@source inline()` directive for gradient background utilities in `globals.css`
+- Added gradient CSS custom properties to `@theme` block (proper Tailwind v4 syntax)
+
+### Changed
+- Removed `backgroundImage` configuration from `tailwind.config.ts` (not used in Tailwind v4)
+
 ## [1.0.0] - 2025-11-24
 
 ### Summary
