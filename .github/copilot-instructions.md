@@ -105,10 +105,12 @@ Project uses `framer-motion` for animations (see `src/components/Effects/`):
 - **Theme.json**: Defines color palette (teal, warm-coral, etc.) and spacing scale used by Tailwind
 
 ### Required Plugins
-- WPGraphQL (with SEO extension)
+- WPGraphQL
+- WPGraphQL JWT Authentication
+- WPGraphQL for Rank Math
+- Rank Math SEO (robots.txt must point to `sitemap.xml` not `wp-sitemap.xml`)
 - Gravity Forms + REST API add-on
 - Redirection (for middleware redirects)
-- Yoast SEO (robots.txt must point to `sitemap.xml` not `wp-sitemap.xml`)
 
 ## Development Commands
 
@@ -138,7 +140,7 @@ Use `html-react-parser` and transformations in `htmlTransformations.tsx`:
 - `getTransformedHtml()` - Parse HTML with custom element transforms
 
 ### SEO Metadata
-Generated in `generateMetadata()` via `SeoQuery` (Yoast SEO data) → `setSeoData()` utility
+Generated in `generateMetadata()` via `SeoQuery` (Rank Math SEO data via WPGraphQL) → `setSeoData()` utility
 
 ## Versioning
 - **Root monorepo**: Calendar versioning (YYYY.MM.MICRO) - tracks deployment dates

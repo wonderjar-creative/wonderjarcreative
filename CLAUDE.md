@@ -89,7 +89,7 @@ Located in `web/wordpress/wp-content/themes/wonderjarcreative-backend/`:
 - REST endpoint: `/wp-json/template-structure/v1/full` for template data
 - `theme.json` defines color palette and spacing scale (synced with Tailwind)
 
-Required plugins: WPGraphQL, WPGraphQL SEO, Gravity Forms + REST API, Redirection, Yoast SEO, WPGraphQL JWT Authentication
+Required plugins: WPGraphQL, WPGraphQL JWT Authentication, WPGraphQL for Rank Math, Rank Math SEO, Gravity Forms + REST API, Redirection
 
 ## Troubleshooting
 
