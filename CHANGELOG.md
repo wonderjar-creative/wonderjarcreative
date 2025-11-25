@@ -11,6 +11,11 @@ and this project adheres to [Calendar Versioning](https://calver.org/) (YYYY.MM.
 
 ## [Unreleased]
 
+## [2025.11.5] - 2025-11-24
+
+### Wordpress Theme
+- Updated `footer` pattern to use correct production domain for privacy link.
+
 ## [2025.11.4] - 2025-11-24
 
 ### Frontend
