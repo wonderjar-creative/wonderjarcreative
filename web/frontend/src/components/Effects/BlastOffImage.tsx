@@ -115,12 +115,12 @@ export function BlastOffImage({
   }, [isInView, hasBlasted, svgContent, rocketYThreshold]);
 
   return (
-    <div ref={ref} className="relative inline-block" style={{ width, height }}>
+    <div ref={ref} className="relative inline-block" style={{ width, height, overflow: 'visible' }}>
       {/* SVG Container - render inline */}
-      <div 
+      <div
         ref={svgContainerRef}
         className={className}
-        style={{ width: '100%', height: '100%' }}
+        style={{ width: '100%', height: '100%', overflow: 'visible' }}
       >
         {svgContent ? (
           <div dangerouslySetInnerHTML={{ __html: svgContent }} style={{ width: '100%', height: '100%' }} />
