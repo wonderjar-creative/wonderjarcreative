@@ -10,7 +10,10 @@
     "build": "npm run build --workspace=frontend",
     "lint": "npm run lint --workspace=frontend",
     "clean": "rm -rf node_modules web/frontend/node_modules web/frontend/.next",
-    "format": "prettier --write \"**/*.{ts,tsx,md,json}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
+    "composer:install": "cd web/wordpress/wp-content/themes/wonderjarcreative-backend && composer install",
+    "composer:update": "cd web/wordpress/wp-content/themes/wonderjarcreative-backend && composer update",
+    "composer:dump": "cd web/wordpress/wp-content/themes/wonderjarcreative-backend && composer dump-autoload"
   },
   "devDependencies": {
     "prettier": "^3.1.0"
