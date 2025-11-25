@@ -11,6 +11,15 @@ and this project adheres to [Calendar Versioning](https://calver.org/) (YYYY.MM.
 
 ## [Unreleased]
 
+## [2025.11.4] - 2025-11-24
+
+### Frontend
+- Added `dot-pattern` utility class for subtle white dot grid overlay effect
+- CSS override for `wp-block-cover` to apply pattern to background overlay
+
+### WordPress Theme
+- Updated hero patterns to use `dot-pattern` class on teal backgrounds
+
 ## [2025.11.3] - 2025-11-24
 
 ### Summary
