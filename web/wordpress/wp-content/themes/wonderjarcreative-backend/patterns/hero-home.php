@@ -16,12 +16,12 @@
 <div class="wp-block-cover alignfull is-light has-custom-content-position is-position-bottom-center dot-pattern has-xl-font-size" style="padding-top:var(--wp--preset--spacing--70);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--50);min-height:100vh"><span aria-hidden="true" class="wp-block-cover__background has-teal-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:columns {"verticalAlignment":"center","align":"wide"} -->
 <div class="wp-block-columns alignwide are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center","width":"50%","layout":{"type":"default"}} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:50%"><!-- wp:group {"style":{"spacing":{"blockGap":"0"}},"layout":{"type":"flex","orientation":"vertical","flexWrap":"nowrap"}} -->
-<div class="wp-block-group"><!-- wp:heading {"level":1,"className":"__border-grow-right __jumping-p","fontSize":"9xl"} -->
-<h1 class="wp-block-heading __border-grow-right __jumping-p has-9-xl-font-size">Blast Off</h1>
+<div class="wp-block-group"><!-- wp:heading {"level":1,"className":"__border-grow-right __jumping-p text-4xl md:text-6xl lg:text-8xl"} -->
+<h1 class="wp-block-heading __border-grow-right __jumping-p text-4xl md:text-6xl lg:text-8xl">Blast Off</h1>
 <!-- /wp:heading -->
 
-<!-- wp:heading {"level":1,"className":"__border-grow-right __jumping-p","fontSize":"7xl"} -->
-<h1 class="wp-block-heading __border-grow-right __jumping-p has-7-xl-font-size">To A Better Web</h1>
+<!-- wp:heading {"level":1,"className":"__border-grow-right __jumping-p text-3xl md:text-5xl lg:text-7xl"} -->
+<h1 class="wp-block-heading __border-grow-right __jumping-p text-3xl md:text-5xl lg:text-7xl">To A Better Web</h1>
 <!-- /wp:heading --></div>
 <!-- /wp:group -->
 
