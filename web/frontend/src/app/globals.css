@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@source "../../data/*.json";
 @source inline('size-full');
 @source inline('{items-,self-}{start,center,end,stretch}');
 @source inline('{justify-,content-}{start,center,end,between,around,evenly}');
@@ -48,7 +49,7 @@
 
   /* Alignment */
   --wide: 1280px;
-  --narrow: 720px;
+  --narrow: 800px;
   
   /* Typography */
   --font-sans: var(--roboto), sans-serif;
