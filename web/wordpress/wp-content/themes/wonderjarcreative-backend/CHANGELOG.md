@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2025-11-24
+
+### Changed
+- Updated hero patterns (`hero-home`, `hero-about`, `hero-contact`) to use `dot-pattern` class for subtle white dot grid overlay on teal backgrounds
+
 ## [1.1.0] - 2025-11-24
 
 ### Added
