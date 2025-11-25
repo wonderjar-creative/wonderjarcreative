@@ -178,8 +178,10 @@ class Theme {
   public function add_cors_headers() {
     // Allow requests from production and preview domains
     $allowed_origins = array(
-      'https://wonderjarcreative.com',
+      'https://cms.wonderjarcreative.com',
       'https://www.wonderjarcreative.com',
+      'https://wonderjarcreative.com',
+      'http://localhost:3000',
     );
 
     // Get the origin from the request
