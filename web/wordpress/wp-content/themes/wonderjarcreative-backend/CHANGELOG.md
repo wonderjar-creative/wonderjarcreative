@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.2] - 2025-11-24
+
+### Changed
+- Added `https://cms.wonderjarcreative.com` and `http://localhost:3000` to allowed domains in `add_cors_headers()`.
+
 ## [1.2.1] - 2025-11-24
 
 ### Changed
