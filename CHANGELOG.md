@@ -11,7 +11,12 @@ and this project adheres to [Calendar Versioning](https://calver.org/) (YYYY.MM.
 
 ## [Unreleased]
 
-## [2025.11.6] 2025-11-24
+## [2025.11.7] - 2025-11-24
+
+### Frontend (v1.1.1)
+- BlastOffImage effect now loops continuously for rocket, smoke, fire, and sparkles animations.
+
+## [2025.11.6] - 2025-11-24
 
 ### WordPress Theme (v1.2.2)
 - Changed allowed domains in `add_cors_headers()` to allow `cms` subdomain as well as `http://localhost:3000`.
