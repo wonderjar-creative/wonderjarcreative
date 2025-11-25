@@ -83,13 +83,12 @@ export function BlastOffImage({
     loadSvg();
   }, [src]);
 
-  // Animate rocket paths when in view
+  // Animate rocket paths when in view - with looping
   useEffect(() => {
     if (isInView && !hasBlasted && svgContainerRef.current && svgContent) {
       setHasBlasted(true);
       
-      // Wait for SVG to render
-      setTimeout(() => {
+      const animateRocket = () => {
         const svgElement = svgContainerRef.current?.querySelector('svg');
         if (!svgElement) return;
         
@@ -105,13 +104,25 @@ export function BlastOffImage({
               path.style.transition = 'transform 2.5s cubic-bezier(0.43, 0.13, 0.23, 0.96)';
               path.style.transformOrigin = `${bbox.x + bbox.width / 2}px ${bbox.y + bbox.height / 2}px`;
               path.style.transform = 'translateY(-150px) rotate(-5deg)';
+              
+              // Reset after animation completes, then repeat
+              setTimeout(() => {
+                path.style.transition = 'transform 0.5s ease-out';
+                path.style.transform = 'translateY(0) rotate(0deg)';
+                
+                // Start next loop
+                setTimeout(animateRocket, 1000); // 1 second delay before next blast
+              }, 2500);
             }
           } catch (e) {
             // Some paths might not have valid bounding boxes
             console.warn('Could not animate path:', e);
           }
         });
-      }, 100);
+      };
+      
+      // Initial delay before first animation
+      setTimeout(animateRocket, 100);
     }
   }, [isInView, hasBlasted, svgContent, rocketYThreshold]);
 
@@ -148,6 +159,8 @@ export function BlastOffImage({
         transition={{
           duration: 2.5,
           ease: 'easeOut',
+          repeat: Infinity,
+          repeatDelay: 1.5,
         }}
       >
         <div className="w-32 h-32 bg-gray-400/60 rounded-full blur-3xl" />
@@ -167,6 +180,8 @@ export function BlastOffImage({
           duration: 2.5,
           ease: 'easeOut',
           delay: 0.15,
+          repeat: Infinity,
+          repeatDelay: 1.5,
         }}
       >
         <div className="w-32 h-32 bg-gray-400/60 rounded-full blur-3xl" />
@@ -185,6 +200,8 @@ export function BlastOffImage({
           duration: 2.7,
           ease: 'easeOut',
           delay: 0.08,
+          repeat: Infinity,
+          repeatDelay: 1.5,
         }}
       >
         <div className="w-36 h-36 bg-gray-300/70 rounded-full blur-3xl" />
@@ -201,6 +218,8 @@ export function BlastOffImage({
         transition={{
           duration: 2,
           ease: 'easeOut',
+          repeat: Infinity,
+          repeatDelay: 2,
         }}
       >
         <div className="w-24 h-48 bg-gradient-to-b from-orange-500 via-yellow-400 to-transparent rounded-full blur-md opacity-80" />
@@ -223,6 +242,8 @@ export function BlastOffImage({
             duration: 2,
             ease: 'easeOut',
             delay: 0.3 + i * 0.06,
+            repeat: Infinity,
+            repeatDelay: 2,
           }}
         />
       ))}
