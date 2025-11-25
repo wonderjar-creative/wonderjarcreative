@@ -2,6 +2,20 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Business Context
+
+**Wonderjar Creative** is a web development studio based in Denver, Colorado (remote-first). It's a freelance business that has been operating for several years.
+
+**Positioning:** A professional web development studio—not a holding company or collective. Tone should be confident, technically credible, and direct. Avoid startup-speak, buzzwords, and whimsical/playful imagery.
+
+**Denver Headless** (denverheadless.com) is a specialized service line within Wonderjar Creative, focused on headless WordPress with Next.js frontends. It's a niche productized offering, not a separate company.
+
+**Voice guidelines:**
+- Professional but approachable
+- Technical credibility without jargon overload
+- Direct and specific—avoid vague claims like "digital experiences" or "scalable solutions"
+- Show restraint in design (sophisticated, minimal > playful illustrations)
+
 ## Project Overview
 
 Headless WordPress monorepo with Next.js 15 frontend (TypeScript, Tailwind CSS v4) on Vercel and WordPress block theme with WPGraphQL on AWS Lightsail.
