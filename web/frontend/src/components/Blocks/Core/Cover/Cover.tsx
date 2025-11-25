@@ -8,6 +8,7 @@ const Cover: React.FC<CoreCoverBlock> = ({ name, attributes, featuredImage, medi
     alt,
     backgroundType,
     contentPosition,
+    customGradient,
     customOverlayColor,
     dimRatio,
     gradient,
@@ -26,6 +27,8 @@ const Cover: React.FC<CoreCoverBlock> = ({ name, attributes, featuredImage, medi
 
   const Tag = tagName || 'div';
   const TagComponent = Tag as keyof JSX.IntrinsicElements;
+
+  const customCombinedGradientOverlayColor = customGradient ? customGradient : customOverlayColor
 
   const align = contentPosition ? [contentPosition.split(' ')[0]].map((verticalAlign) => {
     switch (verticalAlign) {
@@ -64,7 +67,7 @@ const Cover: React.FC<CoreCoverBlock> = ({ name, attributes, featuredImage, medi
 
   const backgroundColor = overlayColor;
   const overlayClasses = getBlockClasses(
-    { backgroundColor, dimRatio, gradient, style },
+    { backgroundColor, customGradient, dimRatio, gradient, style },
     `wp-block-cover__background absolute top-0 left-0 w-full max-w-full h-full${!backgroundColor && !customOverlayColor ? ' has-background has-deep-black-background-color ' : ' '}${!dimRatio ? ' opacity-50 ' : ''}`
   );
 
@@ -124,6 +127,7 @@ const Cover: React.FC<CoreCoverBlock> = ({ name, attributes, featuredImage, medi
         aria-hidden="true"
         className={overlayClasses}
         style={{
+          ...(customCombinedGradientOverlayColor && { backgroundImage: customGradient ? customGradient : undefined }),
           ...(customOverlayColor && { backgroundColor: customOverlayColor }),
           opacity: dimRatio ? dimRatio / 100 : undefined,
         }}
