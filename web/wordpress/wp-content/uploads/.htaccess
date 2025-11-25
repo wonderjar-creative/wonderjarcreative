@@ -1,0 +1,13 @@
+# CORS Headers for Uploaded Files
+# This allows the frontend to load SVG and other media files from WordPress
+
+<IfModule mod_headers.c>
+  # Set CORS headers for allowed origins
+  SetEnvIf Origin "^https://(www\.)?wonderjarcreative\.com$" AccessControlAllowOrigin=$0
+  SetEnvIf Origin "^http://localhost:3000$" AccessControlAllowOrigin=$0
+  SetEnvIf Origin "^https://.*\.vercel\.app$" AccessControlAllowOrigin=$0
+  
+  Header set Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
+  Header set Access-Control-Allow-Methods "GET"
+  Header set Access-Control-Allow-Credentials "true"
+</IfModule>
