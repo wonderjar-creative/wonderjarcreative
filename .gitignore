@@ -4,6 +4,9 @@
 # Dependencies
 node_modules/
 
+# Composer specific files
+vendor/
+
 # Environment files
 .env
 .env*.local
@@ -12,3 +15,9 @@ node_modules/
 dist/
 build/
 .next/
+
+# WordPress specific files
+wp-config.php
+
+# Ignore log files
+*.log
