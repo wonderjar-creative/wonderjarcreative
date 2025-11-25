@@ -297,5 +297,15 @@
       "title": "Footer",
       "area": "footer"
     }
+  ],
+  "patterns": [
+    "about",
+    "contact",
+    "home",
+    "hero-about",
+    "hero-contact",
+    "hero-home",
+    "cta-get-in-touch",
+    "cta-start-project"
   ]
 }
