@@ -201,6 +201,24 @@
     z-index: 2;
   }
 
+  /* Override for wp-block-cover: apply pattern to background overlay instead of wrapper */
+  .wp-block-cover.dot-pattern::before {
+    display: none;
+  }
+
+  .wp-block-cover.dot-pattern .wp-block-cover__background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
   /* Spacing */
   .spacing-20 { padding: var(--spacing-20); }
   .spacing-30 { padding: var(--spacing-30); }
