@@ -11,6 +11,18 @@ and this project adheres to [Calendar Versioning](https://calver.org/) (YYYY.MM.
 
 ## [Unreleased]
 
+## [2025.11.3] - 2025-11-24
+
+### Summary
+Hotfix deployment - Fixed BlastOffImage animation clipping issue on frontend.
+
+### Frontend (v1.0.2)
+- Fixed BlastOffImage component clipping rocket during animation by adding `overflow: visible` to SVG and outer containers
+
+### Notes
+- Patch release fixing rocket animation cutoff on production frontend
+- No WordPress changes in this deployment
+
 ## [2025.11.2] - 2025-11-24
 
 ### Summary
