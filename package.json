@@ -13,7 +13,9 @@
     "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
     "composer:install": "cd web/wordpress/wp-content/themes/wonderjarcreative-backend && composer install",
     "composer:update": "cd web/wordpress/wp-content/themes/wonderjarcreative-backend && composer update",
-    "composer:dump": "cd web/wordpress/wp-content/themes/wonderjarcreative-backend && composer dump-autoload"
+    "composer:dump": "cd web/wordpress/wp-content/themes/wonderjarcreative-backend && composer dump-autoload",
+    "theme:zip": "THEME_VERSION=$(grep 'Version:' web/wordpress/wp-content/themes/wonderjarcreative-backend/style.css | awk '{print $2}') && npm run composer:install --no-audit && cd web/wordpress/wp-content/themes && zip -r wonderjarcreative-backend-$THEME_VERSION.zip wonderjarcreative-backend -x '*.git*' -x '*node_modules*' -x '*.DS_Store' -x '*composer.json' -x '*composer.lock'",
+    "theme:zip:prod": "THEME_VERSION=$(grep 'Version:' web/wordpress/wp-content/themes/wonderjarcreative-backend/style.css | awk '{print $2}') && cd web/wordpress/wp-content/themes/wonderjarcreative-backend && composer install --no-dev --optimize-autoloader && cd .. && zip -r wonderjarcreative-backend-$THEME_VERSION.zip wonderjarcreative-backend -x '*.git*' -x '*node_modules*' -x '*.DS_Store' -x '*composer.json' -x '*composer.lock' && echo \"Theme zipped to web/wordpress/wp-content/themes/wonderjarcreative-backend-$THEME_VERSION.zip\""
   },
   "devDependencies": {
     "prettier": "^3.1.0"
