@@ -11,6 +11,11 @@ and this project adheres to [Calendar Versioning](https://calver.org/) (YYYY.MM.
 
 ## [Unreleased]
 
+## [2025.11.8] - 2025-11-25
+
+### WordPress Theme (v1.2.3)
+- Converted hero patterns (`hero-home`, `hero-about`, `hero-contact`) to be text only. Removed graphics.
+
 ## [2025.11.7] - 2025-11-24
 
 ### Frontend (v1.1.1)
