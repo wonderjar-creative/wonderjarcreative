@@ -58,6 +58,7 @@ export function BlastOffImage({
             const svg = doc.querySelector('svg');
             
             if (svg) {
+              svg.classList.add('overflow-visible');
               svg.setAttribute('width', '100%');
               svg.setAttribute('height', '100%');
               svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
