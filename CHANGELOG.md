@@ -13,16 +13,16 @@ and this project adheres to [Calendar Versioning](https://calver.org/) (YYYY.MM.
 
 ## [2025.11.5] - 2025-11-24
 
-### Wordpress Theme
+### Wordpress Theme (v1.2.1)
 - Updated `footer` pattern to use correct production domain for privacy link.
 
 ## [2025.11.4] - 2025-11-24
 
-### Frontend
+### Frontend (v1.1.0)
 - Added `dot-pattern` utility class for subtle white dot grid overlay effect
 - CSS override for `wp-block-cover` to apply pattern to background overlay
 
-### WordPress Theme
+### WordPress Theme (v1.2.0)
 - Updated hero patterns to use `dot-pattern` class on teal backgrounds
 
 ## [2025.11.3] - 2025-11-24
