@@ -11,9 +11,14 @@ and this project adheres to [Calendar Versioning](https://calver.org/) (YYYY.MM.
 
 ## [Unreleased]
 
+## [2025.11.6] 2025-11-24
+
+### WordPress Theme (v1.2.2)
+- Changed allowed domains in `add_cors_headers()` to allow `cms` subdomain as well as `http://localhost:3000`.
+
 ## [2025.11.5] - 2025-11-24
 
-### Wordpress Theme (v1.2.1)
+### WordPress Theme (v1.2.1)
 - Updated `footer` pattern to use correct production domain for privacy link.
 
 ## [2025.11.4] - 2025-11-24
