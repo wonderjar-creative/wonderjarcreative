@@ -1,6 +1,6 @@
 {
   "name": "wonderjarcreative-monorepo",
-  "version": "2025.11.3",
+  "version": "2025.11.4",
   "private": true,
   "workspaces": [
     "web/frontend"
@@ -11,13 +11,12 @@
     "lint": "npm run lint --workspace=frontend",
     "clean": "rm -rf node_modules web/frontend/node_modules web/frontend/.next",
     "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
+    "version": "node -e \"const root = require('./package.json').version; const frontend = require('./web/frontend/package.json').version; const fs = require('fs'); const theme = fs.readFileSync('web/wordpress/wp-content/themes/wonderjarcreative-backend/style.css', 'utf8').match(/Version: (.+)/)[1]; console.log('Root:     ' + root + '\\nFrontend: ' + frontend + '\\nTheme:    ' + theme);\"",
+    "version:bump": "node scripts/version-bump.js",
     "composer:install": "cd web/wordpress/wp-content/themes/wonderjarcreative-backend && composer install",
     "composer:update": "cd web/wordpress/wp-content/themes/wonderjarcreative-backend && composer update",
     "composer:dump": "cd web/wordpress/wp-content/themes/wonderjarcreative-backend && composer dump-autoload",
-    "theme:version": "echo \"Current theme version: $(grep 'Version:' web/wordpress/wp-content/themes/wonderjarcreative-backend/style.css | awk '{print $2}')\"",
-    "theme:version:set": "if [ -z \"$VERSION\" ]; then echo 'Error: VERSION not set. Usage: VERSION=1.2.0 npm run theme:version:set'; exit 1; fi && sed -i.bak \"s/^Version: .*/Version: $VERSION/\" web/wordpress/wp-content/themes/wonderjarcreative-backend/style.css && rm web/wordpress/wp-content/themes/wonderjarcreative-backend/style.css.bak && echo \"Theme version updated to $VERSION\"",
-    "theme:zip": "THEME_VERSION=$(grep 'Version:' web/wordpress/wp-content/themes/wonderjarcreative-backend/style.css | awk '{print $2}') && npm run composer:install --no-audit && cd web/wordpress/wp-content/themes && zip -r wonderjarcreative-backend-$THEME_VERSION.zip wonderjarcreative-backend -x '*.git*' -x '*node_modules*' -x '*.DS_Store' -x '*composer.json' -x '*composer.lock'",
-    "theme:zip:prod": "THEME_VERSION=$(grep 'Version:' web/wordpress/wp-content/themes/wonderjarcreative-backend/style.css | awk '{print $2}') && cd web/wordpress/wp-content/themes/wonderjarcreative-backend && composer install --no-dev --optimize-autoloader && cd .. && zip -r wonderjarcreative-backend-$THEME_VERSION.zip wonderjarcreative-backend -x '*.git*' -x '*node_modules*' -x '*.DS_Store' -x '*composer.json' -x '*composer.lock' && echo \"Theme zipped to web/wordpress/wp-content/themes/wonderjarcreative-backend-$THEME_VERSION.zip\""
+    "theme:zip": "node scripts/theme-zip.js prod"
   },
   "devDependencies": {
     "prettier": "^3.1.0"
