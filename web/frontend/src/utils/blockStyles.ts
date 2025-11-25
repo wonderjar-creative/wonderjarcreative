@@ -202,6 +202,11 @@ export const getBlockStyleAttr = (styleObj: StyleProps): React.CSSProperties => 
     if (styleObj.color.text) result.color = styleObj.color.text.includes('var:') ? convertPreset(styleObj.color.text) : styleObj.color.text;
   }
 
+  // Handle background-color
+  if (styleObj.backgroundColor) {
+    result.backgroundColor = styleObj.backgroundColor.includes('var:') ? convertPreset(styleObj.backgroundColor) : styleObj.backgroundColor;
+  }
+
   // Handle typography
   if (styleObj.typography) {
     const t = styleObj.typography;
