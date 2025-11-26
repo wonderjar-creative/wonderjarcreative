@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.0] - 2025-11-25
+
+### Added
+- New `renderPostContent.tsx` utility for synchronous block processing with stylesCollector
+- Support for `layout.contentSize` CSS generation in `blockStyles.ts`
+
+### Changed
+- Replaced `PostContent` component with `renderPostContent` utility to fix async timing issues with stylesCollector
+- Updated `getBlockComponents.tsx` to handle `core/post-content` blocks via render function instead of React component
+- Added `@source "../../data/*.json"` to `globals.css` for Tailwind v4 to scan pattern data files
+- Fixed Image component to conditionally use `fill` vs `width/height` props for SVGs without dimensions
+
+### Removed
+- Deleted `PostContent.tsx` component (replaced by `renderPostContent.tsx` utility)
+
+### Fixed
+- stylesCollector not populating for nested blocks inside patterns
+- SVG images not rendering due to Next.js Image component fill/width conflict
+
 ## [1.1.1] - 2025-11-24
 
 ### Changed

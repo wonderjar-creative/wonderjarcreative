@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2025-11-25
+
+### Added
+- New `services.php` pattern with alternating text/image layout for Web Development, Cloud Hosting, and Ongoing Support services
+- New `why-wonderjar.php` pattern with accordion-style benefits section
+
+### Changed
+- Extracted services section from `home.php` into dedicated `services.php` pattern
+- Extracted Why Wonderjar section from `home.php` into dedicated `why-wonderjar.php` pattern
+- Reduced supporting image sizes from 400px to 300px for better visual balance
+- Updated pattern image URLs from local dev to production (`cms.wonderjarcreative.com`)
+
 ## [1.2.3] - 2025-11-24
 
 ### Changed
