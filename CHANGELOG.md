@@ -11,6 +11,25 @@ and this project adheres to [Calendar Versioning](https://calver.org/) (YYYY.MM.
 
 ## [Unreleased]
 
+## [2025.11.9] - 2025-11-25
+
+### Summary
+Refactored home page patterns into reusable components, fixed block styling issues.
+
+### Frontend (v1.2.0)
+- Fixed stylesCollector async timing issue for nested blocks inside patterns
+- Added `renderPostContent` utility to replace PostContent component
+- Added support for `layout.contentSize` CSS generation
+- Fixed SVG image rendering in Next.js Image component
+- Added Tailwind v4 source scanning for data/*.json pattern files
+
+### WordPress Theme (v1.3.0)
+- New `services.php` pattern with alternating text/image layout
+- New `why-wonderjar.php` pattern with accordion-style benefits
+- Extracted sections from `home.php` into dedicated reusable patterns
+- Reduced supporting image sizes from 400px to 300px for better visual balance
+- Updated pattern URLs from local dev to production
+
 ## [2025.11.8] - 2025-11-25
 
 ### WordPress Theme (v1.2.3)
