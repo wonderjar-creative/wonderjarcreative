@@ -37,6 +37,7 @@ const ImageComponent: React.FC<CoreImageBlock> = ({ name, attributes, mediaItem 
   }
 
   const useFill = !imageWidth && !imageHeight;
+  const fillHeight = useFill && width && !height ? width : '300px';
 
   return (
     <figure
@@ -45,7 +46,7 @@ const ImageComponent: React.FC<CoreImageBlock> = ({ name, attributes, mediaItem 
       style={{
         ...blockStyleAttr,
         // When using fill, the figure needs position relative and a size
-        ...(useFill && { position: 'relative' as const, width: width || '100%', height: height || '400px' })
+        ...(useFill && { position: 'relative' as const, width: width || '100%', height: height || fillHeight })
       }}
     >
       <Image
