@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.0] - 2025-11-26
+
+### Added
+- Added `AnimatedBorder` effect into heading block component.
+
+### Changed
+- Changed `--wide` css variable width.
+- Increased `.dot-pattern` .background-image opacity to 0.2.
+
 ## [1.2.0] - 2025-11-25
 
 ### Added
