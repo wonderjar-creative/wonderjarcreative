@@ -11,6 +11,11 @@ and this project adheres to [Calendar Versioning](https://calver.org/) (YYYY.MM.
 
 ## [Unreleased]
 
+## [2025.11.10] - 2025-11-25
+
+### Frontend (v1.2.1)
+Changed `.dot-pattern` .background-image opacity.
+
 ## [2025.11.9] - 2025-11-25
 
 ### Summary
