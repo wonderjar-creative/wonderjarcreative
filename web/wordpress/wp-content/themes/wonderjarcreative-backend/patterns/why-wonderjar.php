@@ -45,8 +45,8 @@
 <!-- /wp:column -->
 
 <!-- wp:column {"verticalAlignment":"center"} -->
-<div class="wp-block-column is-vertically-aligned-center"><!-- wp:image {"id":817,"width":"300px","sizeSlug":"full","linkDestination":"none","align":"center"} -->
-<figure class="wp-block-image aligncenter size-full is-resized"><img src="https://cms.wonderjarcreative.com/wp-content/uploads/2025/11/undraw_team-collaboration_phnf_white.svg" alt="Team Collaboration White" class="wp-image-817" style="width:300px"/></figure>
+<div class="wp-block-column is-vertically-aligned-center"><!-- wp:image {"id":817,"width":"300px","height":"162px","scale":"cover","sizeSlug":"full","linkDestination":"none","align":"center"} -->
+<figure class="wp-block-image aligncenter size-full is-resized"><img src="https://cms.wonderjarcreative.com/wp-content/uploads/2025/11/undraw_team-collaboration_phnf_white.svg" alt="Team Collaboration White" class="wp-image-817" style="object-fit:cover;width:300px;height:162px"/></figure>
 <!-- /wp:image --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns --></div>
