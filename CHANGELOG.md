@@ -11,12 +11,20 @@ and this project adheres to [Calendar Versioning](https://calver.org/) (YYYY.MM.
 
 ## [Unreleased]
 
+## [2025.11.10] - 2025-11-25
+
+### WordPress Theme (v1.3.1)
+- Changed `style.layout.wideSize` width to 1280px.
+
+### Frontend (v1.2.1)
+- Changed `--wide` css variable width.
+- Increased `.dot-pattern` .background-image opacity to 0.2.
+
 ## [2025.11.9] - 2025-11-25
 
-### Summary
-Refactored home page patterns into reusable components, fixed block styling issues.
-
 ### Frontend (v1.2.0)
+- Refactored home page patterns into reusable components
+- Fixed block styling issues
 - Fixed stylesCollector async timing issue for nested blocks inside patterns
 - Added `renderPostContent` utility to replace PostContent component
 - Added support for `layout.contentSize` CSS generation
@@ -61,37 +69,22 @@ Refactored home page patterns into reusable components, fixed block styling issu
 
 ## [2025.11.3] - 2025-11-24
 
-### Summary
-Hotfix deployment - Fixed BlastOffImage animation clipping issue on frontend.
-
 ### Frontend (v1.0.2)
+- Hotfix: Fixed BlastOffImage animation clipping issue on frontend
 - Fixed BlastOffImage component clipping rocket during animation by adding `overflow: visible` to SVG and outer containers
-
-### Notes
-- Patch release fixing rocket animation cutoff on production frontend
-- No WordPress changes in this deployment
 
 ## [2025.11.2] - 2025-11-24
 
-### Summary
-Hotfix deployment - Fixed Tailwind v4 gradient utilities on frontend.
-
 ### Frontend (v1.0.1)
+- Hotfix: Fixed Tailwind v4 gradient utilities on frontend
 - Fixed gradient utilities not working with Tailwind CSS v4
 - Corrected gradient configuration using `@theme` block and `@source` directives
 - Removed unused `backgroundImage` from tailwind.config.ts
 
-### Notes
-- Patch release fixing gradient rendering on production frontend
-- No WordPress changes in this deployment
-
 ## [2025.11.1] - 2025-11-24
 
-### Summary
-Production deployment with SEO migration and gradient design system enhancements.
-
 ### Frontend (v1.0.0) 🎉
-- **First production release!**
+- First production release
 - Migrated from Yoast SEO to Rank Math SEO for improved SEO capabilities
 - Added gradient utilities to Tailwind config for design consistency
 - Enhanced build system with proper environment handling
@@ -109,11 +102,9 @@ Production deployment with SEO migration and gradient design system enhancements
 
 ## [2025.11.0] - 2025-11-21
 
-### Summary
-Initial release of the Wonderjar Creative headless WordPress website with Next.js frontend.
-
-### Features
-- **Frontend**: Next.js 15 with App Router, TypeScript, Tailwind CSS
+### Frontend
+- Initial release of the Wonderjar Creative headless WordPress website with Next.js frontend
+- Next.js 15 with App Router, TypeScript, Tailwind CSS
 - **Backend**: WordPress with custom block theme, GraphQL API
 - **Integration**: Headless architecture with WordPress as CMS
 - **Blocks**: Full WordPress block support with custom renderers
