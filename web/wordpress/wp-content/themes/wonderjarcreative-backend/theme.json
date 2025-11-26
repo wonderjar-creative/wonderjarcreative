@@ -84,7 +84,7 @@
     },
     "layout": {
       "contentSize": "800px",
-      "wideSize": "1280px"
+      "wideSize": "1340px"
     },
     "spacing": {
       "defaultSpacingSizes": false,
@@ -305,6 +305,7 @@
     "hero-about",
     "hero-contact",
     "hero-home",
+    "services",
     "cta-get-in-touch",
     "cta-start-project"
   ]

@@ -36,25 +36,29 @@ const ImageComponent: React.FC<CoreImageBlock> = ({ name, attributes, mediaItem 
     );
   }
 
+  const useFill = !imageWidth && !imageHeight;
+
   return (
     <figure
       {...(anchor && { id: anchor })}
       className={blockClasses}
-      {...(blockStyleAttr && { style: blockStyleAttr })}
+      style={{
+        ...blockStyleAttr,
+        // When using fill, the figure needs position relative and a size
+        ...(useFill && { position: 'relative' as const, width: width || '100%', height: height || '400px' })
+      }}
     >
       <Image
         src={imageSrc}
         alt={alt || ''}
-        width={imageWidth}
-        height={imageHeight}
+        {...(useFill ? { fill: true } : { width: imageWidth, height: imageHeight })}
         className={imageClasses}
-        // sizes={} // Dynamic sizes
-        {...(!imageWidth && !imageHeight && { fill: true })}
         style={{
           ...aspectRatio && { aspectRatio: `${aspectRatio}` },
           objectFit: scale === 'contain' ? 'contain' : 'cover',
-          ...width && { width: `${width}` },
-          ...height && { height: `${height}` }
+          // Only apply width/height styles when not using fill
+          ...(!useFill && width && { width: `${width}` }),
+          ...(!useFill && height && { height: `${height}` })
         }}
       />
     </figure>

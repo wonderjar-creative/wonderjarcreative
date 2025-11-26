@@ -2,6 +2,7 @@ import { Maybe, Page } from '@/gql/graphql';
 import { fetchPatternWithISR } from './isrFetchers';
 import { enrichBlocksWithMedia } from './blockMedia';
 import getBlockComponents from './getBlockComponents';
+import getPattern from './getPattern';
 
 const renderPattern = async (
   slug: string,
@@ -11,12 +12,18 @@ const renderPattern = async (
 ) => {
   try {
     const cleanSlug = slug.replace(/^[^/]+\//, '');
-    const pattern = await fetchPatternWithISR(cleanSlug);
-    if (pattern) {
-      const patternBlocks = JSON.parse(pattern.blocksJSON || '[]');
+
+    // Try ISR first, fallback to static
+    let pattern = await fetchPatternWithISR(cleanSlug);
+    if (!pattern || !pattern.blocksJSON) {
+      pattern = getPattern(cleanSlug);
+    }
+
+    if (pattern && pattern.blocksJSON) {
+      const patternBlocks = JSON.parse(pattern.blocksJSON);
       const enrichedBlocks = await enrichBlocksWithMedia(patternBlocks);
       const components = await getBlockComponents(enrichedBlocks, page, stylesCollector);
-      
+
       return components;
     }
     return null;

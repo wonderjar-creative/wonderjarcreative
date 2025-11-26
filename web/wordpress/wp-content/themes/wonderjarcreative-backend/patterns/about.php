@@ -32,7 +32,7 @@
 
 <!-- wp:column {"width":"40%"} -->
 <div class="wp-block-column" style="flex-basis:40%"><!-- wp:image {"id":547,"sizeSlug":"full","linkDestination":"none"} -->
-<figure class="wp-block-image size-full"><img src="http://wonderjarcreative.local/wp-content/uploads/2025/11/newsletter-white.png" alt="Newsletter White image" class="wp-image-547"/></figure>
+<figure class="wp-block-image size-full"><img src="https://cms.wonderjarcreative.com/wp-content/uploads/2025/11/newsletter-white.png" alt="Newsletter White image" class="wp-image-547"/></figure>
 <!-- /wp:image --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns --></div>

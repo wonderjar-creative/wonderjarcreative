@@ -23,6 +23,7 @@ import {
 } from '@/gql/graphql';
 import renderTemplatePart from './renderTemplatePart';
 import renderPattern from './renderPattern';
+import renderPostContent from './renderPostContent';
 import { enrichBlocksWithMedia } from '@/utils/blockMedia';
 import { EnrichedBlock } from '@/types/coreBlockTypes';
 import { styleElementsToCSS } from '@/utils/blockStyles';
@@ -66,12 +67,16 @@ const getBlockComponents = async (
       );
     }
 
-    // Collect block styles if provided
+    // Collect block styles if provided (for style.elements or custom layout.contentSize)
     const blockAttributes = block.attributes;
-    const blockId = stylesCollector && blockAttributes?.style?.elements
+    const hasCustomStyles = blockAttributes?.style?.elements;
+    const hasCustomContentSize = blockAttributes?.layout?.contentSize;
+
+    const blockId = stylesCollector && (hasCustomStyles || hasCustomContentSize)
       ? (() => {
         const id = generateRandomId();
-        stylesCollector.push(styleElementsToCSS(id, blockAttributes.style, blockAttributes.layout));
+        const css = styleElementsToCSS(id, blockAttributes.style || {}, blockAttributes.layout);
+        stylesCollector.push(css);
         blockAttributes.className = blockAttributes.className ? `${blockAttributes.className} wp-block-${id}` : `wp-block-${id}`;
         return id;
       })()
@@ -250,16 +255,7 @@ const getBlockComponents = async (
         );
       }
       case 'core/post-content': {
-        const PostContent = dynamic(() => import('@/components/Blocks/Core/PostContent/PostContent'), { ssr: true });
-
-        return (
-          <PostContent
-            key={index}
-            name={block.name}
-            attributes={block.attributes}
-            page={page ?? null}
-          />
-        );
+        return await renderPostContent(block.name, block.attributes, page, stylesCollector, index);
       }
       case 'core/post-title': {
         const PostTitle = dynamic(() => import('@/components/Blocks/Core/PostTitle/PostTitle'), { ssr: true });

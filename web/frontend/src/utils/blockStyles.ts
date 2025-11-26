@@ -258,7 +258,7 @@ export const styleElementsToCSS = (
   style: StyleProps,
   layout?: { contentSize?: string }
 ): string => {
-  if (!style.elements && !layout) return '';
+  if (!style?.elements && !layout?.contentSize) return '';
 
   let css = '';
   if (style.elements) {
@@ -309,10 +309,12 @@ export const styleElementsToCSS = (
       css += '\n}\n';
     });
   }
-  if (layout && layout.contentSize) {
+  if (layout?.contentSize) {
     css += `.wp-block-${blockId} > * {\n`;
     css += `  max-width: ${layout.contentSize};\n`;
-    css += '\n}\n';
+    css += `  margin-left: auto;\n`;
+    css += `  margin-right: auto;\n`;
+    css += `}\n`;
   }
 
   return css ? `/* Styles for ${blockId} */\n${css}` : '';
