@@ -1,0 +1,52 @@
+;;
+;; Domain:     wonderjarcreative.com.
+;; Exported:   2025-11-26 06:14:17
+;;
+;; This file is intended for use for informational and archival
+;; purposes ONLY and MUST be edited before use on a production
+;; DNS server.  In particular, you must:
+;;   -- update the SOA record with the correct authoritative name server
+;;   -- update the SOA record with the contact e-mail address information
+;;   -- update the NS record(s) with the authoritative name servers for this domain.
+;;
+;; For further information, please consult the BIND documentation
+;; located on the following website:
+;;
+;; http://www.isc.org/
+;;
+;; And RFC 1035:
+;;
+;; http://www.ietf.org/rfc/rfc1035.txt
+;;
+;; Please note that we do NOT offer technical support for any use
+;; of this zone data, the BIND name server, or any other third-party
+;; DNS software.
+;;
+;; Use at your own risk.
+;; SOA Record
+wonderjarcreative.com	3600	IN	SOA	kai.ns.cloudflare.com. dns.cloudflare.com. 2051580425 10000 2400 604800 3600
+
+;; NS Records
+wonderjarcreative.com.	86400	IN	NS	kai.ns.cloudflare.com.
+wonderjarcreative.com.	86400	IN	NS	nina.ns.cloudflare.com.
+
+;; A Records
+admin.wonderjarcreative.com.	1	IN	A	107.180.43.15 ; cf_tags=cf-proxied:true
+cms.wonderjarcreative.com.	1	IN	A	44.233.159.145 ; AWS Lightsail cf_tags=cf-proxied:true
+wonderjarcreative.com.	1	IN	A	216.198.79.1 ; cf_tags=cf-proxied:false
+
+;; CNAME Records
+cpanel.wonderjarcreative.com.	1	IN	CNAME	wonderjarcreative.com. ; cf_tags=cf-proxied:true
+www.wonderjarcreative.com.	1	IN	CNAME	wonderjarcreative.com. ; cf_tags=cf-proxied:false
+
+;; MX Records
+wonderjarcreative.com.	3600	IN	MX	10 alt3.aspmx.l.google.com.
+wonderjarcreative.com.	3600	IN	MX	1 aspmx.l.google.com.
+wonderjarcreative.com.	3600	IN	MX	5 alt2.aspmx.l.google.com.
+wonderjarcreative.com.	3600	IN	MX	10 alt4.aspmx.l.google.com.
+wonderjarcreative.com.	3600	IN	MX	5 alt1.aspmx.l.google.com.
+
+;; TXT Records
+_dmarc.wonderjarcreative.com.	1	IN	TXT	"v=DMARC1; p=none; rua=mailto:bfe5d2b7252b4befa9ed99eaa94238ad@dmarc-reports.cloudflare.net"
+wonderjarcreative.com.	3600	IN	TXT	"v=spf1 include:secureserver.net include:_spf.google.com ~all"
+wonderjarcreative.com.	3600	IN	TXT	"google-site-verification=MWiFEmzlYasqrcHIewrGH0qNZsoept75IOp4tBejYAI"
