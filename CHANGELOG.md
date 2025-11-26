@@ -16,7 +16,8 @@ and this project adheres to [Calendar Versioning](https://calver.org/) (YYYY.MM.
 ### WordPress Theme (v1.3.1)
 - Changed `style.layout.wideSize` width to 1280px.
 
-### Frontend (v1.2.1)
+### Frontend (v1.3.0)
+- Added `AnimatedBorder` effect into wp:heading component.
 - Changed `--wide` css variable width.
 - Increased `.dot-pattern` .background-image opacity to 0.2.
 
