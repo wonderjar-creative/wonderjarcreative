@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.1] - 2025-11-25
+
+### Changed
+- Decreased `settings.layout.wideSize` in theme.json to 1280px.
+- Increased `margin.bottom` of pattern heading in `services.php` and `why-wonderjar.php`.
+
 ## [1.3.0] - 2025-11-25
 
 ### Added
