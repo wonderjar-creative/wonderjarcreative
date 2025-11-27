@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.1] - 2025-11-26
+
+### Changed
+- Changed `.dot-pattern` .background-image opacity to 0.22.
+
 ## [1.3.0] - 2025-11-26
 
 ### Added
