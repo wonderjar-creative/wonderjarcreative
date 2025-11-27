@@ -174,14 +174,53 @@ class RestFeature extends FeatureBase {
   }
 
   /**
+   * Add CORS headers for headless WordPress.
+   * 
+   * Allows frontend domains to access WordPress REST API and GraphQL.
+   * Only applies to API requests, not regular WordPress pages.
+   * 
+   * @since 1.0.1
+   * @return void
+   */
+  public function add_cors_headers() {
+    // Allow requests from production and preview domains
+    $allowed_origins = array(
+      'https://www.wonderjarcreative.com',
+      'https://wonderjarcreative.com',
+      'http://localhost:3000'
+    );
+
+    // Get the origin from the request
+    $origin = isset( $_SERVER['HTTP_ORIGIN'] ) ? $_SERVER['HTTP_ORIGIN'] : '';
+    
+    if ( empty( $origin ) ) {
+      return;
+    }
+
+    // Check if origin is allowed (whitelist or Vercel preview)
+    $is_allowed = in_array( $origin, $allowed_origins ) || 
+                  strpos( $origin, '.vercel.app' ) !== false;
+    
+    if ( $is_allowed ) {
+      header( 'Access-Control-Allow-Origin: ' . $origin );
+      header( 'Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS' );
+      header( 'Access-Control-Allow-Credentials: true' );
+      header( 'Access-Control-Allow-Headers: Authorization, Content-Type, X-Requested-With' );
+      header( 'Access-Control-Max-Age: 86400' );
+    }
+  }
+
+  /**
    * Register all API routes.
    * 
    * Registers all custom REST API routes for the feature.
    * 
    * @since 1.0.0
+   * @since 1.4.0 Added add_cors_headers() call.
    * @return void
    */
   public function register_api_routes() {
+    $this->add_cors_headers();
     $this->register_sitemap_routes();
     $this->register_template_structure_routes();
     $this->register_block_routes();
