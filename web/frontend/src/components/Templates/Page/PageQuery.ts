@@ -15,9 +15,7 @@ export const PageQuery = gql`
           }
         }
       }
-      template {
-        templateName
-      }
+      templateSlug
     }
   }
 `;
