@@ -18,6 +18,9 @@ const PageTemplate = async ({ node }: TemplateProps) => {
   });
 
   const stylesCollector: string[] = [];
+
+  console.log('Rendering page with template:', page.template);
+
   const lowerCaseTemplateName = page.template?.templateName?.toLowerCase() || 'page';
   const templateName = lowerCaseTemplateName === 'default' ? 'page' : lowerCaseTemplateName;
   
