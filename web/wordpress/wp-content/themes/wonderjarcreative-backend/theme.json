@@ -322,12 +322,12 @@
   "patterns": [
     "about",
     "contact",
-    "home",
-    "hero-home",
-    "hero-page",
-    "services",
     "cta-get-in-touch",
     "cta-start-project",
+    "hero-home",
+    "hero-minimal",
+    "home",
+    "services",
     "why-wonderjar"
   ]
 }
