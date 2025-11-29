@@ -12,6 +12,7 @@ namespace WonderjarCreativeBackend\Inc;
 use WonderjarCreativeBackend\Inc\Loader;
 use WonderjarCreativeBackend\Inc\I18n;
 use WonderjarCreativeBackend\Inc\Features\RestFeature;
+use WonderjarCreativeBackend\Inc\Features\BlockBindingsFeature;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
@@ -65,6 +66,14 @@ class Theme {
   protected $rest_feature;
 
   /**
+   * The Block Bindings feature instnace.
+   * 
+   * @since 1.4.0
+   * @var BlockBindingsFeature $block_bindings_feature The Block Bindings feature instance.
+   */
+  protected $block_bindings_feature;
+
+  /**
    * Get the instance of the class.
    *
    * @since 1.0.0
@@ -108,6 +117,7 @@ class Theme {
     $this->loader = new Loader();
     $this->i18n = new I18n( $this->loader );
     $this->rest_feature = new RestFeature( self::THEME_SLUG, self::VERSION, $this->loader );
+    $this->block_bindings_feature = new BlockBindingsFeature( self::THEME_SLUG, self::VERSION, $this->loader );
   }
 
   /**
@@ -141,14 +151,10 @@ class Theme {
    */
   public function setup_theme() {
     // Add theme support
+    add_theme_support( 'post-formats', array( 'aside', 'audio', 'chat', 'gallery', 'image', 'link', 'quote', 'status', 'video' ) );
     add_theme_support( 'post-thumbnails' );
-    
-    // Register navigation menus for the theme
-    register_nav_menus( 
-      array( 
-        'primary-menu' => __( 'Primary menu', self::THEME_SLUG )
-      )
-    );
+    add_theme_support( 'title-tag' );
+    add_theme_support( 'align-wide' );
   }
 
   /**
