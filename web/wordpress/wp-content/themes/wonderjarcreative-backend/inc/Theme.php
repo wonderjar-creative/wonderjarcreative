@@ -12,7 +12,7 @@ namespace WonderjarCreativeBackend\Inc;
 use WonderjarCreativeBackend\Inc\Loader;
 use WonderjarCreativeBackend\Inc\I18n;
 use WonderjarCreativeBackend\Inc\Features\RestFeature;
-use WonderjarCreativeBackend\Inc\Features\BlockBindingsFeature;
+use WonderjarCreativeBackend\Inc\Features\GraphQLFeature;
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
@@ -66,6 +66,14 @@ class Theme {
   protected $rest_feature;
 
   /**
+   * The GraphQL feature instance.
+   *
+   * @since 1.4.0
+   * @var GraphQLFeature $graphql_feature The GraphQL feature instance.
+   */
+  protected $graphql_feature;
+
+  /**
    * Get the instance of the class.
    *
    * @since 1.0.0
@@ -109,6 +117,7 @@ class Theme {
     $this->loader = new Loader();
     $this->i18n = new I18n( $this->loader );
     $this->rest_feature = new RestFeature( self::THEME_SLUG, self::VERSION, $this->loader );
+    $this->graphql_feature = new GraphQLFeature( self::THEME_SLUG, self::VERSION, $this->loader );
   }
 
   /**

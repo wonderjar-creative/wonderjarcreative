@@ -6,7 +6,6 @@ import { fetchTemplateWithISR } from '@/utils/isrFetchers';
 import getTemplate from '@/utils/getTemplate';
 import { enrichBlocksWithMedia } from '@/utils/blockMedia';
 import getBlockComponents from '@/utils/getBlockComponents';
-import { resolve } from 'path';
 
 interface TemplateProps {
   node: ContentNode;
@@ -19,15 +18,13 @@ const PageTemplate = async ({ node }: TemplateProps) => {
 
   const stylesCollector: string[] = [];
 
-  console.log('Rendering page with template:', page.template);
-
-  const lowerCaseTemplateName = page.template?.templateName?.toLowerCase() || 'page';
-  const templateName = lowerCaseTemplateName === 'default' ? 'page' : lowerCaseTemplateName;
+  // templateSlug comes directly from WordPress post meta (e.g., "page-header-absolute-no-title")
+  const templateSlug = page.templateSlug || 'page';
   
   // Try ISR first, fallback to static
-  let template = await fetchTemplateWithISR(templateName);
+  let template = await fetchTemplateWithISR(templateSlug);
   if (!template) {
-    template = getTemplate(templateName) || { name: templateName, blocksJSON: page.blocksJSON };
+    template = getTemplate(templateSlug) || { name: templateSlug, blocksJSON: page.blocksJSON };
   }
 
   // Parse template blocks (but don't resolve template parts/patterns yet)
