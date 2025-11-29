@@ -276,6 +276,32 @@
       }
     }
   },
+  "customTemplates": [
+    {
+      "name": "page-no-title",
+      "title": "Page with No Title",
+      "postTypes": [
+        "page",
+        "post"
+      ]
+    },
+    {
+      "name": "page-header-absolute",
+      "title": "Page with Absolute Header",
+      "postTypes": [
+        "page",
+        "post"
+      ]
+    },
+    {
+      "name": "page-header-absolute-no-title",
+      "title": "Page with Absolute Header and No Title",
+      "postTypes": [
+        "page",
+        "post"
+      ]
+    }
+  ],
   "templateParts": [
     {
       "name": "header",
@@ -288,11 +314,6 @@
       "area": "header"
     },
     {
-      "name": "header-sticky",
-      "title": "Header Sticky",
-      "area": "header"
-    },
-    {
       "name": "footer",
       "title": "Footer",
       "area": "footer"
@@ -302,11 +323,11 @@
     "about",
     "contact",
     "home",
-    "hero-about",
-    "hero-contact",
     "hero-home",
+    "hero-page",
     "services",
     "cta-get-in-touch",
-    "cta-start-project"
+    "cta-start-project",
+    "why-wonderjar"
   ]
 }
