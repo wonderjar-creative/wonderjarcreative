@@ -4,9 +4,61 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d1d2c39cfbac9b503b253374e6b8ed78",
+    "content-hash": "1f50c9e65fb3a797b77641b8bf953b97",
     "packages": [],
     "packages-dev": [
+        {
+            "name": "axepress/wp-graphql-stubs",
+            "version": "v2.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/AxeWP/wp-graphql-stubs.git",
+                "reference": "6ca5c5ee37012743e09e2f9e7c3c272c5e273bb8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/AxeWP/wp-graphql-stubs/zipball/6ca5c5ee37012743e09e2f9e7c3c272c5e273bb8",
+                "reference": "6ca5c5ee37012743e09e2f9e7c3c272c5e273bb8",
+                "shasum": ""
+            },
+            "require": {
+                "php-stubs/wordpress-stubs": ">=5.4"
+            },
+            "require-dev": {
+                "php": ">=7.4",
+                "php-stubs/generator": "^0.8.0",
+                "phpstan/phpstan": "^2.1.5"
+            },
+            "suggest": {
+                "szepeviktor/phpstan-wordpress": "WordPress extensions for PHPStan"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "WPGraphQL function and class declaration stubs for static analysis.",
+            "homepage": "https://github.com/axewp/wp-graphql-stubs",
+            "keywords": [
+                "PHPStan",
+                "graphql",
+                "static analysis",
+                "wordpress",
+                "wp-graphql",
+                "wpgraphql"
+            ],
+            "support": {
+                "issues": "https://github.com/AxeWP/wp-graphql-stubs/issues",
+                "source": "https://github.com/AxeWP/wp-graphql-stubs/tree/v2.3.3"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/AxeWp",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-06-18T02:06:46+00:00"
+        },
         {
             "name": "php-stubs/wordpress-globals",
             "version": "v0.2.0",
