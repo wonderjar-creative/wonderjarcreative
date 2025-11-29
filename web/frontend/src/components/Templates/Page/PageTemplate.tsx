@@ -11,8 +11,12 @@ interface TemplateProps {
   node: ContentNode;
 }
 
+interface PageWithTemplate extends Page {
+  templateSlug?: string;
+}
+
 const PageTemplate = async ({ node }: TemplateProps) => {
-  const { page } = await fetchGraphQL<{ page: Page }>(print(PageQuery), {
+  const { page } = await fetchGraphQL<{ page: PageWithTemplate }>(print(PageQuery), {
     id: node.databaseId,
   });
 
