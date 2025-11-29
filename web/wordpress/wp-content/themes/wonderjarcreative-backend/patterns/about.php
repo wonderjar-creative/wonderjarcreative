@@ -12,7 +12,7 @@
  */
 
 ?>
-<!-- wp:pattern {"slug":"wonderjarcreative-backend/hero-about"} /-->
+<!-- wp:pattern {"slug":"wonderjarcreative-backend/hero-page"} /-->
 
 <!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"},"margin":{"top":"0","bottom":"0"}},"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"backgroundColor":"warm-coral","textColor":"white","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull has-white-color has-warm-coral-background-color has-text-color has-background has-link-color" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|50","left":"var:preset|spacing|50"}}}} -->
