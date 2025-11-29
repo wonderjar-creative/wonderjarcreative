@@ -9,7 +9,7 @@
     "dev": "npm run dev --workspace=frontend",
     "build": "npm run build --workspace=frontend",
     "lint": "npm run lint --workspace=frontend",
-    "clean": "rm -rf node_modules web/frontend/node_modules web/frontend/.next",
+    "clean": "rm -rf node_modules && cd web/frontend && npm run clean",
     "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
     "version": "node -e \"const root = require('./package.json').version; const frontend = require('./web/frontend/package.json').version; const fs = require('fs'); const theme = fs.readFileSync('web/wordpress/wp-content/themes/wonderjarcreative-backend/style.css', 'utf8').match(/Version: (.+)/)[1]; console.log('Root:     ' + root + '\\nFrontend: ' + frontend + '\\nTheme:    ' + theme);\"",
     "version:bump": "node scripts/version-bump.js",
