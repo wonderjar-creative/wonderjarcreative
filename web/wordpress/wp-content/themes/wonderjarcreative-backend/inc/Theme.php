@@ -66,14 +66,6 @@ class Theme {
   protected $rest_feature;
 
   /**
-   * The Block Bindings feature instnace.
-   * 
-   * @since 1.4.0
-   * @var BlockBindingsFeature $block_bindings_feature The Block Bindings feature instance.
-   */
-  protected $block_bindings_feature;
-
-  /**
    * Get the instance of the class.
    *
    * @since 1.0.0
@@ -117,7 +109,6 @@ class Theme {
     $this->loader = new Loader();
     $this->i18n = new I18n( $this->loader );
     $this->rest_feature = new RestFeature( self::THEME_SLUG, self::VERSION, $this->loader );
-    $this->block_bindings_feature = new BlockBindingsFeature( self::THEME_SLUG, self::VERSION, $this->loader );
   }
 
   /**
