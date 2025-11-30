@@ -11,6 +11,17 @@ and this project adheres to [Calendar Versioning](https://calver.org/) (YYYY.MM.
 
 ## [Unreleased]
 
+## [2025.11.12] - 2025-11-30
+
+### WordPress Theme (v1.3.2)
+- Added `axepress/wp-graphql-stubs` for improved IDE autocompletion.
+- Updated pattern URLs from local dev to production (`https://cms.wonderjarcreative.com`).
+- Removed deprecated templates from 1.3.0 to reduce redundancy and prefer patterns/template parts.
+
+### Frontend (v1.3.2)
+- Minor alignment with backend URL changes and UI tuning.
+- Removed unused effect from `core/image` block rendering.
+
 ## [2025.11.11] - 2025-11-26
 
 ### Frontend (v1.3.1)
