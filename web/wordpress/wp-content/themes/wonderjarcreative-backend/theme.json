@@ -286,14 +286,6 @@
       ]
     },
     {
-      "name": "page-header-absolute",
-      "title": "Page with Absolute Header",
-      "postTypes": [
-        "page",
-        "post"
-      ]
-    },
-    {
       "name": "page-header-absolute-no-title",
       "title": "Page with Absolute Header and No Title",
       "postTypes": [
