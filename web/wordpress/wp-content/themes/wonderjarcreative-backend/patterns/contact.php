@@ -28,7 +28,7 @@
 <div class="wp-block-group alignfull" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:columns {"verticalAlignment":"center","align":"wide","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|50","left":"var:preset|spacing|50"}}}} -->
 <div class="wp-block-columns alignwide are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center","width":"50%"} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:50%"><!-- wp:image {"id":869,"width":"300px","height":"340px","scale":"cover","sizeSlug":"full","linkDestination":"none","align":"center"} -->
-<figure class="wp-block-image aligncenter size-full is-resized"><img src="http://wonderjarcreative.local/wp-content/uploads/2025/11/undraw_begin-chat_4wy6.svg" alt="Begin Chat" class="wp-image-869" style="object-fit:cover;width:300px;height:340px"/></figure>
+<figure class="wp-block-image aligncenter size-full is-resized"><img src="https://cms.wonderjarcreative.com/wp-content/uploads/2025/11/undraw_begin-chat_4wy6.svg" alt="Begin Chat" class="wp-image-869" style="object-fit:cover;width:300px;height:340px"/></figure>
 <!-- /wp:image --></div>
 <!-- /wp:column -->
 
