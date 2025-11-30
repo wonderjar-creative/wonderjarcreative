@@ -12,13 +12,23 @@
  */
 
 ?>
-<!-- wp:pattern {"slug":"wonderjarcreative-backend/hero-page"} /-->
+<!-- wp:cover {"overlayColor":"teal","isUserOverlayColor":true,"minHeight":70,"minHeightUnit":"vh","isDark":false,"metadata":{"categories":["banner","hero"],"patternName":"wonderjarcreative-backend/hero-minimal","name":"Hero Minimal"},"align":"full","className":"dot-pattern","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"}}}} -->
+<div class="wp-block-cover alignfull is-light dot-pattern" style="padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70);min-height:70vh"><span aria-hidden="true" class="wp-block-cover__background has-teal-background-color has-background-dim-100 has-background-dim"></span><div class="wp-block-cover__inner-container"><!-- wp:group {"align":"wide","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignwide"><!-- wp:heading {"textAlign":"center","level":1,"align":"wide","className":"text-3xl md:text-5xl lg:text-7xl","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}}} -->
+<h1 class="wp-block-heading alignwide has-text-align-center text-3xl md:text-5xl lg:text-7xl" style="margin-bottom:var(--wp--preset--spacing--40)">About Us</h1>
+<!-- /wp:heading -->
 
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|60"},"margin":{"top":"0","bottom":"0"}},"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"backgroundColor":"warm-coral","textColor":"white","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull has-white-color has-warm-coral-background-color has-text-color has-background has-link-color" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)"><!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|50","left":"var:preset|spacing|50"}}}} -->
+<!-- wp:paragraph {"align":"center","className":"text-lg md:text-xl"} -->
+<p class="has-text-align-center text-lg md:text-xl">Learn how we turn ideas into meaningful digital experiences.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group --></div></div>
+<!-- /wp:cover -->
+
+<!-- wp:group {"align":"full","style":{"spacing":{"margin":{"top":"0"},"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull" style="margin-top:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|50","left":"var:preset|spacing|50"}}}} -->
 <div class="wp-block-columns alignwide"><!-- wp:column {"width":"60%"} -->
-<div class="wp-block-column" style="flex-basis:60%"><!-- wp:heading {"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}},"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"textColor":"white","fontSize":"7xl"} -->
-<h2 class="wp-block-heading has-white-color has-text-color has-link-color has-7-xl-font-size" style="margin-bottom:var(--wp--preset--spacing--40)">Our Story</h2>
+<div class="wp-block-column" style="flex-basis:60%"><!-- wp:heading {"className":"text-3xl md:text-5xl lg:text-6xl","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}}} -->
+<h2 class="wp-block-heading text-3xl md:text-5xl lg:text-6xl" style="margin-bottom:var(--wp--preset--spacing--40)">Our Story</h2>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|30"}}}} -->
@@ -31,33 +41,31 @@
 <!-- /wp:column -->
 
 <!-- wp:column {"width":"40%"} -->
-<div class="wp-block-column" style="flex-basis:40%"><!-- wp:image {"id":547,"sizeSlug":"full","linkDestination":"none"} -->
-<figure class="wp-block-image size-full"><img src="https://cms.wonderjarcreative.com/wp-content/uploads/2025/11/newsletter-white.png" alt="Newsletter White image" class="wp-image-547"/></figure>
+<div class="wp-block-column" style="flex-basis:40%"><!-- wp:image {"id":545,"sizeSlug":"full","linkDestination":"none"} -->
+<figure class="wp-block-image size-full"><img src="http://wonderjarcreative.local/wp-content/uploads/2025/11/newsletter.png" alt="Guy reading newsletter" class="wp-image-545"/></figure>
 <!-- /wp:image --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"},"margin":{"top":"0","bottom":"0"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:group {"style":{"spacing":{"margin":{"top":"0","bottom":"0"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group" style="margin-top:0;margin-bottom:0"><!-- wp:group {"style":{"border":{"bottom":{"color":"var:preset|color|charcoal-gray","style":"dashed","width":"1px"}},"spacing":{"margin":{"top":"0","bottom":"var:preset|spacing|70"},"padding":{"bottom":"var:preset|spacing|70"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group" style="border-bottom-color:var(--wp--preset--color--charcoal-gray);border-bottom-style:dashed;border-bottom-width:1px;margin-top:0;margin-bottom:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:heading {"textAlign":"center","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}},"fontSize":"7xl"} -->
-<h2 class="wp-block-heading has-text-align-center has-7-xl-font-size" style="margin-bottom:var(--wp--preset--spacing--40)">How We Work</h2>
+<!-- wp:group {"metadata":{"categories":["page"],"patternName":"wonderjarcreative-backend/cta-start-project","name":"Call to Action - Start a Project"},"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"},"margin":{"top":"0","bottom":"0"}}},"backgroundColor":"warm-coral","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull has-warm-coral-background-color has-background" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:group {"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|50"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"center"}} -->
+<div class="wp-block-group alignwide"><!-- wp:heading {"textAlign":"center","className":"text-2xl md:text-4xl lg:text-5xl"} -->
+<h2 class="wp-block-heading has-text-align-center text-2xl md:text-4xl lg:text-5xl">Ready to Build<br>Something That Lasts?</h2>
 <!-- /wp:heading -->
 
-<!-- wp:paragraph {"align":"center"} -->
-<p class="has-text-align-center">Every engagement is tailored to your goals. We begin with a collaborative discovery phase to align on outcomes and success metrics immediately. Our agile, transparent build process ships fast, iterates often, and keeps you involved, prioritizing clean code and scalable infrastructure for future growth.</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph {"align":"center"} -->
-<p class="has-text-align-center">Optimization is continuous: we monitor performance, gather feedback, and refine your solution to keep it effective. Remote-first and Denver-rooted, our flexible model integrates seamlessly with your teams or scales up with trusted specialists, ensuring high momentum and efficient collaboration.</p>
-<!-- /wp:paragraph --></div>
+<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="/contact/">Start a Project</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
-<!-- wp:group {"align":"wide","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignwide"><!-- wp:heading {"textAlign":"center","style":{"typography":{"fontWeight":"700","fontStyle":"normal"},"spacing":{"margin":{"bottom":"var:preset|spacing|60"}}},"fontSize":"7xl"} -->
-<h2 class="wp-block-heading has-text-align-center has-7-xl-font-size" style="margin-bottom:var(--wp--preset--spacing--60);font-style:normal;font-weight:700">Our Approach</h2>
+<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"},"margin":{"top":"0","bottom":"0"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:group {"align":"wide","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignwide"><!-- wp:heading {"textAlign":"center","className":"text-3xl md:text-5xl lg:text-6xl","style":{"typography":{"fontWeight":"700","fontStyle":"normal"},"spacing":{"margin":{"bottom":"var:preset|spacing|60"}}}} -->
+<h2 class="wp-block-heading has-text-align-center text-3xl md:text-5xl lg:text-6xl" style="margin-bottom:var(--wp--preset--spacing--60);font-style:normal;font-weight:700">Our Approach</h2>
 <!-- /wp:heading -->
 
 <!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|50","left":"var:preset|spacing|50"}}}} -->
@@ -139,8 +147,8 @@
 <!-- /wp:group -->
 
 <!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"},"margin":{"top":"0","bottom":"0"}},"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"backgroundColor":"deep-black","textColor":"white","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull has-white-color has-deep-black-background-color has-text-color has-background has-link-color" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:heading {"textAlign":"center","style":{"typography":{"fontWeight":"700","fontStyle":"normal"},"spacing":{"margin":{"bottom":"var:preset|spacing|60"}},"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"textColor":"white","fontSize":"7xl"} -->
-<h2 class="wp-block-heading has-text-align-center has-white-color has-text-color has-link-color has-7-xl-font-size" style="margin-bottom:var(--wp--preset--spacing--60);font-style:normal;font-weight:700">What We Stand For</h2>
+<div class="wp-block-group alignfull has-white-color has-deep-black-background-color has-text-color has-background has-link-color" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:heading {"textAlign":"center","className":"text-3xl md:text-5xl lg:text-6xl","style":{"typography":{"fontWeight":"700","fontStyle":"normal"},"spacing":{"margin":{"bottom":"var:preset|spacing|60"}},"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"textColor":"white"} -->
+<h2 class="wp-block-heading has-text-align-center text-3xl md:text-5xl lg:text-6xl has-white-color has-text-color has-link-color" style="margin-bottom:var(--wp--preset--spacing--60);font-style:normal;font-weight:700">What We Stand For</h2>
 <!-- /wp:heading -->
 
 <!-- wp:group {"fontSize":"xl","layout":{"type":"flex","orientation":"vertical","justifyContent":"stretch"}} -->
@@ -182,17 +190,29 @@
 <!-- /wp:group --></div>
 <!-- /wp:group -->
 
-<!-- wp:pattern {"slug":"wonderjarcreative-backend/cta-start-project"} /-->
+<!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"},"margin":{"top":"0","bottom":"0"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:heading {"textAlign":"center","className":"text-3xl md:text-5xl lg:text-6xl","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}}} -->
+<h2 class="wp-block-heading has-text-align-center text-3xl md:text-5xl lg:text-6xl" style="margin-bottom:var(--wp--preset--spacing--40)">How We Work</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"align":"center"} -->
+<p class="has-text-align-center">Every engagement is tailored to your goals. We begin with a collaborative discovery phase to align on outcomes and success metrics immediately. Our agile, transparent build process ships fast, iterates often, and keeps you involved, prioritizing clean code and scalable infrastructure for future growth.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph {"align":"center"} -->
+<p class="has-text-align-center">Optimization is continuous: we monitor performance, gather feedback, and refine your solution to keep it effective. Remote-first and Denver-rooted, our flexible model integrates seamlessly with your teams or scales up with trusted specialists, ensuring high momentum and efficient collaboration.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:group -->
 
 <!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"},"margin":{"top":"0","bottom":"0"}},"elements":{"link":{"color":{"text":"var:preset|color|base"}}}},"backgroundColor":"teal","textColor":"base","layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull has-base-color has-teal-background-color has-text-color has-background has-link-color" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:heading {"textAlign":"center","style":{"typography":{"fontWeight":"700","fontStyle":"normal"},"spacing":{"margin":{"bottom":"var:preset|spacing|60"}}},"fontSize":"7xl"} -->
-<h2 class="wp-block-heading has-text-align-center has-7-xl-font-size" style="margin-bottom:var(--wp--preset--spacing--60);font-style:normal;font-weight:700">Experience That Shows</h2>
+<div class="wp-block-group alignfull has-base-color has-teal-background-color has-text-color has-background has-link-color" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:heading {"textAlign":"center","className":"text-3xl md:text-5xl lg:text-6xl","style":{"typography":{"fontWeight":"700","fontStyle":"normal"},"spacing":{"margin":{"bottom":"var:preset|spacing|60"}}}} -->
+<h2 class="wp-block-heading has-text-align-center text-3xl md:text-5xl lg:text-6xl" style="margin-bottom:var(--wp--preset--spacing--60);font-style:normal;font-weight:700">Experience That Shows</h2>
 <!-- /wp:heading -->
 
 <!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|50","left":"var:preset|spacing|50"}}}} -->
 <div class="wp-block-columns alignwide"><!-- wp:column {"style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}},"elements":{"link":{"color":{"text":"var:preset|color|deep-black"}}}},"textColor":"deep-black"} -->
-<div class="wp-block-column has-deep-black-color has-text-color has-link-color" style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)"><!-- wp:heading {"textAlign":"center","level":3,"style":{"typography":{"fontSize":"3rem","fontWeight":"700","fontStyle":"normal"},"spacing":{"margin":{"bottom":"var:preset|spacing|20"}}}} -->
-<h3 class="wp-block-heading has-text-align-center" style="margin-bottom:var(--wp--preset--spacing--20);font-size:3rem;font-style:normal;font-weight:700">10+ Years</h3>
+<div class="wp-block-column has-deep-black-color has-text-color has-link-color" style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)"><!-- wp:heading {"textAlign":"center","level":3,"className":"text-2xl md:text-3xl lg:text-4xl","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|20"}}}} -->
+<h3 class="wp-block-heading has-text-align-center text-2xl md:text-3xl lg:text-4xl" style="margin-bottom:var(--wp--preset--spacing--20)">10+ Years</h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"align":"center"} -->
@@ -201,8 +221,8 @@
 <!-- /wp:column -->
 
 <!-- wp:column {"style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}},"elements":{"link":{"color":{"text":"var:preset|color|deep-black"}}}},"textColor":"deep-black"} -->
-<div class="wp-block-column has-deep-black-color has-text-color has-link-color" style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)"><!-- wp:heading {"textAlign":"center","level":3,"style":{"typography":{"fontSize":"3rem","fontWeight":"700","fontStyle":"normal"},"spacing":{"margin":{"bottom":"var:preset|spacing|20"}}}} -->
-<h3 class="wp-block-heading has-text-align-center" style="margin-bottom:var(--wp--preset--spacing--20);font-size:3rem;font-style:normal;font-weight:700">60+ Launches</h3>
+<div class="wp-block-column has-deep-black-color has-text-color has-link-color" style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)"><!-- wp:heading {"textAlign":"center","level":3,"className":"text-2xl md:text-3xl lg:text-4xl","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|20"}}}} -->
+<h3 class="wp-block-heading has-text-align-center text-2xl md:text-3xl lg:text-4xl" style="margin-bottom:var(--wp--preset--spacing--20)">60+ Launches</h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"align":"center"} -->
@@ -211,8 +231,8 @@
 <!-- /wp:column -->
 
 <!-- wp:column {"style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}},"elements":{"link":{"color":{"text":"var:preset|color|deep-black"}}}},"textColor":"deep-black"} -->
-<div class="wp-block-column has-deep-black-color has-text-color has-link-color" style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)"><!-- wp:heading {"textAlign":"center","level":3,"style":{"typography":{"fontSize":"3rem","fontWeight":"700"},"spacing":{"margin":{"bottom":"var:preset|spacing|20"}}}} -->
-<h3 class="wp-block-heading has-text-align-center" style="margin-bottom:var(--wp--preset--spacing--20);font-size:3rem;font-weight:700">Multi-Industry</h3>
+<div class="wp-block-column has-deep-black-color has-text-color has-link-color" style="padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)"><!-- wp:heading {"textAlign":"center","level":3,"className":"text-2xl md:text-3xl lg:text-4xl","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|20"}}}} -->
+<h3 class="wp-block-heading has-text-align-center text-2xl md:text-3xl lg:text-4xl" style="margin-bottom:var(--wp--preset--spacing--20)">Multi-Industry</h3>
 <!-- /wp:heading -->
 
 <!-- wp:paragraph {"align":"center"} -->
