@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.2] - 2025-11-30
+
+### Added
+- Added `axepress/wp-graphql-stubs` for better developer IDE experience.
+
+### Changed
+- Updated pattern URLs from local dev (`http://wonderjarcreative.local`) to production (`https://cms.wonderjarcreative.com`).
+
+### Removed
+- Deprecated templates from 1.3.0 to streamline theme and rely on flexible patterns/template parts:
+	- `home.html`
+	- `page-header-absolute.html` (consolidated into `page-header-absolute-no-title.html`)
+
 ## [1.3.1] - 2025-11-25
 
 ### Changed
