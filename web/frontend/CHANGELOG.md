@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.3.2] - 2025-11-30
+
+### Changed
+- Migrated all pattern URLs and environment references from `http://wonderjarcreative.local` to `https://cms.wonderjarcreative.com` to match backend.
+- Synced block rendering logic and Tailwind styles (colors, spacing, typography) with backend theme.json changes.
+- Improved Button block logic to use `process.env.NEXT_PUBLIC_BASE_URL` for internal link detection.
+- Refined BlastOffImage effect for continuous looping animation (rocket, smoke, fire, sparkles).
+- Removed BlastOffImage effect from `core/image` block but keeping its effect functionality.
+- Minor UI tuning for block components to ensure visual consistency with backend updates.
+
 ## [1.3.1] - 2025-11-26
 
 ### Changed
