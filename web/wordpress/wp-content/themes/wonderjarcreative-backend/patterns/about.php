@@ -42,7 +42,7 @@
 
 <!-- wp:column {"verticalAlignment":"center","width":"40%"} -->
 <div class="wp-block-column is-vertically-aligned-center" style="flex-basis:40%"><!-- wp:image {"id":864,"width":"300px","height":"289px","scale":"cover","sizeSlug":"full","linkDestination":"none","align":"center"} -->
-<figure class="wp-block-image aligncenter size-full is-resized"><img src="http://wonderjarcreative.local/wp-content/uploads/2025/11/undraw_book-writer_ri5u.svg" alt="Book writer image" class="wp-image-864" style="object-fit:cover;width:300px;height:289px"/></figure>
+<figure class="wp-block-image aligncenter size-full is-resized"><img src="https://cms.wonderjarcreative.com/wp-content/uploads/2025/11/undraw_book-writer_ri5u.svg" alt="Book writer image" class="wp-image-864" style="object-fit:cover;width:300px;height:289px"/></figure>
 <!-- /wp:image --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns --></div>
