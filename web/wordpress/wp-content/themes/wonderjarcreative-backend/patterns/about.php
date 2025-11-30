@@ -24,32 +24,6 @@
 <!-- /wp:group --></div></div>
 <!-- /wp:cover -->
 
-<!-- wp:group {"align":"full","style":{"spacing":{"margin":{"top":"0"},"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull" style="margin-top:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:columns {"verticalAlignment":"center","align":"wide","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|50","left":"var:preset|spacing|50"}}}} -->
-<div class="wp-block-columns alignwide are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center","width":"60%"} -->
-<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:60%"><!-- wp:heading {"className":"text-3xl md:text-5xl lg:text-6xl","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}}} -->
-<h2 class="wp-block-heading text-3xl md:text-5xl lg:text-6xl" style="margin-bottom:var(--wp--preset--spacing--40)">Our Story</h2>
-<!-- /wp:heading -->
-
-<!-- wp:paragraph {"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|30"}}}} -->
-<p style="margin-bottom:var(--wp--preset--spacing--30)">We started Wonderjar Creative to deliver high-impact digital work without the overhead, layers, or unnecessary bloat that usually slow teams down. Strategy leads every decision we make, performance shapes the craft, and open collaboration keeps the process clear, focused, and moving forward.</p>
-<!-- /wp:paragraph -->
-
-<!-- wp:paragraph -->
-<p>When a project calls for expanded capabilities, we tap into a trusted network of specialists—designers, engineers, infrastructure experts, and growth partners—bringing them together as one coordinated, seamless team.</p>
-<!-- /wp:paragraph --></div>
-<!-- /wp:column -->
-
-<!-- wp:column {"verticalAlignment":"center","width":"40%"} -->
-<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:40%"><!-- wp:image {"id":864,"width":"300px","height":"289px","scale":"cover","sizeSlug":"full","linkDestination":"none","align":"center"} -->
-<figure class="wp-block-image aligncenter size-full is-resized"><img src="https://cms.wonderjarcreative.com/wp-content/uploads/2025/11/undraw_book-writer_ri5u.svg" alt="Book writer image" class="wp-image-864" style="object-fit:cover;width:300px;height:289px"/></figure>
-<!-- /wp:image --></div>
-<!-- /wp:column --></div>
-<!-- /wp:columns --></div>
-<!-- /wp:group -->
-
-<!-- wp:pattern {"slug":"wonderjarcreative-backend/cta-start-project"} /-->
-
 <!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"},"margin":{"top":"0","bottom":"0"}}},"layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignfull" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:group {"align":"wide","layout":{"type":"constrained"}} -->
 <div class="wp-block-group alignwide"><!-- wp:heading {"textAlign":"center","className":"text-3xl md:text-5xl lg:text-6xl","style":{"typography":{"fontWeight":"700","fontStyle":"normal"},"spacing":{"margin":{"bottom":"var:preset|spacing|60"}}}} -->
@@ -132,6 +106,44 @@
 <!-- /wp:column --></div>
 <!-- /wp:columns --></div>
 <!-- /wp:group --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"metadata":{"categories":["page"],"patternName":"wonderjarcreative-backend/cta-start-project","name":"Call to Action - Start a Project"},"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"},"margin":{"top":"0","bottom":"0"}}},"backgroundColor":"warm-coral","layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull has-warm-coral-background-color has-background" style="margin-top:0;margin-bottom:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:group {"align":"wide","style":{"spacing":{"blockGap":"var:preset|spacing|50"}},"layout":{"type":"flex","orientation":"vertical","justifyContent":"center"}} -->
+<div class="wp-block-group alignwide"><!-- wp:heading {"textAlign":"center","style":{"typography":{"fontWeight":"700","fontStyle":"normal"}},"fontSize":"7xl"} -->
+<h2 class="wp-block-heading has-text-align-center has-7-xl-font-size" style="font-style:normal;font-weight:700">Ready to Build<br>Something That Lasts?</h2>
+<!-- /wp:heading -->
+
+<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+<div class="wp-block-buttons"><!-- wp:button -->
+<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="/contact/">Start a Project</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
+<!-- /wp:group --></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"align":"full","style":{"spacing":{"margin":{"top":"0"},"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"}}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group alignfull" style="margin-top:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:columns {"verticalAlignment":"center","align":"wide","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|50","left":"var:preset|spacing|50"}}}} -->
+<div class="wp-block-columns alignwide are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center","width":"60%"} -->
+<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:60%"><!-- wp:heading {"className":"text-3xl md:text-5xl lg:text-6xl","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}}} -->
+<h2 class="wp-block-heading text-3xl md:text-5xl lg:text-6xl" style="margin-bottom:var(--wp--preset--spacing--40)">Our Story</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"style":{"spacing":{"margin":{"bottom":"var:preset|spacing|30"}}}} -->
+<p style="margin-bottom:var(--wp--preset--spacing--30)">We started Wonderjar Creative to deliver high-impact digital work without the overhead, layers, or unnecessary bloat that usually slow teams down. Strategy leads every decision we make, performance shapes the craft, and open collaboration keeps the process clear, focused, and moving forward.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>When a project calls for expanded capabilities, we tap into a trusted network of specialists—designers, engineers, infrastructure experts, and growth partners—bringing them together as one coordinated, seamless team.</p>
+<!-- /wp:paragraph --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"verticalAlignment":"center","width":"40%"} -->
+<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:40%"><!-- wp:image {"id":864,"width":"300px","height":"289px","scale":"cover","sizeSlug":"full","linkDestination":"none","align":"center"} -->
+<figure class="wp-block-image aligncenter size-full is-resized"><img src="https://cms.wonderjarcreative.com/wp-content/uploads/2025/11/undraw_book-writer_ri5u.svg" alt="Book writer image" class="wp-image-864" style="object-fit:cover;width:300px;height:289px"/></figure>
+<!-- /wp:image --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns --></div>
 <!-- /wp:group -->
 
 <!-- wp:group {"align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"},"margin":{"top":"0","bottom":"0"}},"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"backgroundColor":"deep-black","textColor":"white","layout":{"type":"constrained"}} -->
