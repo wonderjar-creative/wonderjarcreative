@@ -12,8 +12,8 @@
  * @link https://wonderjarcreative.com
  */
 ?>
-<!-- wp:group {"className":"absolute left-0 right-0 z-10","style":{"position":{"type":""}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group absolute left-0 right-0 z-10"><!-- wp:group {"align":"wide","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
+<!-- wp:group {"className":"absolute top-0 left-0 right-0 z-10","style":{"position":{"type":""}},"layout":{"type":"constrained"}} -->
+<div class="wp-block-group absolute top-0 left-0 right-0 z-10"><!-- wp:group {"align":"wide","layout":{"type":"flex","flexWrap":"nowrap","justifyContent":"space-between","verticalAlignment":"center"}} -->
 <div class="wp-block-group alignwide"><!-- wp:site-logo {"width":160,"style":{"spacing":{"margin":{"top":"var:preset|spacing|30","bottom":"var:preset|spacing|30"}}}} /-->
 
 <!-- wp:navigation {"ref":372,"textColor":"deep-black","style":{"typography":{"fontStyle":"normal","fontWeight":"500"}}} /--></div>
