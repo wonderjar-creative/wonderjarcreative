@@ -2,7 +2,6 @@ import Image from 'next/image';
 import { CoreImageBlock } from '@/types/coreBlockTypes';
 import { getBlockBaseClass, getBlockClasses, getBlockStyleAttr } from '@/utils/blockStyles';
 import { getMediaSize, getSizesAttribute } from '@/utils/mediaSizes';
-import { BlastOffImage } from '@/components/Effects';
 
 const ImageComponent: React.FC<CoreImageBlock> = ({ name, attributes, mediaItem }) => {
   const { url, align, alt, anchor, aspectRatio, style, width, height, scale, sizeSlug, ...imageAttributes } = attributes || {};
@@ -16,25 +15,6 @@ const ImageComponent: React.FC<CoreImageBlock> = ({ name, attributes, mediaItem 
   const imageSrc = sizeObj?.sourceUrl || url || mediaItem?.node?.sourceUrl || '';
   const imageWidth = sizeObj?.width || mediaItem?.node?.mediaDetails?.width || 0;
   const imageHeight = sizeObj?.height || mediaItem?.node?.mediaDetails?.height || 0;
-
-  if (attributes?.className?.includes('__blast-off-effect')) {
-    return (
-      <figure
-        {...(anchor && { id: anchor })}
-        className={blockClasses}
-        {...(blockStyleAttr && { style: blockStyleAttr })}
-      >
-        <BlastOffImage
-          src={imageSrc}
-          alt={alt || ''}
-          width={imageWidth || (width as any) || 400}
-          height={imageHeight || (height as any) || 400}
-          className={imageClasses}
-          {...(!imageWidth && !imageHeight && { fill: true })}
-        />
-      </figure>
-    );
-  }
 
   const useFill = !imageWidth && !imageHeight;
   const fillHeight = useFill && width && !height ? width : '300px';
