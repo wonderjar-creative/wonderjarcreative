@@ -25,9 +25,9 @@
 <!-- /wp:cover -->
 
 <!-- wp:group {"align":"full","style":{"spacing":{"margin":{"top":"0"},"padding":{"top":"var:preset|spacing|70","bottom":"var:preset|spacing|70"}}},"layout":{"type":"constrained"}} -->
-<div class="wp-block-group alignfull" style="margin-top:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|50","left":"var:preset|spacing|50"}}}} -->
-<div class="wp-block-columns alignwide"><!-- wp:column {"width":"60%"} -->
-<div class="wp-block-column" style="flex-basis:60%"><!-- wp:heading {"className":"text-3xl md:text-5xl lg:text-6xl","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}}} -->
+<div class="wp-block-group alignfull" style="margin-top:0;padding-top:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70)"><!-- wp:columns {"verticalAlignment":"center","align":"wide","style":{"spacing":{"blockGap":{"top":"var:preset|spacing|50","left":"var:preset|spacing|50"}}}} -->
+<div class="wp-block-columns alignwide are-vertically-aligned-center"><!-- wp:column {"verticalAlignment":"center","width":"60%"} -->
+<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:60%"><!-- wp:heading {"className":"text-3xl md:text-5xl lg:text-6xl","style":{"spacing":{"margin":{"bottom":"var:preset|spacing|40"}}}} -->
 <h2 class="wp-block-heading text-3xl md:text-5xl lg:text-6xl" style="margin-bottom:var(--wp--preset--spacing--40)">Our Story</h2>
 <!-- /wp:heading -->
 
@@ -40,9 +40,9 @@
 <!-- /wp:paragraph --></div>
 <!-- /wp:column -->
 
-<!-- wp:column {"width":"40%"} -->
-<div class="wp-block-column" style="flex-basis:40%"><!-- wp:image {"id":545,"sizeSlug":"full","linkDestination":"none"} -->
-<figure class="wp-block-image size-full"><img src="http://wonderjarcreative.local/wp-content/uploads/2025/11/newsletter.png" alt="Guy reading newsletter" class="wp-image-545"/></figure>
+<!-- wp:column {"verticalAlignment":"center","width":"40%"} -->
+<div class="wp-block-column is-vertically-aligned-center" style="flex-basis:40%"><!-- wp:image {"id":864,"width":"300px","height":"289px","scale":"cover","sizeSlug":"full","linkDestination":"none","align":"center"} -->
+<figure class="wp-block-image aligncenter size-full is-resized"><img src="http://wonderjarcreative.local/wp-content/uploads/2025/11/undraw_book-writer_ri5u.svg" alt="Book writer image" class="wp-image-864" style="object-fit:cover;width:300px;height:289px"/></figure>
 <!-- /wp:image --></div>
 <!-- /wp:column --></div>
 <!-- /wp:columns --></div>
