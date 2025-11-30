@@ -3,7 +3,7 @@
 @source inline('size-full');
 @source inline('{items-,self-}{start,center,end,stretch}');
 @source inline('{justify-,content-}{start,center,end,between,around,evenly}');
-@source inline('text-{1xs,xs,sm,base,lg,xl,2xl,3xl,4xl,5xl,6xl,7xl,8xl,9xl}');
+@source inline('{md:,lg:}text-{1xs,xs,sm,base,lg,xl,2xl,3xl,4xl,5xl,6xl,7xl,8xl,9xl}');
 @source inline('text-{teal,warm-coral,muted-brick-red,deep-black,retro-teal,soft-cream,charcoal-gray,marigold-yellow,white}');
 @source inline('bg-{teal,warm-coral,muted-brick-red,deep-black,retro-teal,soft-cream,charcoal-gray,marigold-yellow,white}');
 @source inline('border-{teal,warm-coral,muted-brick-red,deep-black,retro-teal,soft-cream,charcoal-gray,marigold-yellow,white}');
@@ -109,22 +109,39 @@
     @apply text-base;
   }
 
-  :where(.wp-site-blocks) > *:not(:first-child),  
-  :where(.constrained) > *:not(:first-child) {
+  /* Global Spacing for Site Blocks */
+  :where(.wp-site-blocks > *:not(:first-child)) {
+    @apply [margin-block-start:var(--spacing-70)] [margin-block-end:0];
+  }
+ 
+  :where(.constrained > *:not(:first-child)) {
     @apply [margin-block-start:var(--spacing-30)] [margin-block-end:0];
   }
 
-  :where(.wp-site-blocks) > *:first-child,
-  :where(.wp-site-blocks) > style:first-child + *{
+  :where(.wp-site-blocks > *:first-child),
+  :where(.wp-site-blocks > style:first-child + *) {
     @apply [margin-block-start:0];
   }
 
-  :where(.wp-site-blocks) > *:last-child {
+  :where(.wp-site-blocks > *:last-child) {
     @apply [margin-block-end:0];
   }
 
-  .wp-site-blocks:has(.wp-block-post-content > [style*="padding-bottom"]:last-child) > *:last-child {
+  :where(.wp-site-blocks:has(.wp-block-post-content > [style*="padding-bottom"]:last-child)) > footer.wp-block-template-part {
     @apply [margin-block-start:0];
+  }
+
+  /* Core Block Overrides */
+  :where(.wp-block-heading) {
+    @apply mb-[var(--spacing-40)];
+  }
+
+  :where(.wp-block-heading:not(:first-child)) {
+    @apply mt-[var(--spacing-50)];
+  }
+
+  :where(.wp-block-separator) {
+    @apply my-[var(--spacing-50)];
   }
 }
 
