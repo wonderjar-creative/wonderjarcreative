@@ -13,8 +13,8 @@
  */
 
 ?>
-<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|30","bottom":"var:preset|spacing|30"},"margin":{"top":"var:preset|spacing|70"}},"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"backgroundColor":"charcoal-gray","textColor":"white","layout":{"type":"constrained"}} -->
-<div class="wp-block-group has-white-color has-charcoal-gray-background-color has-text-color has-background has-link-color" style="margin-top:var(--wp--preset--spacing--70);padding-top:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30)"><!-- wp:group {"layout":{"type":"constrained"}} -->
+<!-- wp:group {"style":{"spacing":{"padding":{"top":"var:preset|spacing|30","bottom":"var:preset|spacing|30"}},"elements":{"link":{"color":{"text":"var:preset|color|white"}}}},"backgroundColor":"charcoal-gray","textColor":"white","layout":{"type":"constrained"}} -->
+<div class="wp-block-group has-white-color has-charcoal-gray-background-color has-text-color has-background has-link-color" style="padding-top:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30)"><!-- wp:group {"layout":{"type":"constrained"}} -->
 <div class="wp-block-group"><!-- wp:paragraph {"align":"center"} -->
 <p class="has-text-align-center">© 2025 Wonderjar Creative | <a href="https://wonderjarcreative.com/privacy-policy/" data-type="page" data-id="3">Privacy</a></p>
 <!-- /wp:paragraph --></div>
